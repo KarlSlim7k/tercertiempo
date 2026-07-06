@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+:root {
+  --ink:        #0b1220;
+  --ink-2:      #16213a;
+  --paper:      #050912;
+  --paper-2:    #0b1220;
+  --gold:       #e6b54a;
+  --gold-2:     #c8941f;
+  --gold-soft:  rgba(230,181,74,0.12);
+  --green:      #5fd28b;
+  --amber:      #e9c46a;
+  --rose:       #ff7676;
+  --red:        #ff7676;
+  --red-2:      #c8941f;
+  --cream:      #f5f1e8;
+  --dim:        #dad5c8;
+  --dimmer:     #b8b2a3;
+  --line:       rgba(245,241,232,0.14);
+  --line-2:     rgba(245,241,232,0.22);
+  --line-soft:  rgba(245,241,232,0.08);
+  --panel:      rgba(255,255,255,0.04);
+  --panel-2:    rgba(255,255,255,0.07);
+  --muted:      var(--dim);
+  --muted-2:    var(--dimmer);
+}
+
+html, body { background: var(--paper); }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(230,181,74,0.10), transparent 60%),
+    radial-gradient(700px 400px at 0% 100%, rgba(30,60,120,0.14), transparent 60%),
+    var(--paper);
+  background-attachment: fixed;
+  color: var(--cream);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-disp  { font-family: "Oswald", "Barlow Condensed", system-ui, sans-serif; }
+.font-serif { font-family: "Playfair Display", Georgia, "Times New Roman", serif; }
+
+.stadium-bg { display: none; }
+
+.gold-text   { color: var(--gold); }
+.silver-text { color: var(--cream); }
+.dim-text    { color: var(--dim); }
+.red-text    { color: var(--rose); }
+
+.rule-top    { border-top: 1px solid var(--line); }
+.rule-bottom { border-bottom: 1px solid var(--line); }
+.rule-double {
+  border-top: 3px double var(--line-2);
+}
+
+.site-header {
+  background: linear-gradient(180deg, rgba(11,18,32,0.95), rgba(11,18,32,0.75));
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+
+.site-footer {
+  background: var(--ink);
+  border-top: 1px solid var(--line);
+}
+
+.masthead {
+  background:
+    radial-gradient(900px 500px at 50% -20%, rgba(230,181,74,0.10), transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #050912 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.masthead-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  line-height: 0.95;
+}
+
+.masthead-kicker {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.section-eyebrow {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.section-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 800;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+
+.programa-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+}
+
+.programa-card-btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-2);
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.programa-card-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-hero { animation: heroIn 0.7s ease-out 0.1s both; }
+.animate-card { animation: fadeSlideUp 0.55s ease-out both; }
+
+.recharts-cartesian-grid line { stroke: var(--line) !important; }
+.recharts-text { fill: var(--cream) !important; }
+.recharts-cartesian-axis-tick-value { fill: var(--dim) !important; }
+.recharts-legend-item-text { color: var(--cream) !important; }
+.recharts-tooltip-wrapper { outline: none; }
+.recharts-default-tooltip {
+  background: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 6px !important;
+  color: var(--cream) !important;
+  font-size: 12px !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.4) !important;
+}
+.recharts-tooltip-label {
+  color: var(--cream) !important;
+  font-family: "Playfair Display", serif !important;
+  font-weight: 700 !important;
+}

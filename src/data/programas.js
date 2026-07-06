@@ -1,0 +1,19 @@
+// Fuente de verdad de qué programas existen y qué decks tiene cada uno.
+// Para agregar un programa nuevo: copiar sus HTML a public/programas/<numero>/
+// y agregar un objeto aquí. Un deck ausente (null) oculta su botón en el catálogo.
+export const PROGRAMAS = [
+  {
+    numero: 42,
+    titulo: 'Programa 42',
+    liga: 'Primera Fuerza Especial · Liga Luis Pirata Fuente',
+    decks: {
+      horarios: 'programas/42/horarios.html',
+      resultados: 'programas/42/resultados.html',
+      analisis: 'programas/42/analisis.html',
+    },
+  },
+]
+
+export function ultimoPrograma() {
+  return PROGRAMAS.reduce((a, b) => (b.numero > a.numero ? b : a))
+}
