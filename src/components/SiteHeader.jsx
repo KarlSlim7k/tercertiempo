@@ -17,6 +17,7 @@ export default function SiteHeader() {
 
         <nav className="flex items-center gap-1 sm:gap-2">
           <NavLink to="/" end className={navLinkClass}>Inicio</NavLink>
+          <NavLink to="/ligas" className={navLinkClass}>Ligas</NavLink>
           <NavLink to="/resultados" className={navLinkClass}>Resultados</NavLink>
           <NavLink to="/presentaciones" className={navLinkClass}>Presentaciones</NavLink>
         </nav>

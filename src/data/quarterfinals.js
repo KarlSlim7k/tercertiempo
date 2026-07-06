@@ -92,6 +92,14 @@ export const TEAM_OD_RATIO = {
   "Micheleros": { P6: { gf:8,gc:9, ratio:0.9 }, P7: { gf:10,gc:12,ratio:0.8 }, P8: { gf:13,gc:12,ratio:1.1 }, P9: { gf:17,gc:14,ratio:1.2 }, P11: { gf:20,gc:12,ratio:1.7 } },
 }
 
+// ---- Cuartos de Final · Partidos de IDA (calendario oficial) ----
+export const QUARTERS_IDA = [
+  { id: "CF1", local: "Micheleros", visita: "Molinos",     hora: "12:00", campo: "Bachiller",     dia: "Dom" },
+  { id: "CF2", local: "Sabinal",    visita: "Halcones",    hora: "10:00", campo: "Sabinal",       dia: "Dom" },
+  { id: "CF3", local: "Ranger's",   visita: "Red Bull's",  hora: "8:00",  campo: "Libertad",      dia: "Dom" },
+  { id: "CF4", local: "Arsenal",    visita: "Liverpool",   hora: "8:00",  campo: "Fco. I Madero", dia: "Dom" },
+]
+
 export const J17_RESULTS = [
   { local: "Halcones",      gl: 3, gv: 2, visita: "Micheleros" },
   { local: "Liverpool",     gl: 2, gv: 1, visita: "Ranger's" },
