@@ -25,7 +25,7 @@
   --muted-2:    var(--dimmer);
 }
 
-html, body { background: var(--paper); }
+html, body { background: var(--paper); overflow-x: hidden; }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
