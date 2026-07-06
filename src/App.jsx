@@ -6,6 +6,7 @@ import Ligas from './pages/Ligas.jsx'
 import Resultados from './pages/Resultados.jsx'
 import Presentaciones from './pages/Presentaciones.jsx'
 import PrimeraFuerzaEspecial from './pages/ligas/PrimeraFuerzaEspecial.jsx'
+import PrimeraA from './pages/ligas/PrimeraA.jsx'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/ligas" element={<Ligas />} />
         <Route path="/ligas/primera-fuerza-especial" element={<PrimeraFuerzaEspecial />} />
+        <Route path="/ligas/primera-a" element={<PrimeraA />} />
         <Route path="/resultados" element={<Resultados />} />
         <Route path="/presentaciones" element={<Presentaciones />} />
       </Routes>

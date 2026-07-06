@@ -6,6 +6,12 @@ export const LIGAS = [
     slug: 'primera-fuerza-especial',
     nombre: 'Primera Fuerza Especial',
     subtitulo: 'Liga Luis Pirata Fuente',
-    estado: 'Tras J-17 · Cuartos de final (ida)',
+    estado: 'Tras J-17 · Cuartos de final (ida y vuelta)',
+  },
+  {
+    slug: 'primera-a',
+    nombre: 'Primera A',
+    subtitulo: 'Temporada 2026',
+    estado: 'Jornada 29',
   },
 ]

@@ -16,7 +16,7 @@ export default function SiteFooter() {
         </div>
         <div className="rule-double pt-3">
           <small className="text-[11px] uppercase tracking-[0.2em] font-semibold" style={{ color: 'var(--dimmer)' }}>
-            Primera Fuerza Especial · Liga Luis Pirata Fuente · Datos preliminares sujetos a cambios
+            Datos preliminares sujetos a cambios
           </small>
         </div>
       </div>
