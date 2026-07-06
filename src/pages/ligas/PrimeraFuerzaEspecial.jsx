@@ -1,4 +1,4 @@
-import { STANDINGS_J17, J17_RESULTS, QUARTERS_IDA } from '../../data/quarterfinals.js'
+import { STANDINGS_J17, J17_RESULTS, QUARTERFINALS, CUARTOS_RESULTADOS } from '../../data/quarterfinals.js'
 
 function StandingsTable({ teams }) {
   return (
@@ -52,7 +52,7 @@ export default function PrimeraFuerzaEspecial() {
           Primera Fuerza Especial
         </h1>
         <p className="text-sm mt-1.5" style={{ color: 'var(--dim)' }}>
-          Liga Luis Pirata Fuente · Tras Jornada 17 · Cuartos de final (ida)
+          Liga Luis Pirata Fuente · Tras Jornada 17 · Cuartos de final (ida y vuelta)
         </p>
       </div>
 
@@ -105,44 +105,49 @@ export default function PrimeraFuerzaEspecial() {
         <header className="px-5 sm:px-7 py-5 border-b border-[var(--line)] flex items-baseline justify-between flex-wrap gap-3">
           <div>
             <p className="section-eyebrow mb-1">Liguilla</p>
-            <h2 className="section-title text-2xl sm:text-3xl">Cuartos de final · Ida</h2>
+            <h2 className="section-title text-2xl sm:text-3xl">Cuartos de final · Ida y vuelta</h2>
           </div>
           <span className="text-[10px] uppercase tracking-widest font-semibold" style={{ color: 'var(--dimmer)' }}>
-            Domingo
+            Quién avanza a semis
           </span>
         </header>
         <div className="p-5 sm:p-7 overflow-x-auto">
-          <table className="w-full border-collapse min-w-[560px]">
+          <table className="w-full border-collapse min-w-[620px]">
             <thead>
               <tr className="bg-[var(--panel-2)]">
                 <th className="text-left text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Cruce</th>
                 <th className="text-right text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Local</th>
-                <th className="text-center text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>—</th>
+                <th className="text-center text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Ida</th>
+                <th className="text-center text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Vuelta</th>
+                <th className="text-center text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--gold)' }}>Global</th>
                 <th className="text-left text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Visita</th>
-                <th className="text-center text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Hora</th>
-                <th className="text-left text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Campo</th>
-                <th className="text-center text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Día</th>
+                <th className="text-left text-[11px] uppercase tracking-widest font-bold px-3 py-2.5" style={{ color: 'var(--dimmer)' }}>Avanza</th>
               </tr>
             </thead>
             <tbody>
-              {QUARTERS_IDA.map((m) => (
-                <tr key={m.id} className="border-t" style={{ borderColor: 'var(--line-soft)' }}>
-                  <td className="px-3 py-3">
-                    <span
-                      className="font-bold text-xs px-2 py-1 rounded"
-                      style={{ background: 'var(--gold-soft)', color: 'var(--gold)', border: '1px solid var(--gold-2)' }}
-                    >
-                      {m.id}
-                    </span>
-                  </td>
-                  <td className="px-3 py-3 text-right font-semibold" style={{ color: 'var(--cream)' }}>{m.local}</td>
-                  <td className="px-2 py-3 text-center" style={{ color: 'var(--dimmer)' }}>vs</td>
-                  <td className="px-3 py-3 text-left font-semibold" style={{ color: 'var(--cream)' }}>{m.visita}</td>
-                  <td className="px-3 py-3 text-center font-semibold" style={{ color: 'var(--cream)' }}>{m.hora}</td>
-                  <td className="px-3 py-3" style={{ color: 'var(--dim)' }}>{m.campo}</td>
-                  <td className="px-3 py-3 text-center" style={{ color: 'var(--dim)' }}>{m.dia}</td>
-                </tr>
-              ))}
+              {QUARTERFINALS.map((qf) => {
+                const res = CUARTOS_RESULTADOS[qf.id]
+                return (
+                  <tr key={qf.id} className="border-t" style={{ borderColor: 'var(--line-soft)' }}>
+                    <td className="px-3 py-3">
+                      <span
+                        className="font-bold text-xs px-2 py-1 rounded"
+                        style={{ background: 'var(--gold-soft)', color: 'var(--gold)', border: '1px solid var(--gold-2)' }}
+                      >
+                        {qf.id}
+                      </span>
+                    </td>
+                    <td className="px-3 py-3 text-right font-semibold" style={{ color: 'var(--cream)' }}>{qf.local}</td>
+                    <td className="px-3 py-3 text-center" style={{ color: 'var(--dim)' }}>{res.ida.local}-{res.ida.visita}</td>
+                    <td className="px-3 py-3 text-center" style={{ color: 'var(--dim)' }}>{res.vuelta.local}-{res.vuelta.visita}</td>
+                    <td className="px-3 py-3 text-center font-bold" style={{ color: 'var(--cream)' }}>{res.global.local}-{res.global.visita}</td>
+                    <td className="px-3 py-3 text-left font-semibold" style={{ color: 'var(--cream)' }}>{qf.visita}</td>
+                    <td className="px-3 py-3 text-left text-xs font-bold uppercase" style={{ color: res.ganador ? 'var(--green)' : 'var(--gold)' }}>
+                      {res.ganador ? (res.ganador === 'local' ? qf.local : qf.visita) : 'Pendiente'}
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
@@ -154,10 +159,10 @@ export default function PrimeraFuerzaEspecial() {
           <span className="text-lg shrink-0">⚔️</span>
           <div className="text-sm">
             <p className="font-bold uppercase tracking-wide text-xs mb-0.5" style={{ color: 'var(--gold)' }}>
-              Fase de liguilla · Cuartos de final (ida)
+              CF2 · Halcones 3-3 Sabinal global
             </p>
             <p style={{ color: 'var(--dim)' }}>
-              Horarios y resultados de los partidos de vuelta se confirmarán después.
+              Empate en el marcador global. El desempate está pendiente de confirmación.
             </p>
           </div>
         </div>

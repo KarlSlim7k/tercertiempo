@@ -1,4 +1,4 @@
-import { QUARTERFINALS, STANDINGS_J17, TEAM_COLORS, ANALYSIS_INSIGHTS } from '../data/quarterfinals.js'
+import { QUARTERFINALS, STANDINGS_J17, TEAM_COLORS, CUARTOS_RESULTADOS } from '../data/quarterfinals.js'
 
 function getTeamColor(name) {
   return TEAM_COLORS[name] || '#1f3a8a'
@@ -16,11 +16,11 @@ export default function QuarterfinalBracket() {
             Cuartos de final
           </h2>
           <p className="text-sm text-[var(--dim)] mt-1.5 max-w-2xl font-serif">
-            Los ocho mejores de la Primera Fuerza Especial, según los puntos acumulados a la jornada 17.
+            Resultados de ida y vuelta, y quién avanza a semifinales.
           </p>
         </div>
         <span className="text-[10px] uppercase tracking-widest text-[var(--dimmer)] font-semibold">
-          Semillas 1–8
+          Ida · Vuelta · Global
         </span>
       </header>
 
@@ -28,8 +28,7 @@ export default function QuarterfinalBracket() {
         {QUARTERFINALS.map((qf) => {
           const local  = STANDINGS_J17[qf.localPos  - 1]
           const visita = STANDINGS_J17[qf.visitaPos - 1]
-          const key = qf.local.toLowerCase().replace(/['\s]/g, '_') + '_vs_' + qf.visita.toLowerCase().replace(/['\s]/g, '_')
-          const insight = ANALYSIS_INSIGHTS[key] || { prediccion: 'Encuentro parejo.' }
+          const res = CUARTOS_RESULTADOS[qf.id]
 
           return (
             <article
@@ -54,13 +53,31 @@ export default function QuarterfinalBracket() {
                 <TeamSide team={visita} align="left" />
               </div>
 
-              <div className="px-4 py-3 border-t border-[var(--line-soft)] bg-[var(--panel-2)]">
-                <p className="text-[10px] uppercase tracking-widest text-[var(--gold)] font-bold mb-1">
-                  Pronóstico
-                </p>
-                <p className="font-serif text-sm text-[var(--dim)] leading-snug italic">
-                  {insight.prediccion}
-                </p>
+              <div className="px-4 py-3 border-t border-[var(--line-soft)] bg-[var(--panel-2)] grid grid-cols-3 gap-2 text-center">
+                <div>
+                  <p className="text-[9px] uppercase tracking-widest text-[var(--dimmer)] font-semibold mb-0.5">Ida</p>
+                  <p className="font-serif text-sm font-bold text-[var(--dim)]">{res.ida.local}-{res.ida.visita}</p>
+                </div>
+                <div>
+                  <p className="text-[9px] uppercase tracking-widest text-[var(--dimmer)] font-semibold mb-0.5">Vuelta</p>
+                  <p className="font-serif text-sm font-bold text-[var(--dim)]">{res.vuelta.local}-{res.vuelta.visita}</p>
+                </div>
+                <div>
+                  <p className="text-[9px] uppercase tracking-widest text-[var(--gold)] font-semibold mb-0.5">Global</p>
+                  <p className="font-serif text-sm font-bold text-[var(--cream)]">{res.global.local}-{res.global.visita}</p>
+                </div>
+              </div>
+
+              <div className="px-4 py-2.5 border-t border-[var(--line-soft)] text-center">
+                {res.ganador ? (
+                  <p className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--green)' }}>
+                    Avanza {res.ganador === 'local' ? local.team : visita.team}
+                  </p>
+                ) : (
+                  <p className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--gold)' }}>
+                    Empate global · pendiente desempate
+                  </p>
+                )}
               </div>
             </article>
           )

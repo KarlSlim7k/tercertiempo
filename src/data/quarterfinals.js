@@ -92,6 +92,38 @@ export const TEAM_OD_RATIO = {
   "Micheleros": { P6: { gf:8,gc:9, ratio:0.9 }, P7: { gf:10,gc:12,ratio:0.8 }, P8: { gf:13,gc:12,ratio:1.1 }, P9: { gf:17,gc:14,ratio:1.2 }, P11: { gf:20,gc:12,ratio:1.7 } },
 }
 
+// ---- Cuartos de Final · Resultados (ida + vuelta + global) ----
+// local/visita siguen la misma convención de semilla que QUARTERFINALS
+// (local = semilla más alta), no necesariamente quién fungió como local
+// en la cancha esa fecha. Ida: programa 42 (resultados.html). Vuelta:
+// planilla oficial entregada tras la fecha.
+export const CUARTOS_RESULTADOS = {
+  CF1: {
+    ida:    { local: 3, visita: 0 },
+    vuelta: { local: 1, visita: 0 },
+    global: { local: 4, visita: 0 },
+    ganador: 'local', // Molinos
+  },
+  CF2: {
+    ida:    { local: 1, visita: 2 },
+    vuelta: { local: 2, visita: 1 },
+    global: { local: 3, visita: 3 },
+    ganador: null, // Halcones 3-3 Sabinal, empate global · pendiente desempate
+  },
+  CF3: {
+    ida:    { local: 2, visita: 1 },
+    vuelta: { local: 4, visita: 2 },
+    global: { local: 6, visita: 3 },
+    ganador: 'local', // Red Bull
+  },
+  CF4: {
+    ida:    { local: 1, visita: 2 },
+    vuelta: { local: 0, visita: 1 },
+    global: { local: 1, visita: 3 },
+    ganador: 'visita', // Arsenal
+  },
+}
+
 // ---- Cuartos de Final · Partidos de IDA (calendario oficial) ----
 export const QUARTERS_IDA = [
   { id: "CF1", local: "Micheleros", visita: "Molinos",     hora: "12:00", campo: "Bachiller",     dia: "Dom" },
