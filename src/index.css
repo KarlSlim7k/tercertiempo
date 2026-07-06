@@ -28,7 +28,7 @@
 html, body { background: var(--paper); }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background:
     radial-gradient(1200px 600px at 50% -10%, rgba(230,181,74,0.10), transparent 60%),
     radial-gradient(700px 400px at 0% 100%, rgba(30,60,120,0.14), transparent 60%),
@@ -40,8 +40,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.font-disp  { font-family: "Oswald", "Barlow Condensed", system-ui, sans-serif; }
-.font-serif { font-family: "Playfair Display", Georgia, "Times New Roman", serif; }
+.font-disp  { font-family: Arial, Helvetica, sans-serif; }
+.font-serif { font-family: Arial, Helvetica, sans-serif; }
 
 .stadium-bg { display: none; }
 
@@ -75,7 +75,7 @@ body {
 }
 
 .masthead-title {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--cream);
@@ -83,7 +83,7 @@ body {
 }
 
 .masthead-kicker {
-  font-family: "Oswald", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
@@ -91,7 +91,7 @@ body {
 }
 
 .section-eyebrow {
-  font-family: "Oswald", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -100,7 +100,7 @@ body {
 }
 
 .section-title {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   color: var(--cream);
   letter-spacing: -0.01em;
@@ -116,7 +116,7 @@ body {
 .programa-card-btn {
   display: inline-flex;
   align-items: center;
-  font-family: "Oswald", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -159,6 +159,6 @@ body {
 }
 .recharts-tooltip-label {
   color: var(--cream) !important;
-  font-family: "Playfair Display", serif !important;
+  font-family: Arial, Helvetica, sans-serif !important;
   font-weight: 700 !important;
 }

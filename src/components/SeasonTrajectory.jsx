@@ -30,10 +30,10 @@ function Chart({ title, subtitle, data, yLabel, height }) {
           <LineChart data={data} margin={{ top: 8, right: 12, left: 0, bottom: 8 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(245,241,232,0.14)" />
             <XAxis dataKey="jornada" tick={{ fill: '#dad5c8', fontSize: 12 }} stroke="rgba(245,241,232,0.22)" />
-            <YAxis tick={{ fill: '#dad5c8', fontSize: 12 }} stroke="rgba(245,241,232,0.22)" label={{ value: yLabel, angle: -90, position: 'insideLeft', fill: '#dad5c8', fontSize: 11, style: { fontFamily: 'Inter' } }} />
+            <YAxis tick={{ fill: '#dad5c8', fontSize: 12 }} stroke="rgba(245,241,232,0.22)" label={{ value: yLabel, angle: -90, position: 'insideLeft', fill: '#dad5c8', fontSize: 11, style: { fontFamily: 'Arial, Helvetica, sans-serif' } }} />
             <Tooltip
               contentStyle={{ background: '#0b1220', border: '1px solid rgba(245,241,232,0.14)', borderRadius: 6, color: '#f5f1e8', fontSize: 13 }}
-              labelStyle={{ color: '#f5f1e8', fontFamily: 'Playfair Display, serif', fontWeight: 700 }}
+              labelStyle={{ color: '#f5f1e8', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 700 }}
             />
             <Legend wrapperStyle={{ fontSize: 12, color: '#f5f1e8' }} />
             {QF_TEAMS.map(t => (
