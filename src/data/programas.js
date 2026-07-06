@@ -12,6 +12,16 @@ export const PROGRAMAS = [
       analisis: 'programas/42/analisis.html',
     },
   },
+  {
+    numero: 43,
+    titulo: 'Programa 43',
+    liga: 'Primera Fuerza Especial · Primera A',
+    decks: {
+      horarios: null,
+      resultados: 'programas/43/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
