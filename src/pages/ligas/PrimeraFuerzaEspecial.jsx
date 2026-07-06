@@ -1,4 +1,10 @@
 import { STANDINGS_J17, J17_RESULTS, QUARTERFINALS, CUARTOS_RESULTADOS } from '../../data/quarterfinals.js'
+import DisclaimerBanner from '../../components/DisclaimerBanner.jsx'
+import MatchAnalysis from '../../components/MatchAnalysis.jsx'
+import QuarterfinalBracket from '../../components/QuarterfinalBracket.jsx'
+import SeasonTrajectory from '../../components/SeasonTrajectory.jsx'
+import TeamComparison from '../../components/TeamComparison.jsx'
+import HeadToHead from '../../components/HeadToHead.jsx'
 
 function StandingsTable({ teams }) {
   return (
@@ -167,6 +173,19 @@ export default function PrimeraFuerzaEspecial() {
           </div>
         </div>
       </section>
+
+      <DisclaimerBanner />
+
+      <div>
+        <p className="masthead-kicker text-[11px] mb-3">Análisis en vivo</p>
+        <div className="grid gap-8">
+          <MatchAnalysis />
+          <QuarterfinalBracket />
+          <SeasonTrajectory />
+          <TeamComparison />
+          <HeadToHead />
+        </div>
+      </div>
     </main>
   )
 }
