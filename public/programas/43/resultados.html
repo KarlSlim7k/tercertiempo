@@ -112,6 +112,24 @@
     .final-x{font-family:"Oswald",sans-serif;font-size:44px;color:var(--gold);font-weight:700;letter-spacing:.06em}
     .final-sub{font-family:"Inter",sans-serif;font-size:20px;color:var(--dim);margin-top:14px;max-width:760px;line-height:1.45}
 
+    /* AGES ANALYSIS (Selección Mexicana) */
+    .ages{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+    .age-col{display:flex;flex-direction:column;min-height:0;gap:8px}
+    .age-head{border-left:4px solid var(--accent,var(--gold));background:linear-gradient(180deg, var(--panel-2), var(--panel));border-radius:0 8px 8px 0;padding:8px 14px;display:flex;flex-direction:column;gap:2px}
+    .age-head .rng{font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700}
+    .age-head .lbl{font-family:"Oswald",sans-serif;font-size:17px;text-transform:uppercase;letter-spacing:.03em;font-weight:700;color:var(--cream)}
+    .age-sublists{flex:1;min-height:0;display:flex;gap:8px}
+    .age-list{flex:1;min-height:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;display:flex;flex-direction:column}
+    .age-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 2px;border-bottom:1px solid var(--line-soft);font-family:"Inter",sans-serif}
+    .age-row:last-child{border-bottom:none}
+    .age-row .nm{font-size:14px;color:var(--cream);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .age-row .yr{font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;color:var(--gold);background:var(--gold-soft);padding:2px 9px;border-radius:4px;flex-shrink:0}
+    .veteranos .age-head{--accent:var(--rose)}
+    .nucleo .age-head{--accent:var(--gold)}
+    .juventud .age-head{--accent:var(--green)}
+    .ages-note{margin-top:12px;background:linear-gradient(180deg, var(--panel-2), var(--panel));border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:12px 20px;font-family:"Inter",sans-serif;font-size:14.5px;color:var(--dim);line-height:1.45}
+    .ages-note b{color:var(--cream);font-weight:700}
+
     /* Nav footer */
     .nav{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;padding:10px 36px;background:rgba(0,0,0,0.5);border-top:1px solid var(--line);font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--dimmer);backdrop-filter:blur(8px)}
     .nav .keys b{color:var(--gold);font-weight:700;font-family:"Oswald",sans-serif;letter-spacing:0;margin:0 2px}
@@ -151,6 +169,7 @@
         <div class="qfs">
           <div class="qf"><span class="num">01</span>Cuartos de Final · Vuelta y Global · Fuerza Especial</div>
           <div class="qf"><span class="num">02</span>Primera A · Resultados Jornada 29</div>
+          <div class="qf"><span class="num">03</span>Selección Mexicana · Rumbo al Mundial 2030</div>
         </div>
       </div>
     </section>
@@ -256,6 +275,61 @@
       </div>
     </section>
 
+    <!-- SLIDE 4: SELECCIÓN MEXICANA · EDADES RUMBO A 2030 -->
+    <section class="slide" data-slide="3">
+      <div class="eyebrow">Selección Mexicana · Prospectiva</div>
+      <h2 class="slide-title">RUMBO AL MUNDIAL 2030</h2>
+      <div class="slide-sub">Edades actuales del plantel y quiénes podrían formar la base del Tri en el próximo Mundial.</div>
+      <div class="ages">
+        <div class="age-col veteranos">
+          <div class="age-head"><span class="rng">30 – 40 años</span><span class="lbl">Veteranos y Experimentados</span></div>
+          <div class="age-list">
+            <div class="age-row"><span class="nm">Guillermo Ochoa</span><span class="yr">40</span></div>
+            <div class="age-row"><span class="nm">Raúl Jiménez</span><span class="yr">35</span></div>
+            <div class="age-row"><span class="nm">Jesús Gallardo</span><span class="yr">31</span></div>
+            <div class="age-row"><span class="nm">Guillermo Martínez</span><span class="yr">31</span></div>
+            <div class="age-row"><span class="nm">Carlos Acevedo</span><span class="yr">30</span></div>
+            <div class="age-row"><span class="nm">Luis Romo</span><span class="yr">30</span></div>
+            <div class="age-row"><span class="nm">Luis Chávez</span><span class="yr">30</span></div>
+            <div class="age-row"><span class="nm">Orbelín Pineda</span><span class="yr">30</span></div>
+          </div>
+        </div>
+        <div class="age-col nucleo">
+          <div class="age-head"><span class="rng">25 – 29 años</span><span class="lbl">Madurez y Núcleo</span></div>
+          <div class="age-sublists">
+            <div class="age-list">
+              <div class="age-row"><span class="nm">César Montes</span><span class="yr">29</span></div>
+              <div class="age-row"><span class="nm">Álvaro Fidalgo</span><span class="yr">29</span></div>
+              <div class="age-row"><span class="nm">Julián Quiñones</span><span class="yr">29</span></div>
+              <div class="age-row"><span class="nm">Jorge Sánchez</span><span class="yr">28</span></div>
+              <div class="age-row"><span class="nm">Edson Álvarez</span><span class="yr">28</span></div>
+              <div class="age-row"><span class="nm">Alexis Vega</span><span class="yr">28</span></div>
+              <div class="age-row"><span class="nm">Johan Vásquez</span><span class="yr">27</span></div>
+            </div>
+            <div class="age-list">
+              <div class="age-row"><span class="nm">Roberto Alvarado</span><span class="yr">27</span></div>
+              <div class="age-row"><span class="nm">Israel Reyes</span><span class="yr">26</span></div>
+              <div class="age-row"><span class="nm">Erik Lira</span><span class="yr">26</span></div>
+              <div class="age-row"><span class="nm">Raúl Rangel</span><span class="yr">26</span></div>
+              <div class="age-row"><span class="nm">Santiago Giménez</span><span class="yr">25</span></div>
+              <div class="age-row"><span class="nm">César Huerta</span><span class="yr">25</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="age-col juventud">
+          <div class="age-head"><span class="rng">Menores de 25</span><span class="lbl">Juventud y Recambio</span></div>
+          <div class="age-list">
+            <div class="age-row"><span class="nm">Armando González</span><span class="yr">23</span></div>
+            <div class="age-row"><span class="nm">Mateo Chávez</span><span class="yr">22</span></div>
+            <div class="age-row"><span class="nm">Brian Gutiérrez</span><span class="yr">22</span></div>
+            <div class="age-row"><span class="nm">Obed Vargas</span><span class="yr">20</span></div>
+            <div class="age-row"><span class="nm">Gilberto Mora</span><span class="yr">17</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ages-note">En 2030 el <b>Núcleo</b> (hoy 25-29) tendrá entre 29 y 33 años, la ventana ideal de un futbolista — serán la columna vertebral del equipo. La <b>Juventud</b> llegará en plenitud física (21-27 años); <b>Gilberto Mora</b> y <b>Obed Vargas</b> destacan como las apuestas de mayor proyección a largo plazo. La mayoría de los <b>Veteranos</b> (35+) difícilmente llegará en forma competitiva, salvo excepciones puntuales.</div>
+    </section>
+
     <div class="nav">
       <div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div>
       <div class="dots" id="dots"></div>
@@ -283,6 +357,7 @@
     b.addEventListener('click', () => go(k));
     dotsBox.appendChild(b);
   }
+  counter.textContent = '1 / ' + total;
   function go(n) {
     i = Math.max(0, Math.min(total - 1, n));
     slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
