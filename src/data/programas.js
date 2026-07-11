@@ -22,6 +22,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 44,
+    titulo: 'Programa 44',
+    liga: 'Primera Fuerza Especial · Semifinales',
+    decks: {
+      horarios: null,
+      resultados: 'programas/44/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
