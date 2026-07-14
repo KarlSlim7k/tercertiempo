@@ -32,6 +32,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 45,
+    titulo: 'Programa 45',
+    liga: 'Mundial 2026 · Primera Fuerza Especial · Primera A',
+    decks: {
+      horarios: null,
+      resultados: 'programas/45/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
