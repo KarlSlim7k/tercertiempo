@@ -61,6 +61,7 @@
     .cover .qf .num{font-family:"Oswald",sans-serif;color:var(--gold);font-size:14px;letter-spacing:.18em;background:var(--gold-soft);padding:5px 10px;border-radius:4px;font-weight:700}
 
     .results{flex:1;min-height:0;display:grid;gap:16px}
+    .results.dos{grid-template-columns:1fr;grid-template-rows:1fr 1fr;max-width:980px;margin:0 auto;width:100%;align-content:center;gap:22px}
     .results.tres{grid-template-columns:1fr;grid-template-rows:1fr 1fr 1fr;max-width:980px;margin:0 auto;width:100%}
     .results.tres-h{grid-template-columns:1fr;grid-template-rows:1fr 1fr 1fr;max-width:980px;margin:0 auto;width:100%}
 
@@ -149,7 +150,7 @@
         <div>
           <div class="kicker">Programa 45 · Resultados deportivos</div>
           <div class="title">RESULTADOS · SEMIS Y MÁS</div>
-          <div class="sub">Mundial 2026 · Primera Fuerza Especial · Primera A</div>
+          <div class="sub">Mundial 2026 · Fuerza Especial · Farmacia · Primera A</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:18px">
@@ -306,28 +307,12 @@
       </div>
     </section>
 
-    <!-- 3 FARMACIA-COBRAS -->
+    <!-- 3 FE RESULTADOS -->
     <section class="slide" data-slide="3">
-      <div class="eyebrow">Primera Fuerza Especial · Semifinales (ida)</div>
-      <h2 class="slide-title">FIN DEL INVICTO</h2>
-      <div class="slide-sub">En el estudio habrá llanto: Cobras derrota a Farmacia La Esperanza.</div>
-      <div class="headline">
-        <div class="pill">Semifinal · Ida</div>
-        <div class="scoreline">
-          <div class="side lose">Farmacia La Esperanza</div>
-          <div class="score">3 · 5</div>
-          <div class="side win">Cobras</div>
-        </div>
-        <div class="note">Cobras rompe lo invicto de Farmacia y se lleva la ventaja de la ida. La vuelta definirá al finalista.</div>
-      </div>
-    </section>
-
-    <!-- 4 FE RESULTADOS -->
-    <section class="slide" data-slide="4">
       <div class="eyebrow">Primera Fuerza Especial · Resultados</div>
       <h2 class="slide-title">RESULTADOS · FUERZA ESPECIAL</h2>
-      <div class="slide-sub">Red Bull y Arsenal ganan; Cobras se impone en la ida de semifinales.</div>
-      <div class="results tres">
+      <div class="slide-sub">Red Bull y Arsenal se imponen en la jornada.</div>
+      <div class="results dos">
         <div class="res-card" data-winner="local">
           <div class="res-side winner">
             <span class="seed">Local</span>
@@ -352,18 +337,22 @@
           </div>
           <span class="res-tag">FE</span>
         </div>
-        <div class="res-card" data-winner="visita">
-          <div class="res-side loser">
-            <span class="seed">Semifinal ida</span>
-            <span class="name">Farmacia La Esperanza</span>
-          </div>
-          <div class="res-score"><span class="gl">3</span><span class="sep">·</span><span class="gv">5</span></div>
-          <div class="res-side winner right">
-            <span class="seed">Semifinal ida</span>
-            <span class="name">Cobras</span>
-          </div>
-          <span class="res-tag">SF · IDA</span>
+      </div>
+    </section>
+
+    <!-- 4 FARMACIA-COBRAS (partido aparte, no FE ni Primera A) -->
+    <section class="slide" data-slide="4">
+      <div class="eyebrow">Otro partido · Resultado</div>
+      <h2 class="slide-title">FIN DEL INVICTO</h2>
+      <div class="slide-sub">En el estudio habrá llanto: Cobras derrota a Farmacia La Esperanza.</div>
+      <div class="headline">
+        <div class="pill">Partido de la jornada</div>
+        <div class="scoreline">
+          <div class="side lose">Farmacia La Esperanza</div>
+          <div class="score">3 · 5</div>
+          <div class="side win">Cobras</div>
         </div>
+        <div class="note">Cobras le quita lo invicto a Farmacia La Esperanza en un partido normal de la jornada.</div>
       </div>
     </section>
 
