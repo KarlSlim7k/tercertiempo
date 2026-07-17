@@ -42,6 +42,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 46,
+    titulo: 'Programa 46',
+    liga: 'Mundial 2026 · Liga MX · Fuerza Especial · Primera A · Veteranos 50+',
+    decks: {
+      horarios: null,
+      resultados: 'programas/46/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
