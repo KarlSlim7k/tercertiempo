@@ -62,6 +62,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 48,
+    titulo: 'Programa 48',
+    liga: 'Gran Final · Primera Fuerza Especial',
+    decks: {
+      horarios: 'programas/48/horarios.html',
+      resultados: 'programas/48/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
