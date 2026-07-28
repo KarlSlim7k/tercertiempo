@@ -72,6 +72,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 49,
+    titulo: 'Programa 49',
+    liga: 'Final Ida Fuerza Especial · Primera A · Veteranos 50+ · Liga MX',
+    decks: {
+      horarios: null,
+      resultados: 'programas/49/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
