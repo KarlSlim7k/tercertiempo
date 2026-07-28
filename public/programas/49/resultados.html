@@ -183,17 +183,17 @@
     .road-item .sc{font-family:"Oswald",sans-serif;font-weight:700;font-size:22px;color:var(--cream);letter-spacing:.02em}
     .road-item .sc .agg{font-family:"Inter",sans-serif;font-weight:500;font-size:14px;color:var(--dim);letter-spacing:0}
 
-    .standings-wrap{flex:1;min-height:0;display:grid;grid-template-columns:1fr;background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));border:1px solid var(--line);border-radius:12px;padding:8px 22px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.2)}
+    .standings-wrap{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));border:1px solid var(--line);border-radius:12px;padding:10px 28px;overflow:hidden;box-shadow:0 4px 30px rgba(0,0,0,0.2)}
     .standings{width:100%;border-collapse:collapse;font-family:"Inter",sans-serif}
-    .standings thead th{font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-align:left;padding:5px 10px;border-bottom:2px solid rgba(230,181,74,0.5);font-weight:600}
+    .standings thead th{font-family:"Oswald",sans-serif;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-align:left;padding:8px 14px;border-bottom:2px solid rgba(230,181,74,0.5);font-weight:600}
     .standings thead th.c{text-align:center}
-    .standings tbody td{padding:6.5px 10px;font-size:15px;color:var(--cream);border-bottom:1px solid var(--line-soft);line-height:1.1}
+    .standings tbody td{padding:13px 14px;font-size:22px;color:var(--cream);border-bottom:1px solid var(--line-soft);line-height:1.1}
     .standings tbody tr:last-child td{border-bottom:none}
-    .standings tbody td.pos{font-family:"Oswald",sans-serif;font-weight:700;font-size:14px;color:var(--dim);text-align:center;width:36px}
+    .standings tbody td.pos{font-family:"Oswald",sans-serif;font-weight:700;font-size:20px;color:var(--dim);text-align:center;width:48px}
     .standings tbody tr:nth-child(1) td.pos,.standings tbody tr:nth-child(2) td.pos,.standings tbody tr:nth-child(3) td.pos{color:var(--gold)}
-    .standings tbody td.equipo{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.02em}
-    .standings tbody td.pts{font-family:"Oswald",sans-serif;font-weight:700;font-size:17px;color:var(--gold);text-align:center;width:70px}
-    .standings tbody td.tag{font-family:"Oswald",sans-serif;font-size:11px;color:var(--amber);text-align:center;width:26px}
+    .standings tbody td.equipo{font-family:"Oswald",sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.02em}
+    .standings tbody td.pts{font-family:"Oswald",sans-serif;font-weight:700;font-size:26px;color:var(--gold);text-align:center;width:88px}
+    .standings tbody td.tag{font-family:"Oswald",sans-serif;font-size:18px;color:var(--amber);text-align:center;width:34px}
   </style>
 </head>
 <body>
@@ -209,7 +209,7 @@
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:18px">
-        <div class="counter" id="counter">1 / 6</div>
+        <div class="counter" id="counter">1 / 8</div>
         <div class="logo-box"><img id="logoTT" alt="Tercer Tiempo"></div>
       </div>
     </div>
@@ -323,11 +323,11 @@
       </div>
     </section>
 
-    <!-- 3 VETERANOS GRUPO I -->
+    <!-- 3 VETERANOS GRUPO I (1-8) -->
     <section class="slide compact" data-slide="3">
       <div class="eyebrow">Liga Veteranos · Tabla de Posiciones</div>
-      <h2 class="slide-title">GRUPO I</h2>
-      <div class="slide-sub">Así se acomoda el Grupo I de la Liga de Veteranos.</div>
+      <h2 class="slide-title">GRUPO I · 1° AL 8°</h2>
+      <div class="slide-sub">Así se acomoda la mitad de arriba del Grupo I de la Liga de Veteranos.</div>
       <div class="standings-wrap">
         <table class="standings">
           <thead>
@@ -342,6 +342,22 @@
             <tr><td class="pos">6</td><td class="equipo">Guerrero</td><td class="pts">33</td></tr>
             <tr><td class="pos">7</td><td class="equipo">Brasil</td><td class="pts">28</td></tr>
             <tr><td class="pos">8</td><td class="equipo">Cruz Blanca</td><td class="pts">27</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4 VETERANOS GRUPO I (9-16) -->
+    <section class="slide compact" data-slide="4">
+      <div class="eyebrow">Liga Veteranos · Tabla de Posiciones</div>
+      <h2 class="slide-title">GRUPO I · 9° AL 16°</h2>
+      <div class="slide-sub">La mitad de abajo del Grupo I de la Liga de Veteranos.</div>
+      <div class="standings-wrap">
+        <table class="standings">
+          <thead>
+            <tr><th class="c">Pos</th><th>Equipo</th><th class="c">Pts</th></tr>
+          </thead>
+          <tbody>
             <tr><td class="pos">9</td><td class="equipo">Real Madero</td><td class="pts">26</td></tr>
             <tr><td class="pos">10</td><td class="equipo">Pinochos</td><td class="pts">22</td></tr>
             <tr><td class="pos">11</td><td class="equipo">Imperial</td><td class="pts">19</td></tr>
@@ -355,10 +371,10 @@
       </div>
     </section>
 
-    <!-- 4 VETERANOS GRUPO II -->
-    <section class="slide compact" data-slide="4">
+    <!-- 5 VETERANOS GRUPO II (1-7) -->
+    <section class="slide compact" data-slide="5">
       <div class="eyebrow">Liga Veteranos · Tabla de Posiciones</div>
-      <h2 class="slide-title">GRUPO II</h2>
+      <h2 class="slide-title">GRUPO II · 1° AL 7°</h2>
       <div class="slide-sub">Del 2° al 7° lugar, empatados por diferencia de goles: se revisa para la próxima jornada.</div>
       <div class="standings-wrap">
         <table class="standings">
@@ -373,21 +389,37 @@
             <tr><td class="pos">5</td><td class="equipo">Real Vigas</td><td class="pts">30</td><td class="tag">*</td></tr>
             <tr><td class="pos">6</td><td class="equipo">Clásicos</td><td class="pts">30</td><td class="tag">*</td></tr>
             <tr><td class="pos">7</td><td class="equipo">Vic. Puebla</td><td class="pts">30</td><td class="tag">*</td></tr>
-            <tr><td class="pos">8</td><td class="equipo">20 de Nov.</td><td class="pts">28</td><td class="tag"></td></tr>
-            <tr><td class="pos">9</td><td class="equipo">Magisterio</td><td class="pts">27</td><td class="tag"></td></tr>
-            <tr><td class="pos">10</td><td class="equipo">Juárez</td><td class="pts">26</td><td class="tag"></td></tr>
-            <tr><td class="pos">11</td><td class="equipo">L. Negros</td><td class="pts">19</td><td class="tag"></td></tr>
-            <tr><td class="pos">12</td><td class="equipo">Vikingos</td><td class="pts">16</td><td class="tag"></td></tr>
-            <tr><td class="pos">13</td><td class="equipo">Madero</td><td class="pts">13</td><td class="tag"></td></tr>
-            <tr><td class="pos">14</td><td class="equipo">Alchichica</td><td class="pts">13</td><td class="tag"></td></tr>
-            <tr><td class="pos">15</td><td class="equipo">Chivas</td><td class="pts">3</td><td class="tag"></td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- 5 LIGA MX DESTACADO -->
-    <section class="slide" data-slide="5">
+    <!-- 6 VETERANOS GRUPO II (8-15) -->
+    <section class="slide compact" data-slide="6">
+      <div class="eyebrow">Liga Veteranos · Tabla de Posiciones</div>
+      <h2 class="slide-title">GRUPO II · 8° AL 15°</h2>
+      <div class="slide-sub">La mitad de abajo del Grupo II de la Liga de Veteranos.</div>
+      <div class="standings-wrap">
+        <table class="standings">
+          <thead>
+            <tr><th class="c">Pos</th><th>Equipo</th><th class="c">Pts</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="pos">8</td><td class="equipo">20 de Nov.</td><td class="pts">28</td></tr>
+            <tr><td class="pos">9</td><td class="equipo">Magisterio</td><td class="pts">27</td></tr>
+            <tr><td class="pos">10</td><td class="equipo">Juárez</td><td class="pts">26</td></tr>
+            <tr><td class="pos">11</td><td class="equipo">L. Negros</td><td class="pts">19</td></tr>
+            <tr><td class="pos">12</td><td class="equipo">Vikingos</td><td class="pts">16</td></tr>
+            <tr><td class="pos">13</td><td class="equipo">Madero</td><td class="pts">13</td></tr>
+            <tr><td class="pos">14</td><td class="equipo">Alchichica</td><td class="pts">13</td></tr>
+            <tr><td class="pos">15</td><td class="equipo">Chivas</td><td class="pts">3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 7 LIGA MX DESTACADO -->
+    <section class="slide" data-slide="7">
       <div class="eyebrow">Liga MX · Apertura 2026 · Jornada 2</div>
       <h2 class="slide-title">TIJUANA TOMA EL MANDO</h2>
       <div class="slide-sub">Xolos se acomoda como líder tras la Jornada 2, en un grupo muy apretado en la punta de la tabla.</div>
