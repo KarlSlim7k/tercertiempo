@@ -82,6 +82,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 50,
+    titulo: 'Programa 50',
+    liga: 'Final Vuelta Fuerza Especial · Primera A · Cuartos Veteranos 50+',
+    decks: {
+      horarios: null,
+      resultados: 'programas/50/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
