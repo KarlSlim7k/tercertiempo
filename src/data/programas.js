@@ -92,6 +92,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 51,
+    titulo: 'Programa 51',
+    liga: 'Final Fuerza Especial · Resultados Primera A',
+    decks: {
+      horarios: null,
+      resultados: 'programas/51/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
