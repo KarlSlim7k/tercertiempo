@@ -102,6 +102,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 52,
+    titulo: 'Programa 52',
+    liga: 'Primera Fuerza A J-34 · Resultados de ligas de Perote',
+    decks: {
+      horarios: 'programas/52/horarios.html',
+      resultados: 'programas/52/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
