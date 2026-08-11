@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Programa 53 · Jornada 34 · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../52/deck.css">
+  <style>
+    .results.compact td{padding:10px 12px;font-size:19px}.results.compact .score{font-size:26px}
+    .standings{width:100%;border-collapse:collapse;table-layout:fixed}.standings th{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:9px 10px;border-bottom:2px solid rgba(230,181,74,.48)}.standings td{padding:9px 10px;border-bottom:1px solid var(--line-soft);font:700 17px/1.05 "Oswald",sans-serif;text-transform:uppercase}.standings tr:last-child td{border-bottom:0}.standings .c{text-align:center}.standings .pos{width:8%;text-align:center;color:var(--gold)}.standings .team{width:48%}.standings .num{width:14%;text-align:center}.standings .pts{color:var(--gold);font-size:20px}.standings .missing{color:var(--dimmer)}
+    .pending-card{flex:1;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;min-height:0}.match-card,.summary-card,.feature-card,.scorer-card{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22)}.match-card{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:35px}.match-label{font:700 13px/1 "Oswald";letter-spacing:.25em;color:var(--rose);text-transform:uppercase}.match-teams{font:700 38px/1.15 "Oswald";text-transform:uppercase;margin:22px 0}.match-teams span{display:block;color:var(--gold);margin-top:10px}.match-status{font:700 18px/1 "Oswald";letter-spacing:.15em;color:var(--amber);text-transform:uppercase}.summary-card{display:flex;flex-direction:column;justify-content:center;padding:30px}.summary-stat{display:flex;align-items:baseline;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line)}.summary-stat:last-child{border-bottom:0}.summary-stat b{font:700 38px/1 "Oswald";color:var(--gold)}.summary-stat span{font:600 14px/1.2 "Oswald";letter-spacing:.13em;text-transform:uppercase;color:var(--dim);text-align:right}
+    .feature-grid{flex:1;display:grid;grid-template-columns:1fr 1.15fr;gap:20px;min-height:0}.scorers{display:grid;gap:14px}.scorer-card{padding:20px 24px;display:flex;align-items:center;justify-content:space-between}.scorer-copy b{display:block;font:700 26px/1 "Oswald";text-transform:uppercase}.scorer-copy span{display:block;margin-top:7px;font:600 13px/1 "Oswald";letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}.scorer-goals{font:700 42px/1 "Oswald";color:var(--gold);text-align:center}.scorer-goals small{display:block;font-size:10px;letter-spacing:.18em;margin-top:5px}.feature-card{padding:28px;display:flex;flex-direction:column;justify-content:center}.feature-kicker{font:700 13px/1 "Oswald";letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}.feature-name{font:700 39px/1 "Oswald";text-transform:uppercase;margin:14px 0 8px}.feature-role{font:600 14px/1 "Oswald";letter-spacing:.23em;text-transform:uppercase;color:var(--dim)}.feature-score{font:700 58px/1 "Oswald";color:var(--gold);margin:24px 0 10px}.feature-copy{font-size:18px;line-height:1.35;color:var(--dim)}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 53</div><div class="title">Primera Fuerza A · Jornada 34</div><div class="sub">Resultados y tabla provisional</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 6</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 53</div><h1>PRIMERA FUERZA A<br><span>JORNADA 34</span></h1></div>
+        <div class="rule"></div><p class="cover-copy">Resultados, tabla provisional, goleadores y una historia especial desde la cancha.</p>
+        <div class="cover-grid"><div class="cover-item"><b>07</b>Marcadores confirmados</div><div class="cover-item"><b>32</b>Goles en los partidos con marcador</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="1">
+      <div class="eyebrow">Primera Fuerza A · Jornada 34</div><h2 class="slide-title">RESULTADOS CONFIRMADOS</h2><p class="slide-sub">Siete marcadores completos de la jornada.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Viveros</td><td class="score">0 – 4</td><td class="visitor">Boca Jr.</td></tr>
+        <tr><td class="local">Molinos</td><td class="score">5 – 0</td><td class="visitor">P.S.G.</td></tr>
+        <tr><td class="local">Mi Barrio</td><td class="score">4 – 3</td><td class="visitor">Perris F.C.</td></tr>
+        <tr class="draw"><td class="local">Racing</td><td class="score">1 – 1</td><td class="visitor">Pescados</td></tr>
+        <tr class="draw"><td class="local">Coyotes Neza</td><td class="score">3 – 3</td><td class="visitor">Warners</td></tr>
+        <tr><td class="local">Barrio Unido</td><td class="score">1 – 4</td><td class="visitor">Correcaminos</td></tr>
+        <tr><td class="local">Everton</td><td class="score">3 – 0</td><td class="visitor">Pumas</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <div class="eyebrow">Jornada 34 · Información provisional</div><h2 class="slide-title">RESULTADO POR CONFIRMAR</h2><p class="slide-sub">El triunfo ya está reflejado en la tabla recibida; falta el marcador definitivo.</p>
+      <div class="pending-card">
+        <div class="match-card"><div class="match-label">Marcador pendiente</div><div class="match-teams">Dep. Jardín<span>Atlético Libertad</span></div><div class="match-status">Gana Atlético Libertad</div></div>
+        <div class="summary-card"><div class="summary-stat"><b>32</b><span>Goles confirmados</span></div><div class="summary-stat"><b>02</b><span>Empates</span></div><div class="summary-stat"><b>05</b><span>Partidos con ganador</span></div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <div class="eyebrow">Primera Fuerza A · Tabla recibida</div><h2 class="slide-title">POSICIONES · 1 AL 10</h2><p class="slide-sub">Clasificación provisional tras la actividad de la Jornada 34.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
+        <tr><td class="pos">1</td><td class="team">Perris F.C.</td><td class="num">34</td><td class="num pts">74</td><td class="num">+43</td></tr>
+        <tr><td class="pos">2</td><td class="team">Everton</td><td class="num">33</td><td class="num pts">70</td><td class="num">+48</td></tr>
+        <tr><td class="pos">3</td><td class="team">P.S.G.</td><td class="num">34</td><td class="num pts">68</td><td class="num">+26</td></tr>
+        <tr><td class="pos">4</td><td class="team">Pumas</td><td class="num">33</td><td class="num pts">54</td><td class="num">+6</td></tr>
+        <tr><td class="pos">5</td><td class="team">Cuervos</td><td class="num">33</td><td class="num pts">54</td><td class="num">−1</td></tr>
+        <tr><td class="pos">6</td><td class="team">Boca Jr.</td><td class="num">34</td><td class="num pts">52</td><td class="num">+23</td></tr>
+        <tr><td class="pos">7</td><td class="team">Mi Barrio</td><td class="num">34</td><td class="num pts">52</td><td class="num">−8</td></tr>
+        <tr><td class="pos">8</td><td class="team">Racing</td><td class="num">34</td><td class="num pts">51</td><td class="num">+11</td></tr>
+        <tr><td class="pos">9</td><td class="team">Correcaminos</td><td class="num">34</td><td class="num pts">51</td><td class="num">+4</td></tr>
+        <tr><td class="pos">10</td><td class="team">Molinos</td><td class="num">33</td><td class="num pts">50</td><td class="num">+8</td></tr>
+      </tbody></table><div class="source-note">Datos transcritos del documento recibido · Sujetos a actualización</div></div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div class="eyebrow">Primera Fuerza A · Tabla recibida</div><h2 class="slide-title">POSICIONES · 11 AL 20</h2><p class="slide-sub">La fuente contiene campos pendientes y conserva el orden proporcionado.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
+        <tr><td class="pos">11</td><td class="team">Coyotes Neza</td><td class="num">34</td><td class="num pts">47</td><td class="num">−20</td></tr>
+        <tr><td class="pos">12</td><td class="team">Warners</td><td class="num">34</td><td class="num pts">45</td><td class="num">+1</td></tr>
+        <tr><td class="pos">13</td><td class="team">Pescados</td><td class="num">34</td><td class="num pts">44</td><td class="num">+8</td></tr>
+        <tr><td class="pos">14</td><td class="team">Barrio Unido</td><td class="num">34</td><td class="num pts">37</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">15</td><td class="team">Atlético Libertad</td><td class="num">34</td><td class="num pts">39</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">16</td><td class="team">Dep. Jardín</td><td class="num">34</td><td class="num pts">33</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">17</td><td class="team">Viveros</td><td class="num">34</td><td class="num pts">23</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">18</td><td class="team">River Plate</td><td class="num">33</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">19</td><td class="team">Halcones</td><td class="num">33</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">20</td><td class="team">Vaper</td><td class="num">33</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+      </tbody></table><div class="source-note">Orden y cifras conservados tal como fueron recibidos</div></div>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <div class="eyebrow">Goleadores y protagonista</div><h2 class="slide-title">LOS NOMBRES DE LA JORNADA</h2><p class="slide-sub">La carrera de goleo y una historia muy de Tercer Tiempo.</p>
+      <div class="feature-grid">
+        <div class="scorers"><div class="scorer-card"><div class="scorer-copy"><b>Sergio Presa</b><span>P.S.G.</span></div><div class="scorer-goals">45<small>GOLES</small></div></div><div class="scorer-card"><div class="scorer-copy"><b>Gustavo Rubio</b><span>Everton</span></div><div class="scorer-goals">34<small>GOLES</small></div></div></div>
+        <div class="feature-card"><div class="feature-kicker">Narrador y goleador</div><div class="feature-name">Héctor Landeros</div><div class="feature-role">Narrador · Tercer Tiempo</div><div class="feature-score">Everton 3–0 Pumas</div><p class="feature-copy">Héctor también se hizo presente en el marcador durante el triunfo del Everton. ¡Con gol suyo!</p></div>
+      </div>
+    </section>
+
+    <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </main>
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script src="../52/logos.js"></script>
+  <script src="../52/deck.js"></script>
+</body>
+</html>
