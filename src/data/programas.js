@@ -112,6 +112,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 53,
+    titulo: 'Programa 53',
+    liga: 'Primera Fuerza A · Resultados y tabla provisional J-34',
+    decks: {
+      horarios: null,
+      resultados: 'programas/53/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
