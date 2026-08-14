@@ -22,14 +22,15 @@
       linear-gradient(180deg,#0b1220,#050912)}
     .topbar{min-height:68px;padding:10px 36px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(7,12,23,.78)}
     .brand{display:flex;align-items:center;gap:15px;min-width:0}
-    .brand-mark{width:52px;height:48px;display:grid;place-items:center;border-radius:6px;background:#fff;color:#0b1220;font-family:"Oswald",sans-serif;font-size:20px;font-weight:700;line-height:.85;text-align:center;box-shadow:0 3px 16px rgba(0,0,0,.35)}
-    .brand-mark span{display:block;font-size:9px;letter-spacing:.14em;color:#9b7421;margin-top:4px}
+    .logo-box{height:48px;padding:5px 8px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#fff;box-shadow:0 3px 16px rgba(0,0,0,.35);overflow:hidden}
+    .logo-box.crea-logo{width:72px}
+    .logo-box.tt-logo{width:76px}
+    .logo-box img{display:block;max-width:100%;max-height:38px;width:auto;height:auto;object-fit:contain}
     .kicker{font:700 11px/1 "Oswald",sans-serif;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
     .title{font:700 28px/1.05 "Oswald",sans-serif;letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
     .sub{font:500 11px/1 "Oswald",sans-serif;letter-spacing:.29em;text-transform:uppercase;color:var(--dim);margin-top:4px}
     .top-right{display:flex;align-items:center;gap:14px}
     .counter{font:700 18px/1 "Oswald",sans-serif;letter-spacing:.12em;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(230,181,74,.3);padding:8px 14px;border-radius:6px}
-    .tt-mark{width:50px;height:48px;display:grid;place-items:center;border-radius:6px;background:var(--gold);color:var(--ink);font:700 25px/1 "Oswald",sans-serif;letter-spacing:.04em}
 
     .slide{flex:1;display:none;flex-direction:column;padding:18px 44px 54px;min-height:0;overflow:hidden}
     .slide.active{display:flex}
@@ -131,14 +132,14 @@
   <div class="stage" id="stage">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark">CREA<span>CONTENIDOS</span></div>
+        <div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div>
         <div>
           <div class="kicker">Programa 54</div>
           <div class="title">ARRANCA LA FUERZA ESPECIAL</div>
           <div class="sub">Primera Especial J-1 · Primera A recta final</div>
         </div>
       </div>
-      <div class="top-right"><div class="counter" id="counter">1 / 6</div><div class="tt-mark">TT</div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 6</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
     </header>
 
     <section class="slide active" data-slide="0">
@@ -309,6 +310,7 @@
     <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
   </div>
   <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script src="logos.js"></script>
   <script>
     const slides=[...document.querySelectorAll('.slide')],counter=document.getElementById('counter'),dots=document.getElementById('dots');
     const prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn');let current=0;
