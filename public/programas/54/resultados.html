@@ -317,7 +317,7 @@
     function fullscreen(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}
     addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}if(e.key.toLowerCase()==='f')fullscreen();if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
     prevBtn.onclick=()=>show(current-1);nextBtn.onclick=()=>show(current+1);show(0);
-    function fit(){const stage=document.getElementById('stage'),scale=Math.min(innerWidth/1280,innerHeight/720);stage.style.transform=`scale(${scale})`;stage.style.transformOrigin='top left';document.body.style.width=(1280*scale)+'px';document.body.style.height=(720*scale)+'px'}
+    function fit(){const stage=document.getElementById('stage'),scale=Math.min(innerWidth/1280,innerHeight/720),w=1280*scale,h=720*scale;stage.style.transformOrigin='top left';stage.style.position='absolute';stage.style.transform=`scale(${scale})`;stage.style.left=((innerWidth-w)/2)+'px';stage.style.top=((innerHeight-h)/2)+'px'}
     addEventListener('resize',fit);fit();
   </script>
 </body>
