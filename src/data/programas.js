@@ -122,6 +122,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 54,
+    titulo: 'Programa 54',
+    liga: 'Arranca Primera Especial · Recta final Primera A',
+    decks: {
+      horarios: null,
+      resultados: 'programas/54/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {

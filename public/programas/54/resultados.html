@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1280" />
+  <title>Programa 54 · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0b1220;--paper:#050912;--gold:#e6b54a;--gold-soft:rgba(230,181,74,.12);
+      --green:#5fd28b;--amber:#e9c46a;--cream:#f5f1e8;--dim:#dad5c8;--dimmer:#a8a294;
+      --line:rgba(245,241,232,.14);--line-soft:rgba(245,241,232,.08);--panel:rgba(255,255,255,.04);--panel-2:rgba(255,255,255,.075)
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:var(--paper);color:var(--cream);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    .stage{width:1280px;height:720px;margin:0 auto;position:relative;overflow:hidden;display:flex;flex-direction:column;background:
+      radial-gradient(900px 520px at 50% -8%,rgba(230,181,74,.18),transparent 62%),
+      radial-gradient(700px 430px at 0 100%,rgba(30,60,120,.2),transparent 60%),
+      linear-gradient(180deg,#0b1220,#050912)}
+    .topbar{min-height:68px;padding:10px 36px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(7,12,23,.78)}
+    .brand{display:flex;align-items:center;gap:15px;min-width:0}
+    .brand-mark{width:52px;height:48px;display:grid;place-items:center;border-radius:6px;background:#fff;color:#0b1220;font-family:"Oswald",sans-serif;font-size:20px;font-weight:700;line-height:.85;text-align:center;box-shadow:0 3px 16px rgba(0,0,0,.35)}
+    .brand-mark span{display:block;font-size:9px;letter-spacing:.14em;color:#9b7421;margin-top:4px}
+    .kicker{font:700 11px/1 "Oswald",sans-serif;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+    .title{font:700 28px/1.05 "Oswald",sans-serif;letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
+    .sub{font:500 11px/1 "Oswald",sans-serif;letter-spacing:.29em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+    .top-right{display:flex;align-items:center;gap:14px}
+    .counter{font:700 18px/1 "Oswald",sans-serif;letter-spacing:.12em;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(230,181,74,.3);padding:8px 14px;border-radius:6px}
+    .tt-mark{width:50px;height:48px;display:grid;place-items:center;border-radius:6px;background:var(--gold);color:var(--ink);font:700 25px/1 "Oswald",sans-serif;letter-spacing:.04em}
+
+    .slide{flex:1;display:none;flex-direction:column;padding:18px 44px 54px;min-height:0;overflow:hidden}
+    .slide.active{display:flex}
+    .slide.compact{padding:16px 44px 44px}
+    .eyebrow{font:600 14px/1 "Oswald",sans-serif;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:7px}
+    .eyebrow::before{content:"";width:32px;height:2px;background:var(--gold)}
+    .slide-title{font:700 42px/1 "Oswald",sans-serif;letter-spacing:.035em;text-transform:uppercase;margin-bottom:7px}
+    .slide.compact .slide-title{font-size:36px;margin-bottom:5px}
+    .slide-sub{font-size:18px;line-height:1.35;color:var(--dim);margin-bottom:13px}
+    .slide.compact .slide-sub{font-size:16px;margin-bottom:9px}
+
+    .cover{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:0 70px}
+    .cover::before,.cover::after{content:"";position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none}
+    .cover::before{width:275px;height:275px;border:2px solid rgba(230,181,74,.18)}
+    .cover::after{width:365px;height:365px;border:1px solid rgba(230,181,74,.1)}
+    .cover-inner{position:relative;z-index:1}
+    .cover-kicker{font:700 14px/1 "Oswald",sans-serif;letter-spacing:.44em;text-transform:uppercase;color:var(--gold)}
+    .cover h1{font:700 60px/1.02 "Oswald",sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:14px 0 7px;text-shadow:0 5px 30px rgba(0,0,0,.55)}
+    .cover h1 span{color:var(--gold)}
+    .rule{width:180px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto}
+    .cover-copy{font-size:22px;line-height:1.4;color:var(--dim);max-width:900px}
+    .cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:900px;margin-top:24px;position:relative;z-index:1}
+    .cover-item{padding:13px 18px;display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--line);border-radius:9px;background:linear-gradient(180deg,var(--panel-2),var(--panel));font:600 18px/1.2 "Oswald",sans-serif;letter-spacing:.03em}
+    .cover-item b{font-size:14px;letter-spacing:.17em;color:var(--gold);background:var(--gold-soft);padding:5px 9px;border-radius:4px}
+
+    .sched-wrap{flex:1;min-height:0;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:12px;padding:14px 24px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;box-shadow:0 4px 30px rgba(0,0,0,.2)}
+    .sched-table{width:100%;border-collapse:collapse;font-family:"Inter",sans-serif;table-layout:fixed}
+    .sched-table thead th{font-family:"Oswald",sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-align:left;padding:8px 12px;border-bottom:2px solid rgba(230,181,74,.5);font-weight:600}
+    .sched-table thead th.c{text-align:center}
+    .sched-table tbody td{padding:10px 12px;font-size:17px;color:var(--cream);border-bottom:1px solid var(--line-soft);line-height:1.2}
+    .sched-table tbody td.campo{font-family:"Inter",sans-serif;font-size:15px;color:var(--dim);font-weight:500}
+    .sched-table tbody td.dia{font-family:"Oswald",sans-serif;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;text-align:center}
+    .sched-table tbody td.hora{font-family:"Oswald",sans-serif;font-weight:700;font-size:18px;color:var(--cream);text-align:center}
+    .sched-table tbody td.local{font-family:"Oswald",sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.03em}
+    .sched-table tbody td.vis{font-family:"Oswald",sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.03em;color:var(--dim)}
+    .sched-table tbody tr:last-child td{border-bottom:none}
+    .sched-table tbody tr.resuelto td{border-bottom-color:rgba(245,241,232,.04)}
+    .sched-table tbody tr.resuelto td.local{color:var(--dimmer)}
+    .sched-table tbody td.resultado{font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;color:var(--green);text-align:center}
+    .sched-table tbody td.resultado::before{content:"Gana ";color:var(--dimmer);font-weight:500;font-size:12px}
+
+    .standings-cols{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .standings-wrap{min-height:0;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:12px;padding:6px 16px;box-shadow:0 4px 30px rgba(0,0,0,.2)}
+    .standings{width:100%;border-collapse:collapse;font-family:"Inter",sans-serif;table-layout:fixed}
+    .standings thead th{font-family:"Oswald",sans-serif;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-align:left;padding:6px 8px;border-bottom:2px solid rgba(230,181,74,.5);font-weight:600}
+    .standings thead th.c{text-align:center}
+    .standings tbody td{padding:6.5px 8px;font-size:14px;color:var(--cream);border-bottom:1px solid var(--line-soft);line-height:1.15}
+    .standings tbody tr:last-child td{border-bottom:none}
+    .standings tbody td.pos{font-family:"Oswald",sans-serif;font-weight:700;font-size:13px;color:var(--dim);text-align:center;width:26px}
+    .standings tbody tr:nth-child(-n+3) td.pos{color:var(--gold)}
+    .standings tbody td.equipo{font-family:"Oswald",sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.01em}
+    .standings tbody td.jj,.standings tbody td.dif{font-family:"Oswald",sans-serif;font-size:13px;color:var(--dim);text-align:center;width:38px}
+    .standings tbody td.pts{font-family:"Oswald",sans-serif;font-weight:700;font-size:16px;color:var(--gold);text-align:center;width:44px}
+    .standings tbody tr.sinjuegos td{color:var(--dimmer);opacity:.7}
+    .standings tbody tr.sinjuegos td.pts{color:var(--dimmer)}
+
+    .meta-row{display:grid;gap:12px}
+    .meta-row.c3{grid-template-columns:1fr 1fr 1fr}
+    .meta{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:10px;padding:13px 17px}
+    .meta .lbl{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .meta .val{font:700 18px/1.2 "Oswald",sans-serif;color:var(--cream);text-transform:uppercase;letter-spacing:.02em}
+    .meta .desc{font-size:14px;color:var(--dim);margin-top:6px;line-height:1.35}
+
+    .match{display:grid;grid-template-columns:1fr 130px 1fr;gap:16px;align-items:stretch}
+    .team{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+    .team.right{text-align:right}
+    .team-name{font:700 30px/1 "Oswald",sans-serif;text-transform:uppercase;letter-spacing:.03em}
+    .team-stats{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap}
+    .team.right .team-stats{justify-content:flex-end}
+    .stat{font:500 12px/1 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+    .stat b{color:var(--cream);font-weight:700;font-size:19px;margin-right:4px}
+    .center-col{display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .vs-circle{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#f0c75a 0%,#a07a1c 100%);display:flex;align-items:center;justify-content:center;font:700 26px/1 "Oswald",sans-serif;color:var(--ink);letter-spacing:.05em;box-shadow:0 8px 30px rgba(230,181,74,.4)}
+    .h2h-mini{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:12px}
+    .road-list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+    .team.right .road-item{align-items:flex-end}
+    .road-item{display:flex;flex-direction:column;gap:3px}
+    .road-item .rnd{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+    .road-item .sc{font:700 19px/1 "Oswald",sans-serif;color:var(--cream)}
+
+    .goleo-wrap{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:12px;padding:8px 20px;box-shadow:0 4px 30px rgba(0,0,0,.2)}
+    .goleo-table{width:100%;border-collapse:collapse;font-family:"Inter",sans-serif;table-layout:fixed}
+    .goleo-table thead th{font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-align:left;padding:8px 12px;border-bottom:2px solid rgba(230,181,74,.5);font-weight:600}
+    .goleo-table thead th.c{text-align:center}
+    .goleo-table tbody td{padding:9px 12px;font-size:16px;color:var(--cream);border-bottom:1px solid var(--line-soft)}
+    .goleo-table tbody tr:last-child td{border-bottom:none}
+    .goleo-table tbody td.pos{font-family:"Oswald",sans-serif;font-weight:700;color:var(--gold);text-align:center;width:34px}
+    .goleo-table tbody td.jugador{font-family:"Oswald",sans-serif;font-weight:700;text-transform:uppercase}
+    .goleo-table tbody td.equipo{color:var(--dim)}
+    .goleo-table tbody td.goles{font-family:"Oswald",sans-serif;font-weight:700;font-size:20px;color:var(--green);text-align:center;width:60px}
+
+    .nav{position:absolute;left:0;right:0;bottom:0;height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:rgba(0,0,0,.52);border-top:1px solid var(--line);font:500 11px/1 "Oswald",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--dimmer);backdrop-filter:blur(8px)}
+    .keys b{color:var(--gold);letter-spacing:0}.dots{display:flex;gap:8px}.dot{width:10px;height:10px;border:0;border-radius:50%;background:rgba(245,241,232,.2);cursor:pointer;transition:.2s}.dot.on{width:28px;border-radius:6px;background:var(--gold);box-shadow:0 0 0 3px rgba(230,181,74,.2)}
+    .mobile-nav{display:none}
+    @media(pointer:coarse){.keys{display:none}.mobile-nav{display:flex;position:fixed;left:0;right:0;bottom:0;height:96px;z-index:20;align-items:center;justify-content:space-between;padding:0 22px;pointer-events:none}.mobile-nav button{pointer-events:auto;border:1px solid rgba(230,181,74,.55);border-radius:12px;background:rgba(5,9,18,.95);color:var(--gold);font:700 23px/1 "Oswald",sans-serif;text-transform:uppercase;padding:21px 32px}.mobile-nav button:disabled{opacity:.35}}
+  </style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">CREA<span>CONTENIDOS</span></div>
+        <div>
+          <div class="kicker">Programa 54</div>
+          <div class="title">ARRANCA LA FUERZA ESPECIAL</div>
+          <div class="sub">Primera Especial J-1 · Primera A recta final</div>
+        </div>
+      </div>
+      <div class="top-right"><div class="counter" id="counter">1 / 6</div><div class="tt-mark">TT</div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner">
+          <div class="cover-kicker">Tercer Tiempo · Programa 54</div>
+          <h1>ARRANCA LA<br><span>FUERZA ESPECIAL</span></h1>
+        </div>
+        <div class="rule"></div>
+        <p class="cover-copy">Debuta la Primera Fuerza Especial con nueve partidos este domingo. Y la Primera A entra en su recta final: nadie quiere perder puntos en la jornada 35.</p>
+        <div class="cover-grid">
+          <div class="cover-item"><b>01</b>Primera Especial · Horarios Jornada 1</div>
+          <div class="cover-item"><b>02</b>Primera A · Horarios Jornada 35</div>
+          <div class="cover-item"><b>03</b>Primera A · Tabla general</div>
+          <div class="cover-item"><b>04</b>Análisis · Recta final y goleo</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-slide="1">
+      <div class="eyebrow">Primera Especial · Jornada 1</div>
+      <h2 class="slide-title">HORARIOS · PRIMERA ESPECIAL</h2>
+      <p class="slide-sub">Arranca la nueva categoría con nueve partidos este domingo.</p>
+      <div class="sched-wrap">
+        <table class="sched-table">
+          <thead><tr><th>Local</th><th>Visitante</th><th class="c">Hora</th><th>Campo</th><th class="c">Día</th></tr></thead>
+          <tbody>
+            <tr><td class="local">Micheleros</td><td class="vis">Bad's</td><td class="hora">12:00</td><td class="campo">Bachiller</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Halcones</td><td class="vis">Sor Juana</td><td class="hora">8:00</td><td class="campo">Estadio</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Red Bull's</td><td class="vis">Juárez F.C</td><td class="hora">12:00</td><td class="campo">Libertad</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Arsenal</td><td class="vis">Ranger's</td><td class="hora">10:00</td><td class="campo">Libertad</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Liverpool</td><td class="vis">Molinos</td><td class="hora">13:00</td><td class="campo">La Gloria</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Manchester</td><td class="vis">Sabinal</td><td class="hora">10:00</td><td class="campo">Sabinal</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Dep. Guerrero</td><td class="vis">Aferrados</td><td class="hora">8:00</td><td class="campo">Vicente Gro.</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Galaxi</td><td class="vis">Pinochos</td><td class="hora">16:00</td><td class="campo">C.Azteca</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Real Victoria</td><td class="vis">Tiburones</td><td class="hora">8:00</td><td class="campo">Gpe. Victoria</td><td class="dia">Dom</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="slide compact" data-slide="2">
+      <div class="eyebrow">Primera Fuerza A · Jornada 35</div>
+      <h2 class="slide-title">HORARIOS · PRIMERA A</h2>
+      <p class="slide-sub">La liga entra en su recta final: nadie quiere perder puntos.</p>
+      <div class="sched-wrap">
+        <table class="sched-table">
+          <thead><tr><th>Local</th><th>Visitante</th><th class="c">Hora</th><th>Campo</th><th class="c">Día</th></tr></thead>
+          <tbody>
+            <tr><td class="local">Barrio Unido</td><td class="vis">Coyotes</td><td class="hora">12:00</td><td class="campo">C.Azteca</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Correcaminos</td><td class="vis">Racing</td><td class="hora">10:00</td><td class="campo">Cerro de León</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Pescados</td><td class="vis">Molinos</td><td class="hora">8:00</td><td class="campo">Pescados</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">P.S.G</td><td class="vis">Everton</td><td class="hora">10:00</td><td class="campo">Estadio</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Cuervos</td><td class="vis">Viveros</td><td class="hora">8:00</td><td class="campo">Entrada Tex</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Boca jr.</td><td class="vis">Jardín</td><td class="hora">12:00</td><td class="campo">Los Altos</td><td class="dia">Dom</td></tr>
+            <tr><td class="local">Atl. Libertad</td><td class="vis">Perris F.C</td><td class="hora">8:00</td><td class="campo">Libertad</td><td class="dia">Dom</td></tr>
+            <tr class="resuelto"><td class="local">Pumas</td><td class="vis">River Plate</td><td class="resultado" colspan="3">Pumas</td></tr>
+            <tr class="resuelto"><td class="local">Mi Barrio</td><td class="vis">Halcones</td><td class="resultado" colspan="3">Mi Barrio</td></tr>
+            <tr class="resuelto"><td class="local">Wuarner</td><td class="vis">Vaper</td><td class="resultado" colspan="3">Wuarner</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="slide compact" data-slide="3">
+      <div class="eyebrow">Primera Fuerza A · Torneo de Liga 2026</div>
+      <h2 class="slide-title">TABLA GENERAL · PRIMERA A</h2>
+      <p class="slide-sub">Tras la jornada 34: Perris FC manda, pero el título se pelea a seis puntos.</p>
+      <div class="standings-cols">
+        <div class="standings-wrap">
+          <table class="standings">
+            <thead><tr><th class="c">Pos</th><th>Equipo</th><th class="c">JJ</th><th class="c">Dif</th><th class="c">Pts</th></tr></thead>
+            <tbody>
+              <tr><td class="pos">1</td><td class="equipo">Perris F.C</td><td class="jj">33</td><td class="dif">+44</td><td class="pts">74</td></tr>
+              <tr><td class="pos">2</td><td class="equipo">P.S.G</td><td class="jj">33</td><td class="dif">+31</td><td class="pts">68</td></tr>
+              <tr><td class="pos">3</td><td class="equipo">Everton</td><td class="jj">32</td><td class="dif">+45</td><td class="pts">67</td></tr>
+              <tr><td class="pos">4</td><td class="equipo">Pumas</td><td class="jj">32</td><td class="dif">+9</td><td class="pts">54</td></tr>
+              <tr><td class="pos">5</td><td class="equipo">Cuervos</td><td class="jj">32</td><td class="dif">-2</td><td class="pts">51</td></tr>
+              <tr><td class="pos">6</td><td class="equipo">Racing</td><td class="jj">33</td><td class="dif">+11</td><td class="pts">50</td></tr>
+              <tr><td class="pos">7</td><td class="equipo">Boca jr.</td><td class="jj">33</td><td class="dif">+19</td><td class="pts">49</td></tr>
+              <tr><td class="pos">8</td><td class="equipo">Mi Barrio</td><td class="jj">33</td><td class="dif">-9</td><td class="pts">49</td></tr>
+              <tr><td class="pos">9</td><td class="equipo">Correcaminos</td><td class="jj">33</td><td class="dif">+1</td><td class="pts">48</td></tr>
+              <tr><td class="pos">10</td><td class="equipo">Molinos</td><td class="jj">32</td><td class="dif">+3</td><td class="pts">47</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="standings-wrap">
+          <table class="standings">
+            <thead><tr><th class="c">Pos</th><th>Equipo</th><th class="c">JJ</th><th class="c">Dif</th><th class="c">Pts</th></tr></thead>
+            <tbody>
+              <tr><td class="pos">11</td><td class="equipo">Coyotes</td><td class="jj">33</td><td class="dif">-20</td><td class="pts">46</td></tr>
+              <tr><td class="pos">12</td><td class="equipo">Wuarner</td><td class="jj">33</td><td class="dif">+1</td><td class="pts">44</td></tr>
+              <tr><td class="pos">13</td><td class="equipo">Pescados</td><td class="jj">33</td><td class="dif">-8</td><td class="pts">43</td></tr>
+              <tr><td class="pos">14</td><td class="equipo">Barrio Unido</td><td class="jj">33</td><td class="dif">—</td><td class="pts">37</td></tr>
+              <tr><td class="pos">15</td><td class="equipo">Atl. Libertad</td><td class="jj">33</td><td class="dif">—</td><td class="pts">36</td></tr>
+              <tr><td class="pos">16</td><td class="equipo">Jardín</td><td class="jj">33</td><td class="dif">—</td><td class="pts">33</td></tr>
+              <tr><td class="pos">17</td><td class="equipo">Viveros</td><td class="jj">33</td><td class="dif">—</td><td class="pts">23</td></tr>
+              <tr class="sinjuegos"><td class="pos">18</td><td class="equipo">River Plate</td><td class="jj">—</td><td class="dif">—</td><td class="pts">—</td></tr>
+              <tr class="sinjuegos"><td class="pos">19</td><td class="equipo">Halcones</td><td class="jj">—</td><td class="dif">—</td><td class="pts">—</td></tr>
+              <tr class="sinjuegos"><td class="pos">20</td><td class="equipo">Vaper</td><td class="jj">—</td><td class="dif">—</td><td class="pts">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div class="eyebrow">Jornada 35 · El partido que define el 2º lugar</div>
+      <h2 class="slide-title">P.S.G VS EVERTON</h2>
+      <p class="slide-sub">Los perseguidores de Perris FC se enfrentan entre sí: solo un punto separa al 2º del 3er lugar.</p>
+      <div class="match" style="flex:1">
+        <div class="team">
+          <div class="team-name">P.S.G</div>
+          <div class="team-stats">
+            <div class="stat"><b>2º</b>lugar</div>
+            <div class="stat"><b>68</b>puntos</div>
+            <div class="stat"><b>+31</b>diferencia</div>
+          </div>
+          <div class="road-list">
+            <div class="road-item"><div class="rnd">A 6 puntos del líder</div><div class="sc">Perris FC · 74 pts</div></div>
+            <div class="road-item"><div class="rnd">Goleador de la liga</div><div class="sc">Sergio Presa · 45 goles</div></div>
+          </div>
+        </div>
+        <div class="center-col">
+          <div class="vs-circle">VS</div>
+          <div class="h2h-mini">Jornada 35 · Dom 10:00</div>
+        </div>
+        <div class="team right">
+          <div class="team-name">Everton</div>
+          <div class="team-stats">
+            <div class="stat"><b>3º</b>lugar</div>
+            <div class="stat"><b>67</b>puntos</div>
+            <div class="stat"><b>+45</b>diferencia</div>
+          </div>
+          <div class="road-list">
+            <div class="road-item"><div class="rnd">Partido menos jugado</div><div class="sc">32 JJ, uno menos que el PSG</div></div>
+            <div class="road-item"><div class="rnd">Su goleador</div><div class="sc">Gustavo Rubio · 34 goles</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="meta-row c3">
+        <div class="meta"><div class="lbl">Lo que está en juego</div><div class="val">El 2º lugar de la tabla</div><div class="desc">Ganar deja a Everton a un punto del PSG, con un partido pendiente a su favor.</div></div>
+        <div class="meta"><div class="lbl">Mientras tanto</div><div class="val">Perris visita al 15º</div><div class="desc">El líder recibe la visita de Atlético Libertad, con margen para no soltar el primer lugar.</div></div>
+        <div class="meta"><div class="lbl">Duelo de goleadores</div><div class="val">Presa vs Rubio</div><div class="desc">El 1º y 2º del goleo individual se cruzan en la misma cancha este domingo.</div></div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-slide="5">
+      <div class="eyebrow">Primera Fuerza A · Análisis Jornada 35</div>
+      <h2 class="slide-title">GOLEO Y PANORAMA DE LA RECTA FINAL</h2>
+      <p class="slide-sub">Sergio Presa manda en el goleo; la zona media se aprieta a solo tres puntos.</p>
+      <div class="goleo-wrap">
+        <table class="goleo-table">
+          <thead><tr><th class="c">Pos</th><th>Jugador</th><th>Equipo</th><th class="c">Goles</th></tr></thead>
+          <tbody>
+            <tr><td class="pos">1</td><td class="jugador">Sergio Presa</td><td class="equipo">P.S.G</td><td class="goles">45</td></tr>
+            <tr><td class="pos">2</td><td class="jugador">Gustavo Rubio</td><td class="equipo">Everton</td><td class="goles">34</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="meta-row c3" style="margin-top:14px">
+        <div class="meta"><div class="lbl">Zona media apretada</div><div class="val">Racing a Molinos: 3 pts</div><div class="desc">Del 6º al 10º lugar hay solo tres puntos. Correcaminos (9º) recibe a Racing (6º), duelo directo dentro de la bolsa.</div></div>
+        <div class="meta"><div class="lbl">Golpe sin jugar</div><div class="val">Mi Barrio suma de gratis</div><div class="desc">Halcones no tiene partidos en la temporada: Mi Barrio (8º) se acerca a Boca Jr. con el punto en la mano.</div></div>
+        <div class="meta"><div class="lbl">Los tres fantasmas</div><div class="val">River Plate, Halcones, Vaper</div><div class="desc">Sin un solo juego registrado, los tres ceden por default ante Pumas, Mi Barrio y Wuarner en la J-35.</div></div>
+      </div>
+    </section>
+
+    <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </div>
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script>
+    const slides=[...document.querySelectorAll('.slide')],counter=document.getElementById('counter'),dots=document.getElementById('dots');
+    const prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn');let current=0;
+    slides.forEach((_,i)=>{const b=document.createElement('button');b.className='dot'+(i===0?' on':'');b.type='button';b.setAttribute('aria-label','Ir a la diapositiva '+(i+1));b.onclick=()=>show(i);dots.appendChild(b)});
+    function show(i){current=Math.max(0,Math.min(i,slides.length-1));slides.forEach((s,n)=>s.classList.toggle('active',n===current));[...dots.children].forEach((d,n)=>d.classList.toggle('on',n===current));counter.textContent=`${current+1} / ${slides.length}`;prevBtn.disabled=current===0;nextBtn.disabled=current===slides.length-1}
+    function fullscreen(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}
+    addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}if(e.key.toLowerCase()==='f')fullscreen();if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+    prevBtn.onclick=()=>show(current-1);nextBtn.onclick=()=>show(current+1);show(0);
+    function fit(){const stage=document.getElementById('stage'),scale=Math.min(innerWidth/1280,innerHeight/720);stage.style.transform=`scale(${scale})`;stage.style.transformOrigin='top left';document.body.style.width=(1280*scale)+'px';document.body.style.height=(720*scale)+'px'}
+    addEventListener('resize',fit);fit();
+  </script>
+</body>
+</html>
