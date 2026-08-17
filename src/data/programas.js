@@ -132,6 +132,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 55,
+    titulo: 'Programa 55',
+    liga: 'Resultados J-1 Fuerza Especial · Primera A · Entrevista Rangers',
+    decks: {
+      horarios: null,
+      resultados: 'programas/55/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
