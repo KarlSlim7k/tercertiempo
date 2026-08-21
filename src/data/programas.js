@@ -142,6 +142,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 56,
+    titulo: 'Programa 56',
+    liga: 'Entrevista Beto Ortega Rosas · Veteranos 40+ · Fuerza Especial J-2 · Primera A J-36',
+    decks: {
+      horarios: null,
+      resultados: 'programas/56/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
