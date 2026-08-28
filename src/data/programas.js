@@ -152,6 +152,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 57,
+    titulo: 'Programa 57',
+    liga: 'Reto Ardilla vs Barbie · Veteranos 40+ · Primera Fuerza Especial J-3 · Primera A J-37',
+    decks: {
+      horarios: null,
+      resultados: 'programas/57/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
