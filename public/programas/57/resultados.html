@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Programa 57 de Tercer Tiempo: en el estudio, Ardilla (Correcaminos) reta a Barbie (Everton) antes de su cruce en la penúltima jornada de Primera Fuerza A. Además: semifinales de Veteranos 40+, resultados de la Jornada 2 y rol de juegos de la Jornada 3 de Primera Fuerza Especial, y Jornada 37 de Primera A.">
+  <meta name="description" content="Programa 57 de Tercer Tiempo: en el estudio, Ardilla (Correcaminos) reta a Barbie (Everton) antes de su cruce en la penúltima jornada de Primera Fuerza A. Además: vuelta y global de semifinales de Veteranos 40+, resultados de la Jornada 2 y rol de juegos de la Jornada 3 de Primera Fuerza Especial, y Jornada 37 de Primera A.">
   <title>Programa 57 · Resultados · Tercer Tiempo</title>
   <link rel="icon" href="../../favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,22 +46,35 @@
     .moves td.chg.up{color:var(--green)}
     .moves td.chg.down{color:var(--rose)}
     .moves td.chg.same{color:var(--dimmer);font-weight:500}
+    .semis{width:100%;border-collapse:collapse;table-layout:fixed}
+    .semis th{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:10px 12px;border-bottom:2px solid rgba(230,181,74,.48);text-align:left}
+    .semis th.c{text-align:center}
+    .semis td{padding:15px 12px;border-bottom:1px solid var(--line-soft);font:700 16px/1.25 "Oswald",sans-serif;text-transform:uppercase}
+    .semis tr:last-child td{border-bottom:0}
+    .semis td.tie{width:30%;font-size:15px}
+    .semis td.leg{text-align:center;color:var(--dim);font-size:15px}
+    .semis td.leg.empty{color:var(--dimmer);font-style:normal}
+    .semis td.global{text-align:center;color:var(--gold);font-size:19px}
+    .semis td.global.empty{color:var(--dimmer);font-size:15px}
+    .semis td.result{color:var(--green);font-size:14px;letter-spacing:.04em}
+    .semis tr.tied td.result{color:var(--amber)}
+    .semis tr.pending-tie td.result{color:var(--dimmer)}
   </style>
 </head>
 <body>
   <main class="stage" id="stage">
     <header class="topbar">
       <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 57</div><div class="title">Reto en el Estudio y Resultados</div><div class="sub">Ardilla vs Barbie · Veteranos 40+ · Especial J-2/J-3 · Primera A J-37</div></div></div>
-      <div class="top-right"><div class="counter" id="counter">1 / 12</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 13</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
     </header>
 
     <section class="slide active" data-slide="0">
       <div class="cover">
         <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 57</div><h1>RETO EN EL<br><span>ESTUDIO</span></h1></div>
-        <div class="rule"></div><p class="cover-copy">Hoy en Tercer Tiempo recibimos en el estudio al Ardilla, líder de Correcaminos, quien reta al Barbie, goleador de Everton, antes de su cruce en la penúltima jornada de la Primera Fuerza A. Además: semifinales de Veteranos 40+, Jornadas 2 y 3 de la Primera Fuerza Especial, y la jornada completa de la Primera A.</p>
+        <div class="rule"></div><p class="cover-copy">Hoy en Tercer Tiempo recibimos en el estudio al Ardilla, líder de Correcaminos, quien reta al Barbie, goleador de Everton, antes de su cruce en la penúltima jornada de la Primera Fuerza A. Además: vuelta y global de semifinales de Veteranos 40+, Jornadas 2 y 3 de la Primera Fuerza Especial, y la jornada completa de la Primera A.</p>
         <div class="cover-grid">
           <div class="cover-item"><b>01</b>Reto en el estudio · Ardilla vs Barbie</div>
-          <div class="cover-item"><b>02</b>Veteranos 40+ · Semifinales</div>
+          <div class="cover-item"><b>02</b>Veteranos 40+ · Vuelta y global de semifinales</div>
           <div class="cover-item"><b>03</b>Primera Especial · Resultados, posiciones y movimientos J-2</div>
           <div class="cover-item"><b>04</b>Primera A · Jornada 37</div>
           <div class="cover-item"><b>05</b>Primera A · Posiciones 1 al 20</div>
@@ -97,13 +110,25 @@
     </section>
 
     <section class="slide" data-slide="2">
-      <div class="eyebrow">Liga de Veteranos 40+</div><h2 class="slide-title">SEMIFINALES · VETERANOS 40+</h2><p class="slide-sub">Fase semifinal de la liga.</p>
-      <div class="feature-grid">
-        <div class="feature-card"><div class="feature-kicker">Semifinales</div><div class="feature-name">Información pendiente</div><div class="feature-role">Pendiente de resultados</div><p class="feature-copy">Aún no se recibieron los resultados de las semifinales de la Liga de Veteranos 40+. Esta sección se completará en cuanto la información esté disponible.</p></div>
-      </div>
+      <div class="eyebrow">Liga de Veteranos 40+ · Vuelta de semifinales</div><h2 class="slide-title">VUELTA · SEMIFINALES</h2><p class="slide-sub">Partido de vuelta; el resultado global define al finalista de cada llave.</p>
+      <div class="table-wrap"><table class="results"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Felinos La Joya</td><td class="score">2 – 2</td><td class="visitor">Deportivo Vigas</td></tr>
+        <tr><td class="local">Unión Victoria</td><td class="score">3 – 0</td><td class="visitor">Xaltepec</td></tr>
+        <tr><td class="local">Amado Nervo</td><td class="score">2 – 1</td><td class="visitor">20 de Noviembre</td></tr>
+      </tbody></table><div class="source-note">Halcones vs Tenextepec: la vuelta aún no se juega</div></div>
     </section>
 
     <section class="slide" data-slide="3">
+      <div class="eyebrow">Liga de Veteranos 40+ · Ida + vuelta</div><h2 class="slide-title">GLOBAL · SEMIFINALES</h2><p class="slide-sub">Marcador acumulado de ida y vuelta por llave.</p>
+      <div class="table-wrap"><table class="semis"><thead><tr><th>Llave</th><th class="c">Ida</th><th class="c">Vuelta</th><th class="c">Global</th><th>Resultado</th></tr></thead><tbody>
+        <tr><td class="tie">Deportivo Vigas vs Felinos La Joya</td><td class="leg">Vigas 3 – 0</td><td class="leg">Felinos 2 – 2</td><td class="global">Vigas 5 – 2</td><td class="result">Avanza Deportivo Vigas</td></tr>
+        <tr><td class="tie">Xaltepec vs Unión Victoria</td><td class="leg">Unión Victoria 1 – 0</td><td class="leg">Unión Victoria 3 – 0</td><td class="global">Unión Victoria 4 – 0</td><td class="result">Avanza Unión Victoria</td></tr>
+        <tr class="tied"><td class="tie">20 de Noviembre vs Amado Nervo</td><td class="leg">20 de Noviembre 1 – 0</td><td class="leg">Amado Nervo 2 – 1</td><td class="global">2 – 2</td><td class="result">Empate global · Definición pendiente</td></tr>
+        <tr class="pending-tie"><td class="tie">Halcones vs Tenextepec</td><td class="leg">Halcones 3 – 0</td><td class="leg empty">Pendiente</td><td class="global empty">Pendiente</td><td class="result">Vuelta pendiente</td></tr>
+      </tbody></table><div class="source-note">Ida: resultados publicados en el Programa 56 · Vuelta: resultados recibidos posteriormente</div></div>
+    </section>
+
+    <section class="slide" data-slide="4">
       <div class="eyebrow">Primera Fuerza Especial · Jornada 2</div><h2 class="slide-title">RESULTADOS · J-2</h2><p class="slide-sub">Siete marcadores confirmados; dos encuentros aún no se juegan.</p>
       <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
         <tr><td class="local">Sor Juana</td><td class="score">8 – 2</td><td class="visitor">Micheleros</td></tr>
@@ -118,7 +143,7 @@
       </tbody></table><div class="source-note">Tiburones vs Galaxi y Aferrados vs Manchester aún no se han jugado</div></div>
     </section>
 
-    <section class="slide" data-slide="4">
+    <section class="slide" data-slide="5">
       <div class="eyebrow">Primera Fuerza Especial · Tras J-2</div><h2 class="slide-title">POSICIONES · 1 AL 9</h2><p class="slide-sub">Tabla general tras la segunda jornada de la nueva categoría.</p>
       <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
         <tr><td class="pos">1</td><td class="team">Sor Juana</td><td class="num">2</td><td class="num pts">6</td><td class="num">+9</td></tr>
@@ -133,7 +158,7 @@
       </tbody></table><div class="source-note">Datos transcritos tal como fueron proporcionados</div></div>
     </section>
 
-    <section class="slide" data-slide="5">
+    <section class="slide" data-slide="6">
       <div class="eyebrow">Primera Fuerza Especial · Tras J-2</div><h2 class="slide-title">POSICIONES · 10 AL 18</h2><p class="slide-sub">Los 18 equipos de la nueva categoría, tal como fueron recibidos.</p>
       <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
         <tr><td class="pos">10</td><td class="team">Liverpool</td><td class="num">2</td><td class="num pts">3</td><td class="num">−1</td></tr>
@@ -148,7 +173,7 @@
       </tbody></table><div class="source-note">Datos transcritos del documento recibido · Diferencia de goles conservada tal cual</div></div>
     </section>
 
-    <section class="slide" data-slide="6">
+    <section class="slide" data-slide="7">
       <div class="eyebrow">Primera Fuerza Especial · Tras J-2</div><h2 class="slide-title">MOVIMIENTOS · TRAS J-2</h2><p class="slide-sub">Cambios de posición respecto a la tabla tras la Jornada 1 (Programa 55).</p>
       <div class="moves-cols">
         <div class="moves-wrap">
@@ -181,7 +206,7 @@
       <div class="source-note">Ant. = posición tras la Jornada 1, publicada en el Programa 55 · Comparación calculada entre ambas tablas</div>
     </section>
 
-    <section class="slide" data-slide="7">
+    <section class="slide" data-slide="8">
       <div class="eyebrow">Primera Fuerza Especial · Jornada 3</div><h2 class="slide-title">ROL DE JUEGOS · J-3</h2><p class="slide-sub">Nueve encuentros programados para la tercera jornada. Aún no son resultados.</p>
       <div class="table-wrap"><table class="schedule compact"><thead><tr><th>Local</th><th>Visitante</th><th class="center">Hora</th><th>Campo</th><th class="center">Día</th><th>Árb.</th></tr></thead><tbody>
         <tr><td>Arsenal</td><td>Sabinal</td><td class="time">12:00</td><td>Libertad</td><td class="center">Dom</td><td></td></tr>
@@ -196,7 +221,7 @@
       </tbody></table><div class="source-note">Rol de juegos · No son resultados</div></div>
     </section>
 
-    <section class="slide" data-slide="8">
+    <section class="slide" data-slide="9">
       <div class="eyebrow">Primera A · Jornada 37</div><h2 class="slide-title">ROL DE JUEGOS · J-37</h2><p class="slide-sub">Siete encuentros programados y tres resoluciones administrativas. Correcaminos vs Everton, el partido del reto, destacado.</p>
       <div class="table-wrap"><table class="schedule compact"><thead><tr><th>Local</th><th>Visitante</th><th class="center">Hora</th><th>Campo</th><th class="center">Día</th><th>Árb.</th></tr></thead><tbody>
         <tr><td>Racing</td><td>Coyotes</td><td class="time">10:00</td><td>Flores Magón</td><td class="center">Dom</td><td></td></tr>
@@ -212,7 +237,7 @@
       </tbody></table><div class="source-note">Correcaminos vs Everton: el partido del reto entre Ardilla y Barbie · Pescados, Boca Jr. y Mi Barrio ganan por resolución administrativa, sin marcador</div></div>
     </section>
 
-    <section class="slide" data-slide="9">
+    <section class="slide" data-slide="10">
       <div class="eyebrow">Primera A · Contexto previo a J-37</div><h2 class="slide-title">POSICIONES · 1 AL 10</h2><p class="slide-sub">Tabla general tras la Jornada 36, tal como fue recibida.</p>
       <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
         <tr><td class="pos">1</td><td class="team">Perris F.C</td><td class="num">36</td><td class="num pts">78</td><td class="num">+44</td></tr>
@@ -228,7 +253,7 @@
       </tbody></table><div class="source-note">Datos transcritos tal como fueron proporcionados · Los asteriscos en los puntos se conservan de la fuente original</div></div>
     </section>
 
-    <section class="slide" data-slide="10">
+    <section class="slide" data-slide="11">
       <div class="eyebrow">Primera A · Contexto previo a J-37</div><h2 class="slide-title">POSICIONES · 11 AL 20</h2><p class="slide-sub">La fuente conserva el orden proporcionado; algunos campos no están disponibles.</p>
       <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
         <tr><td class="pos">11</td><td class="team">Coyotes</td><td class="num">36</td><td class="num pts">50</td><td class="num">−24</td></tr>
@@ -244,7 +269,7 @@
       </tbody></table><div class="source-note">Datos transcritos del documento recibido · Pendientes: Everton vs Pumas, Cuervos vs Molinos y Molinos vs Correcaminos</div></div>
     </section>
 
-    <section class="slide" data-slide="11">
+    <section class="slide" data-slide="12">
       <div class="eyebrow">Primera A · Tras J-36</div><h2 class="slide-title">MOVIMIENTOS · PRIMERA A</h2><p class="slide-sub">Cambios de posición respecto a la última tabla publicada (Programa 55).</p>
       <div class="moves-cols">
         <div class="moves-wrap">
