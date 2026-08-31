@@ -162,6 +162,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 58,
+    titulo: 'Programa 58',
+    liga: 'Correcaminos vs Everton · Veteranos 40+ Gran Final · Primera Fuerza Especial J-1 a J-3 · Primera A J-37',
+    decks: {
+      horarios: null,
+      resultados: 'programas/58/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {

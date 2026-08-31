@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Programa 58 de Tercer Tiempo: Correcaminos vence a Everton, que señala pretextos ante la derrota; Farmacia La Esperanza sigue en caída libre; Sor Juana mantiene su paso ganador. Además: gran final del Grupo 1 de Veteranos 40+ entre Deportivo Vigas y Unión Victoria, resultados de la Primera Fuerza Especial J-1 a J-3 y tabla de Primera A tras la Jornada 37.">
+  <title>Programa 58 · Resultados · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../52/deck.css">
+  <style>
+    .results.compact td{padding:9px 12px;font-size:17px}.results.compact .score{font-size:23px}
+    .results tr.pending .score{color:var(--amber);font-size:15px;letter-spacing:.08em}
+    .results tr.pending .local,.results tr.pending .visitor{color:var(--dimmer)}
+    .results tr.win-only .score{color:var(--green);font-size:16px;letter-spacing:.08em}
+    .results tr.win-only .local{color:var(--gold)}
+    .standings{width:100%;border-collapse:collapse;table-layout:fixed}.standings th{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:9px 10px;border-bottom:2px solid rgba(230,181,74,.48)}.standings td{padding:9px 10px;border-bottom:1px solid var(--line-soft);font:700 17px/1.05 "Oswald",sans-serif;text-transform:uppercase}.standings tr:last-child td{border-bottom:0}.standings .c{text-align:center}.standings .pos{width:8%;text-align:center;color:var(--gold)}.standings .team{width:48%}.standings .num{width:14%;text-align:center}.standings .pts{color:var(--gold);font-size:20px}.standings .missing{color:var(--dimmer)}
+    .feature-grid{flex:1;display:grid;grid-template-columns:1fr;gap:20px;min-height:0}.feature-card{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22);padding:32px;display:flex;flex-direction:column;justify-content:center}.feature-kicker{font:700 13px/1 "Oswald",sans-serif;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}.feature-name{font:700 40px/1 "Oswald",sans-serif;text-transform:uppercase;margin:16px 0 8px}.feature-role{font:600 14px/1 "Oswald",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}.feature-copy{font-size:18px;line-height:1.4;color:var(--dim)}
+    .note-box{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:18px 24px}
+    .note-box .lbl{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .note-box .val{font-size:17px;line-height:1.4;color:var(--dim)}
+    .racha{width:100%;border-collapse:collapse;table-layout:fixed}
+    .racha th{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:12px;border-bottom:2px solid rgba(230,181,74,.48);text-align:left}
+    .racha th.c,.racha td.c{text-align:center}
+    .racha td{padding:16px 12px;border-bottom:1px solid var(--line-soft);font:700 20px/1.1 "Oswald",sans-serif;text-transform:uppercase}
+    .racha tr:last-child td{border-bottom:0}
+    .racha td.jor{width:16%;color:var(--gold)}
+    .racha td.local{text-align:right}
+    .racha td.visitor{color:var(--dimmer)}
+    .racha td.score{width:22%;text-align:center;color:var(--gold);font-size:26px}
+    .final-match{flex:1;display:grid;grid-template-columns:1fr 130px 1fr;gap:18px;align-items:stretch;min-height:0}
+    .final-team{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22);padding:26px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .final-kicker{font:700 12px/1 "Oswald",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+    .final-name{font:700 34px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-top:14px}
+    .final-vs-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+    .final-vs-circle{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#f0c75a 0%,#a07a1c 100%);display:flex;align-items:center;justify-content:center;font:700 24px/1 "Oswald",sans-serif;color:var(--ink);letter-spacing:.05em;box-shadow:0 8px 30px rgba(230,181,74,.4)}
+    .final-vs-mini{font:600 11px/1.3 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:center}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 58</div><div class="title">Editoriales, Gran Final y Resultados</div><div class="sub">Correcaminos vs Everton · Veteranos 40+ · Especial J-1/J-3 · Primera A J-37</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 12</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 58</div><h1>EDITORIALES<br><span>Y RESULTADOS</span></h1></div>
+        <div class="rule"></div><p class="cover-copy">Correcaminos vence a Everton, que señala pretextos ante la derrota; Farmacia La Esperanza sigue en caída libre, al parecer sin regreso; Sor Juana mantiene su paso ganador. Además: la gran final del Grupo 1 de Veteranos 40+ entre Deportivo Vigas y Unión Victoria, los resultados de las Jornadas 1 a 3 de la Primera Fuerza Especial y la actualización de la tabla de Primera A tras la Jornada 37.</p>
+        <div class="cover-grid">
+          <div class="cover-item"><b>01</b>Correcaminos vence a Everton</div>
+          <div class="cover-item"><b>02</b>Farmacia La Esperanza · Caída libre</div>
+          <div class="cover-item"><b>03</b>Sor Juana · Paso ganador</div>
+          <div class="cover-item"><b>04</b>Veteranos 40+ · Gran Final Grupo 1</div>
+          <div class="cover-item"><b>05</b>Primera Especial · Resultados J-1 a J-3</div>
+          <div class="cover-item"><b>06</b>Primera A · Tabla tras J-37</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="1">
+      <div class="eyebrow">Primera Fuerza A · Resultado confirmado</div><h2 class="slide-title">CORRECAMINOS VENCE A EVERTON</h2><p class="slide-sub">Correcaminos se impone a Everton, que señala pretextos ante la derrota.</p>
+      <div class="table-wrap"><table class="results"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr class="win-only"><td class="local">Correcaminos</td><td class="score">VENCIÓ</td><td class="visitor">Everton</td></tr>
+      </tbody></table><div class="source-note">Sin marcador, goleadores, minuto de gol ni estadísticas del partido</div></div>
+      <div class="note-box"><div class="lbl">El dato confirmado</div><div class="val">Correcaminos venció a Everton en la Primera Fuerza A. El marcador no fue proporcionado en la información recibida.</div></div>
+      <div class="note-box"><div class="lbl">Los pretextos</div><div class="val">Everton atribuye pretextos a su derrota, según lo anunciado por el programa. No se cuenta con declaraciones textuales de los jugadores.</div></div>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <div class="eyebrow">Nota editorial · Primera Fuerza A</div><h2 class="slide-title">FARMACIA LA ESPERANZA</h2><p class="slide-sub">Farmacia La Esperanza sigue en caída libre, al parecer sin regreso.</p>
+      <div class="feature-grid">
+        <div class="feature-card"><div class="feature-kicker">Nota editorial</div><div class="feature-name">Farmacia La Esperanza</div><div class="feature-role">Caída libre</div><p class="feature-copy">Farmacia La Esperanza sigue en caída libre, al parecer sin regreso.</p></div>
+      </div>
+      <div class="source-note">Sin marcador, posición, estadísticas ni declaraciones adicionales en esta edición</div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <div class="eyebrow">Primera Fuerza Especial · Jornadas 1 a 3</div><h2 class="slide-title">SOR JUANA · PASO GANADOR</h2><p class="slide-sub">Tres victorias en las tres jornadas disputadas hasta ahora.</p>
+      <div class="table-wrap"><table class="racha"><thead><tr><th class="c">J</th><th>Local</th><th class="c">Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="jor c">1</td><td class="local">Halcones</td><td class="score">0 – 3</td><td class="visitor">Sor Juana</td></tr>
+        <tr><td class="jor c">2</td><td class="local">Sor Juana</td><td class="score">8 – 2</td><td class="visitor">Micheleros</td></tr>
+        <tr><td class="jor c">3</td><td class="local">Sor Juana</td><td class="score">2 – 0</td><td class="visitor">Bad's</td></tr>
+      </tbody></table></div>
+      <div class="note-box"><div class="lbl">Líder tras la Jornada 3</div><div class="val">3 JJ · 9 Pts · +11 Dif.</div></div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div class="eyebrow">Liga de Veteranos 40+ · Grupo 1</div><h2 class="slide-title">GRAN FINAL · GRUPO 1</h2><p class="slide-sub">Enfrentamiento anunciado para la gran final del Grupo 1.</p>
+      <div class="final-match">
+        <div class="final-team"><div class="final-kicker">Finalista</div><div class="final-name">Deportivo Vigas</div></div>
+        <div class="final-vs-col"><div class="final-vs-circle">VS</div><div class="final-vs-mini">Grupo 1<br>Gran Final</div></div>
+        <div class="final-team"><div class="final-kicker">Finalista</div><div class="final-name">Unión Victoria</div></div>
+      </div>
+      <div class="note-box"><div class="lbl">El dato</div><div class="val">Marcador, fecha, hora y campo no fueron proporcionados en la información recibida.</div></div>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 1</div><h2 class="slide-title">RESULTADOS · J-1</h2><p class="slide-sub">Nueve marcadores del debut de la nueva categoría.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Micheleros</td><td class="score">4 – 1</td><td class="visitor">Bad's</td></tr>
+        <tr><td class="local">Halcones</td><td class="score">0 – 3</td><td class="visitor">Sor Juana</td></tr>
+        <tr><td class="local">Red Bull's</td><td class="score">0 – 1</td><td class="visitor">Juárez F.C</td></tr>
+        <tr><td class="local">Arsenal</td><td class="score">3 – 1</td><td class="visitor">Ranger's</td></tr>
+        <tr><td class="local">Liverpool</td><td class="score">2 – 0</td><td class="visitor">Molinos</td></tr>
+        <tr class="draw"><td class="local">Manchester</td><td class="score">4 – 4</td><td class="visitor">Sabinal</td></tr>
+        <tr><td class="local">Dep. Guerrero</td><td class="score">3 – 2</td><td class="visitor">Aferrados</td></tr>
+        <tr><td class="local">Galaxi</td><td class="score">4 – 0</td><td class="visitor">Pinochos</td></tr>
+        <tr><td class="local">Real Victoria</td><td class="score">0 – 1</td><td class="visitor">Tiburones</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 2</div><h2 class="slide-title">RESULTADOS · J-2</h2><p class="slide-sub">Siete marcadores confirmados; dos encuentros no se jugaron.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Sor Juana</td><td class="score">8 – 2</td><td class="visitor">Micheleros</td></tr>
+        <tr class="draw"><td class="local">Juárez F.C</td><td class="score">1 – 1</td><td class="visitor">Halcones</td></tr>
+        <tr><td class="local">Ranger's</td><td class="score">1 – 2</td><td class="visitor">Red Bull's</td></tr>
+        <tr><td class="local">Molinos</td><td class="score">1 – 0</td><td class="visitor">Arsenal</td></tr>
+        <tr><td class="local">Sabinal</td><td class="score">5 – 2</td><td class="visitor">Liverpool</td></tr>
+        <tr><td class="local">Pinochos</td><td class="score">2 – 4</td><td class="visitor">Dep. Guerrero</td></tr>
+        <tr><td class="local">Bad's</td><td class="score">1 – 4</td><td class="visitor">Real Victoria</td></tr>
+        <tr class="pending"><td class="local">Tiburones</td><td class="score">Pendiente</td><td class="visitor">Galaxi</td></tr>
+        <tr class="pending"><td class="local">Aferrados</td><td class="score">Pendiente</td><td class="visitor">Manchester</td></tr>
+      </tbody></table><div class="source-note">Tiburones vs Galaxi y Aferrados vs Manchester aún no se han jugado</div></div>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 3</div><h2 class="slide-title">RESULTADOS · J-3</h2><p class="slide-sub">Nueve marcadores de la tercera jornada.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr class="draw"><td class="local">Arsenal</td><td class="score">1 – 1</td><td class="visitor">Sabinal</td></tr>
+        <tr><td class="local">Micheleros</td><td class="score">2 – 3</td><td class="visitor">Juárez F.C</td></tr>
+        <tr><td class="local">Halcones</td><td class="score">1 – 6</td><td class="visitor">Ranger's</td></tr>
+        <tr><td class="local">Red Bull's</td><td class="score">5 – 1</td><td class="visitor">Molinos</td></tr>
+        <tr><td class="local">Liverpool</td><td class="score">1 – 3</td><td class="visitor">Aferrados</td></tr>
+        <tr class="draw"><td class="local">Manchester</td><td class="score">1 – 1</td><td class="visitor">Pinochos</td></tr>
+        <tr><td class="local">Dep. Guerrero</td><td class="score">1 – 2</td><td class="visitor">Tiburones</td></tr>
+        <tr><td class="local">Sor Juana</td><td class="score">2 – 0</td><td class="visitor">Bad's</td></tr>
+        <tr><td class="local">Real Victoria</td><td class="score">3 – 5</td><td class="visitor">Galaxi</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <div class="eyebrow">Primera Fuerza Especial · Tras J-3</div><h2 class="slide-title">POSICIONES · 1 AL 9</h2><p class="slide-sub">Tabla general tras la tercera jornada. Sor Juana lidera con paso perfecto.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
+        <tr><td class="pos">1</td><td class="team">Sor Juana</td><td class="num">3</td><td class="num pts">9</td><td class="num">+11</td></tr>
+        <tr><td class="pos">2</td><td class="team">Juárez F.C</td><td class="num">3</td><td class="num pts">7</td><td class="num">+2</td></tr>
+        <tr><td class="pos">3</td><td class="team">Galaxi</td><td class="num">2*</td><td class="num pts">6</td><td class="num">+6</td></tr>
+        <tr><td class="pos">4</td><td class="team">Red Bull's</td><td class="num">3</td><td class="num pts">6</td><td class="num">+4</td></tr>
+        <tr><td class="pos">5</td><td class="team">Tiburones</td><td class="num">2*</td><td class="num pts">6</td><td class="num">+2</td></tr>
+        <tr><td class="pos">6</td><td class="team">Dep. Guerrero</td><td class="num">3</td><td class="num pts">6</td><td class="num">+2</td></tr>
+        <tr><td class="pos">7</td><td class="team">Sabinal</td><td class="num">3</td><td class="num pts">5</td><td class="num">+3</td></tr>
+        <tr><td class="pos">8</td><td class="team">Arsenal</td><td class="num">3</td><td class="num pts">4</td><td class="num">+1</td></tr>
+        <tr><td class="pos">9</td><td class="team">Ranger's</td><td class="num">3</td><td class="num pts">3</td><td class="num">+2</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="slide" data-slide="9">
+      <div class="eyebrow">Primera Fuerza Especial · Tras J-3</div><h2 class="slide-title">POSICIONES · 10 AL 18</h2><p class="slide-sub">Los 18 equipos de la nueva categoría, tal como fueron recibidos.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
+        <tr><td class="pos">10</td><td class="team">Aferrados</td><td class="num">2*</td><td class="num pts">3</td><td class="num">+1</td></tr>
+        <tr><td class="pos">11</td><td class="team">Real Victoria</td><td class="num">3</td><td class="num pts">3</td><td class="num">0</td></tr>
+        <tr><td class="pos">12</td><td class="team">Micheleros</td><td class="num">3</td><td class="num pts">3</td><td class="num">−4</td></tr>
+        <tr><td class="pos">13</td><td class="team">Liverpool</td><td class="num">3</td><td class="num pts">3</td><td class="num">−5</td></tr>
+        <tr><td class="pos">14</td><td class="team">Molinos</td><td class="num">3</td><td class="num pts">3</td><td class="num">−5</td></tr>
+        <tr><td class="pos">15</td><td class="team">Manchester</td><td class="num">2*</td><td class="num pts">2</td><td class="num">0</td></tr>
+        <tr><td class="pos">16</td><td class="team">Pinochos</td><td class="num">3</td><td class="num pts">1</td><td class="num">−6</td></tr>
+        <tr><td class="pos">17</td><td class="team">Halcones</td><td class="num">3</td><td class="num pts">1</td><td class="num">−8</td></tr>
+        <tr><td class="pos">18</td><td class="team">Bad's</td><td class="num">3</td><td class="num pts">0</td><td class="num">−8</td></tr>
+      </tbody></table><div class="source-note">Datos transcritos tal como fueron proporcionados · Los asteriscos (*) forman parte de la fuente</div></div>
+    </section>
+
+    <section class="slide" data-slide="10">
+      <div class="eyebrow">Primera A · Tras J-37</div><h2 class="slide-title">POSICIONES · 1 AL 10</h2><p class="slide-sub">Tabla general tras la Jornada 37, tal como fue recibida.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
+        <tr><td class="pos">1</td><td class="team">Perris F.C</td><td class="num">37</td><td class="num pts">78</td><td class="num">+42</td></tr>
+        <tr><td class="pos">2</td><td class="team">Everton</td><td class="num">36</td><td class="num pts">76*</td><td class="num">+53</td></tr>
+        <tr><td class="pos">3</td><td class="team">P.S.G</td><td class="num">37</td><td class="num pts">74</td><td class="num">+29</td></tr>
+        <tr><td class="pos">4</td><td class="team">Pumas</td><td class="num">36</td><td class="num pts">63*</td><td class="num">+14</td></tr>
+        <tr><td class="pos">5</td><td class="team">Cuervos</td><td class="num">36</td><td class="num pts">63*</td><td class="num">+10</td></tr>
+        <tr><td class="pos">6</td><td class="team">Mi Barrio</td><td class="num">37</td><td class="num pts">61</td><td class="num">−4</td></tr>
+        <tr><td class="pos">7</td><td class="team">Boca Jr.</td><td class="num">37</td><td class="num pts">58</td><td class="num">+25</td></tr>
+        <tr><td class="pos">8</td><td class="team">Correcaminos</td><td class="num">36</td><td class="num pts">57</td><td class="num">+12</td></tr>
+        <tr><td class="pos">9</td><td class="team">Racing</td><td class="num">37</td><td class="num pts">57</td><td class="num">+10</td></tr>
+        <tr><td class="pos">10</td><td class="team">Molinos</td><td class="num">35</td><td class="num pts">56**</td><td class="num">+17</td></tr>
+      </tbody></table><div class="source-note">Datos transcritos tal como fueron proporcionados · Los asteriscos en los puntos se conservan de la fuente original</div></div>
+    </section>
+
+    <section class="slide" data-slide="11">
+      <div class="eyebrow">Primera A · Tras J-37</div><h2 class="slide-title">POSICIONES · 11 AL 20</h2><p class="slide-sub">La fuente conserva el orden proporcionado; algunos campos no están disponibles.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
+        <tr><td class="pos">11</td><td class="team">Coyotes Neza</td><td class="num">37</td><td class="num pts">50</td><td class="num">−29</td></tr>
+        <tr><td class="pos">12</td><td class="team">Wuarner</td><td class="num">37</td><td class="num pts">45</td><td class="num">−4</td></tr>
+        <tr><td class="pos">13</td><td class="team">Pescados</td><td class="num">37</td><td class="num pts">47</td><td class="num">−1</td></tr>
+        <tr><td class="pos">14</td><td class="team">Barrio Unido</td><td class="num">37</td><td class="num pts">40</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">15</td><td class="team">Atl. Libertad</td><td class="num">37</td><td class="num pts">46</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">16</td><td class="team">Dep. Jardín</td><td class="num">37</td><td class="num pts">33</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">17</td><td class="team">Viveros</td><td class="num">37</td><td class="num pts">23</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">18</td><td class="team">River Plate</td><td class="num missing">—</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">19</td><td class="team">Halcones</td><td class="num missing">—</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">20</td><td class="team">Vaper</td><td class="num missing">—</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+      </tbody></table><div class="source-note">Datos transcritos del documento recibido · Pendientes: Everton vs Pumas, Cuervos vs Molinos y Molinos vs Correcaminos</div></div>
+    </section>
+
+    <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </main>
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script src="../52/logos.js"></script>
+  <script src="../52/deck.js"></script>
+</body>
+</html>
