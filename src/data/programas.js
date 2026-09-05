@@ -172,6 +172,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 59,
+    titulo: 'Programa 59',
+    liga: 'Rol de juegos · Primera Fuerza Especial J-4 · Pendientes Primera Fuerza A',
+    decks: {
+      horarios: 'programas/59/horarios.html',
+      resultados: null,
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
