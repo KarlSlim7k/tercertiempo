@@ -178,7 +178,7 @@ export const PROGRAMAS = [
     liga: 'Rol de juegos · Primera Fuerza Especial J-4 · Pendientes Primera Fuerza A',
     decks: {
       horarios: 'programas/59/horarios.html',
-      resultados: null,
+      resultados: 'programas/59/resultados.html',
       analisis: null,
     },
   },
