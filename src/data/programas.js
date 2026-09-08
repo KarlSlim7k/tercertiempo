@@ -182,6 +182,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 60,
+    titulo: 'Programa 60',
+    liga: 'Primera Fuerza A · Pendientes resueltos',
+    decks: {
+      horarios: null,
+      resultados: 'programas/60/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
