@@ -192,6 +192,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 61,
+    titulo: 'Programa 61',
+    liga: 'Primera Fuerza A · Tabla oficial J-37 · Segunda Fuerza Grupo 2 Zona Sur',
+    decks: {
+      horarios: null,
+      resultados: 'programas/61/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
