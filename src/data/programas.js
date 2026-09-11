@@ -202,6 +202,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 62,
+    titulo: 'Programa 62',
+    liga: 'Primera Especial J-5 · Última Jornada Primera Fuerza A · Cuartos de Final Segunda Fuerza · Fin de Semana Deportivo',
+    decks: {
+      horarios: 'programas/62/horarios.html',
+      resultados: 'programas/62/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
