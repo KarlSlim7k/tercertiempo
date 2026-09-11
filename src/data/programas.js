@@ -205,7 +205,7 @@ export const PROGRAMAS = [
   {
     numero: 62,
     titulo: 'Programa 62',
-    liga: 'Primera Especial J-5 · Última Jornada Primera Fuerza A · Cuartos de Final Segunda Fuerza · Fin de Semana Deportivo',
+    liga: 'Fin de Semana Deportivo · Veteranos 40+ · Última Jornada Primera Fuerza A · Primera Especial J-5 · Cuartos de Final Segunda Fuerza',
     decks: {
       horarios: 'programas/62/horarios.html',
       resultados: 'programas/62/resultados.html',

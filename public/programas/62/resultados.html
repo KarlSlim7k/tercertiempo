@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Programa 62 de Tercer Tiempo: el Clásico Joven Cruz Azul vs América, la presentación de Rafa Márquez como nuevo técnico de la Selección Mexicana, el Kickoff de la NFL, el arranque de la Serie del Rey de la LMB y la recta final de las Grandes Ligas.">
+  <meta name="description" content="Programa 62 de Tercer Tiempo: el Clásico Joven Cruz Azul vs América, la presentación de Rafa Márquez como nuevo técnico de la Selección Mexicana, el Kickoff de la NFL, el arranque de la Serie del Rey de la LMB, la recta final de las Grandes Ligas y las finales de la Liga de Veteranos 40+ de Perote.">
   <title>Programa 62 · Fin de Semana Deportivo · Tercer Tiempo</title>
   <link rel="icon" href="../../favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,20 +16,30 @@
     .infocard .lbl{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
     .infocard .val{font:700 22px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-bottom:8px}
     .infocard .sub{font-size:14px;line-height:1.35;color:var(--dim)}
+    .final-match{flex:1;display:grid;grid-template-columns:1fr 130px 1fr;gap:18px;align-items:stretch;min-height:0}
+    .final-team{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22);padding:26px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .final-kicker{font:700 12px/1 "Oswald",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+    .final-name{font:700 34px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-top:14px}
+    .final-vs-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+    .final-vs-circle{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#f0c75a 0%,#a07a1c 100%);display:flex;align-items:center;justify-content:center;font:700 24px/1 "Oswald",sans-serif;color:var(--ink);letter-spacing:.05em;box-shadow:0 8px 30px rgba(230,181,74,.4)}
+    .final-vs-mini{font:600 11px/1.3 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:center}
+    .note-box{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:18px 24px}
+    .note-box .lbl{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .note-box .val{font-size:17px;line-height:1.4;color:var(--dim)}
   </style>
 </head>
 <body>
   <main class="stage" id="stage">
     <header class="topbar">
-      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 62</div><div class="title">Fin de Semana Deportivo</div><div class="sub">Liga MX · Selección Mexicana · NFL · LMB · MLB</div></div></div>
-      <div class="top-right"><div class="counter" id="counter">1 / 6</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 62</div><div class="title">Fin de Semana Deportivo</div><div class="sub">Liga MX · Selección Mexicana · NFL · LMB · MLB · Veteranos 40+</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 8</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
     </header>
 
     <section class="slide active" data-slide="0">
       <div class="cover">
         <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 62</div><h1>FIN DE SEMANA<br><span>DEPORTIVO</span></h1></div>
-        <div class="rule"></div><p class="cover-copy">El Clásico Joven Cruz Azul vs América, la presentación de Rafa Márquez como nuevo técnico de la Selección Mexicana, el Kickoff de la NFL, el arranque de la Serie del Rey de la LMB y la recta final de las Grandes Ligas.</p>
-        <div class="cover-grid"><div class="cover-item"><b>01</b>Liga MX · Clásico Joven J-8</div><div class="cover-item"><b>02</b>Selección Mexicana · Nuevo DT</div><div class="cover-item"><b>03</b>NFL · Kickoff 2026</div><div class="cover-item"><b>04</b>LMB · Serie del Rey</div><div class="cover-item"><b>05</b>MLB · Recta Final</div></div>
+        <div class="rule"></div><p class="cover-copy">El Clásico Joven Cruz Azul vs América, la presentación de Rafa Márquez como nuevo técnico de la Selección Mexicana, el Kickoff de la NFL, el arranque de la Serie del Rey de la LMB, la recta final de las Grandes Ligas y las finales de la Liga de Veteranos 40+ de Perote.</p>
+        <div class="cover-grid"><div class="cover-item"><b>01</b>Liga MX · Clásico Joven J-8</div><div class="cover-item"><b>02</b>Selección Mexicana · Nuevo DT</div><div class="cover-item"><b>03</b>NFL · Kickoff 2026</div><div class="cover-item"><b>04</b>LMB · Serie del Rey</div><div class="cover-item"><b>05</b>MLB · Recta Final</div><div class="cover-item"><b>06</b>Veteranos 40+ · Grupo 1 y Grupo 2</div></div>
       </div>
     </section>
 
@@ -81,6 +91,26 @@
         <div class="infocard"><div class="lbl">También en zona</div><div class="val">Dodgers, Cubs y Phillies</div><div class="sub">En posición de clasificar a playoffs</div></div>
       </div>
       <div class="source-note">Fuente: ESPN, Fox Sports y Yahoo Sports · Datos al 9 de septiembre</div>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <div class="eyebrow">Liga de Veteranos 40+ · Grupo 1</div><h2 class="slide-title">GRAN FINAL · GRUPO 1</h2><p class="slide-sub">Los dos finalistas del Grupo 1 se juegan el campeonato.</p>
+      <div class="final-match">
+        <div class="final-team"><div class="final-kicker">Finalista</div><div class="final-name">Deportivo Vigas</div></div>
+        <div class="final-vs-col"><div class="final-vs-circle">VS</div><div class="final-vs-mini">Grupo 1<br>Gran Final</div></div>
+        <div class="final-team"><div class="final-kicker">Finalista</div><div class="final-name">Unión Victoria</div></div>
+      </div>
+      <div class="note-box"><div class="lbl">El dato</div><div class="val">Campeón por confirmar en el programa: el marcador de la gran final no se ha recibido de la organización de la liga.</div></div>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <div class="eyebrow">Liga de Veteranos 40+ · Grupo 2</div><h2 class="slide-title">IDA · GRUPO 2</h2><p class="slide-sub">Arranca la definición del Grupo 2 con el primer partido de la serie.</p>
+      <div class="final-match">
+        <div class="final-team"><div class="final-kicker">Local</div><div class="final-name">Tenextepec</div></div>
+        <div class="final-vs-col"><div class="final-vs-circle">VS</div><div class="final-vs-mini">Grupo 2<br>Ida</div></div>
+        <div class="final-team"><div class="final-kicker">Visitante</div><div class="final-name">Amado Nervo</div></div>
+      </div>
+      <div class="note-box"><div class="lbl">El dato</div><div class="val">Resultado por confirmar en el programa: el marcador del juego de ida no se ha recibido de la organización de la liga.</div></div>
     </section>
 
     <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
