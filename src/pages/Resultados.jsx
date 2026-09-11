@@ -11,7 +11,7 @@ export default function Resultados() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         {[...PROGRAMAS].sort((a, b) => b.numero - a.numero).map((programa) => (
-          <ProgramaCard key={programa.numero} programa={programa} tipos={['resultados']} />
+          <ProgramaCard key={programa.numero} programa={programa} tipos={['resultados', 'horarios']} />
         ))}
       </div>
     </main>
