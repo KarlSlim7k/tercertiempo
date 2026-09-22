@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Programa 64 de Tercer Tiempo: resultados de la Jornada 6 de la Primera Fuerza Especial, cuartos de final de ida de la Primera A con la caída del líder Everton ante Molinos, tabla oficial J-38 de la Primera A con movimientos, el gol del clásico del fútbol mexicano que le dio la vuelta al mundo y el cotorreo con Don Elmer. Nos vemos a las 8 de la noche.">
+  <title>Programa 64 · Jornada 6 y Cuartos Ida · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../52/deck.css">
+  <style>
+    .results.compact td{padding:11px 12px;font-size:18px}.results.compact .score{font-size:25px}
+    .seed{display:inline-block;min-width:30px;text-align:center;font-size:13px;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(230,181,74,.3);border-radius:4px;padding:3px 7px;margin-right:10px;letter-spacing:.1em}
+    .final-match{flex:1;display:grid;grid-template-columns:1fr 130px 1fr;gap:18px;align-items:stretch;min-height:0}
+    .final-team{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22);padding:26px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .final-kicker{font:700 12px/1 "Oswald",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+    .final-name{font:700 34px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-top:14px}
+    .final-score{font:700 44px/1 "Oswald",sans-serif;color:var(--gold);margin-top:10px;letter-spacing:.06em}
+    .final-team.winner{border-color:rgba(230,181,74,.55)}
+    .final-team.winner .final-name{color:var(--gold)}
+    .final-vs-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+    .final-vs-circle{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#f0c75a 0%,#a07a1c 100%);display:flex;align-items:center;justify-content:center;font:700 24px/1 "Oswald",sans-serif;color:var(--ink);letter-spacing:.05em;box-shadow:0 8px 30px rgba(230,181,74,.4)}
+    .final-vs-mini{font:600 11px/1.3 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:center}
+    .note-box{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:18px 24px}
+    .note-box .lbl{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .note-box .val{font-size:17px;line-height:1.4;color:var(--dim)}
+    .infogrid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-content:center}
+    .infocard{border:1px solid var(--line);border-radius:13px;padding:20px 22px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22)}
+    .infocard .lbl{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .infocard .val{font:700 22px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-bottom:8px}
+    .infocard .sub{font-size:14px;line-height:1.35;color:var(--dim)}
+    .standings{width:100%;border-collapse:collapse;table-layout:fixed}.standings th{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:9px 10px;border-bottom:2px solid rgba(230,181,74,.48)}.standings td{padding:9px 10px;border-bottom:1px solid var(--line-soft);font:700 17px/1.05 "Oswald",sans-serif;text-transform:uppercase}.standings tr:last-child td{border-bottom:0}.standings .c{text-align:center}.standings .pos{width:8%;text-align:center;color:var(--gold)}.standings .team{width:48%}.standings .num{width:14%;text-align:center}.standings .pts{color:var(--gold);font-size:20px}.standings .missing{color:var(--dimmer)}
+    .moves-cols{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .moves-wrap{min-height:0;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));padding:6px 16px;box-shadow:0 4px 30px rgba(0,0,0,.2)}
+    .moves{width:100%;border-collapse:collapse;table-layout:fixed}
+    .moves th{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-align:left;padding:8px;border-bottom:2px solid rgba(230,181,74,.5)}
+    .moves th.c{text-align:center}
+    .moves td{padding:6px 8px;font:700 14px/1.15 "Oswald",sans-serif;color:var(--cream);border-bottom:1px solid var(--line-soft);text-transform:uppercase}
+    .moves tr:last-child td{border-bottom:none}
+    .moves td.pos{width:30px;text-align:center;color:var(--dim)}
+    .moves td.ant{width:56px;text-align:center;color:var(--dimmer);font-weight:500}
+    .moves td.chg{width:60px;text-align:center;font-weight:700}
+    .moves td.chg.up{color:var(--green)}
+    .moves td.chg.down{color:var(--rose)}
+    .moves td.chg.same{color:var(--dimmer);font-weight:500}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 64</div><div class="title">Jornada 6 y Cuartos Ida</div><div class="sub">Primera Fuerza Especial J-6 · Primera A Cuartos Ida</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 9</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 64</div><h1>JORNADA 6<br><span>Y CUARTOS IDA</span></h1></div>
+        <div class="rule"></div><p class="cover-copy">El líder de la 1A, Everton, cae ante Molinos. Todos los resultados de cuartos de final de la 1A, su tabla oficial J-38 con movimientos, la jornada 6 de la Primera Fuerza Especial y el cotorreo con Don Elmer. Nos vemos a las 8 de la noche.</p>
+        <div class="cover-grid"><div class="cover-item"><b>01</b>Primera Fuerza Especial · Jornada 6</div><div class="cover-item"><b>02</b>Primera A · Cuartos de final ida</div><div class="cover-item"><b>03</b>Primera A · Tabla J-38 y movimientos</div><div class="cover-item"><b>04</b>El líder Everton cae ante Molinos</div><div class="cover-item"><b>05</b>El gol del clásico que dio la vuelta al mundo</div><div class="cover-item"><b>06</b>Cotorreo con Don Elmer · Hoy 8 pm</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="1">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 6</div><h2 class="slide-title">RESULTADOS · J-6 · PARTE 1</h2><p class="slide-sub">Cinco marcadores de la sexta jornada.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Pinochos</td><td class="score">1 – 7</td><td class="visitor">Rebbulls</td></tr>
+        <tr><td class="local">Rangers</td><td class="score">0 – 2</td><td class="visitor">Juárez FC</td></tr>
+        <tr><td class="local">Halcones</td><td class="score">2 – 0</td><td class="visitor">Aferrados</td></tr>
+        <tr class="draw"><td class="local">Real Victoria</td><td class="score">1 – 1</td><td class="visitor">Liverpool</td></tr>
+        <tr><td class="local">Bads</td><td class="score">0 – 5</td><td class="visitor">DP Guerrero</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 6</div><h2 class="slide-title">RESULTADOS · J-6 · PARTE 2</h2><p class="slide-sub">Cuatro marcadores más; un juego se detiene por decisión arbitral.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr class="draw"><td class="local">Sabinas</td><td class="score">1 – 1</td><td class="visitor">Micheleros</td></tr>
+        <tr class="draw"><td class="local">Galaxi</td><td class="score">1 – 1</td><td class="visitor">Manchester</td></tr>
+        <tr><td class="local">Tiburones</td><td class="score">0 – 2</td><td class="visitor">Arsenal</td></tr>
+        <tr class="draw"><td class="local">Molinos</td><td class="score">1 – 1</td><td class="visitor">Sor Juana</td></tr>
+      </tbody></table><div class="source-note">Molinos vs Sor Juana: juego detenido por decisión arbitral</div></div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <div class="eyebrow">Primera A · Cuartos de final · Partido de ida</div><h2 class="slide-title">CUARTOS IDA · 1A</h2><p class="slide-sub">Los cuatro cruces de ida rumbo a semifinales.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Molinos</td><td class="score">1 – 0</td><td class="visitor">Everton</td></tr>
+        <tr><td class="local">Cuervos</td><td class="score">2 – 1</td><td class="visitor">Pumas</td></tr>
+        <tr class="draw"><td class="local">Correcaminos</td><td class="score">1 – 1</td><td class="visitor">Perris</td></tr>
+        <tr><td class="local">Mi Barrio</td><td class="score">3 – 2</td><td class="visitor">PSG</td></tr>
+      </tbody></table><div class="source-note">Partidos de ida · La vuelta define a los semifinalistas</div></div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div class="eyebrow">Primera Fuerza A · Tabla oficial J-38</div><h2 class="slide-title">POSICIONES · 1 AL 10</h2><p class="slide-sub">Everton cierra como líder; así quedan los ocho clasificados a cuartos.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
+        <tr><td class="pos">1</td><td class="team">Everton</td><td class="num">38</td><td class="num pts">82</td><td class="num">+55</td></tr>
+        <tr><td class="pos">2</td><td class="team">Perris F.C</td><td class="num">38</td><td class="num pts">78</td><td class="num">+41</td></tr>
+        <tr><td class="pos">3</td><td class="team">P.S.G</td><td class="num">38</td><td class="num pts">74</td><td class="num">+28</td></tr>
+        <tr><td class="pos">4</td><td class="team">Pumas</td><td class="num">38</td><td class="num pts">66</td><td class="num">+14</td></tr>
+        <tr><td class="pos">5</td><td class="team">Cuervos</td><td class="num">38</td><td class="num pts">66</td><td class="num">+9</td></tr>
+        <tr><td class="pos">6</td><td class="team">Mi Barrio</td><td class="num">38</td><td class="num pts">64</td><td class="num">0</td></tr>
+        <tr><td class="pos">7</td><td class="team">Correcaminos</td><td class="num">38</td><td class="num pts">63</td><td class="num">+15</td></tr>
+        <tr><td class="pos">8</td><td class="team">Molinos</td><td class="num">38</td><td class="num pts">62</td><td class="num">+19</td></tr>
+        <tr><td class="pos">9</td><td class="team">Boca Jr.</td><td class="num">38</td><td class="num pts">61</td><td class="num">+21</td></tr>
+        <tr><td class="pos">10</td><td class="team">Racing</td><td class="num">38</td><td class="num pts">57</td><td class="num">+8</td></tr>
+      </tbody></table><div class="source-note">Tabla oficial J-38 · Datos transcritos del documento oficial recibido</div></div>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <div class="eyebrow">Primera Fuerza A · Tabla oficial J-38</div><h2 class="slide-title">POSICIONES · 11 AL 20</h2><p class="slide-sub">La fuente conserva el orden proporcionado; algunos campos no están disponibles.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th><th class="num">Dif.</th></tr></thead><tbody>
+        <tr><td class="pos">11</td><td class="team">Coyotes Neza</td><td class="num">38</td><td class="num pts">50</td><td class="num">−33</td></tr>
+        <tr><td class="pos">12</td><td class="team">Warners</td><td class="num">38</td><td class="num pts">45</td><td class="num">−6</td></tr>
+        <tr><td class="pos">13</td><td class="team">Pescados</td><td class="num">38*</td><td class="num pts">47</td><td class="num">−1</td></tr>
+        <tr><td class="pos">14</td><td class="team">Barrio Unido</td><td class="num">38</td><td class="num pts">40</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">15</td><td class="team">Atlético Libertad</td><td class="num">38</td><td class="num pts">49</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">16</td><td class="team">Dep. Jardín</td><td class="num">38</td><td class="num pts">36</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">17</td><td class="team">Viveros</td><td class="num">37*</td><td class="num pts">23</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">18</td><td class="team">River Plate</td><td class="num missing">—</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">19</td><td class="team">Halcones</td><td class="num missing">—</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+        <tr><td class="pos">20</td><td class="team">Vaper</td><td class="num missing">—</td><td class="num missing">—</td><td class="num missing">—</td></tr>
+      </tbody></table><div class="source-note">Tabla oficial J-38 · Datos transcritos del documento oficial recibido</div></div>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <div class="eyebrow">Primera Fuerza A · J-37 → J-38</div><h2 class="slide-title">MOVIMIENTOS · TRAS J-38</h2><p class="slide-sub">La última jornada no movió posiciones; ocho equipos sumaron de a 3 puntos.</p>
+      <div class="moves-cols">
+        <div class="moves-wrap">
+          <table class="moves"><thead><tr><th class="c">Pos.</th><th>Equipo</th><th class="c">Ant.</th><th class="c">Mov.</th></tr></thead><tbody>
+            <tr><td class="pos">1</td><td>Everton</td><td class="ant">1</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">2</td><td>Perris F.C</td><td class="ant">2</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">3</td><td>P.S.G</td><td class="ant">3</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">4</td><td>Pumas</td><td class="ant">4</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">5</td><td>Cuervos</td><td class="ant">5</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">6</td><td>Mi Barrio</td><td class="ant">6</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">7</td><td>Correcaminos</td><td class="ant">7</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">8</td><td>Molinos</td><td class="ant">8</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">9</td><td>Boca Jr.</td><td class="ant">9</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">10</td><td>Racing</td><td class="ant">10</td><td class="chg same">=</td></tr>
+          </tbody></table>
+        </div>
+        <div class="moves-wrap">
+          <table class="moves"><thead><tr><th class="c">Pos.</th><th>Equipo</th><th class="c">Ant.</th><th class="c">Mov.</th></tr></thead><tbody>
+            <tr><td class="pos">11</td><td>Coyotes Neza</td><td class="ant">11</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">12</td><td>Warners</td><td class="ant">12</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">13</td><td>Pescados</td><td class="ant">13</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">14</td><td>Barrio Unido</td><td class="ant">14</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">15</td><td>Atl. Libertad</td><td class="ant">15</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">16</td><td>Dep. Jardín</td><td class="ant">16</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">17</td><td>Viveros</td><td class="ant">17</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">18</td><td>River Plate</td><td class="ant">18</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">19</td><td>Halcones</td><td class="ant">19</td><td class="chg same">=</td></tr>
+            <tr><td class="pos">20</td><td>Vaper</td><td class="ant">20</td><td class="chg same">=</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+      <div class="source-note">Ant. = posición en tabla oficial J-37 (Programa 61) · Sumaron +3: Everton, Pumas, Cuervos, Mi Barrio, Correcaminos, Molinos, Boca Jr., Atl. Libertad y Dep. Jardín</div>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <div class="eyebrow">Primera A · Cuartos de final · Ida</div><h2 class="slide-title">CAE EL LÍDER EVERTON</h2><p class="slide-sub">Molinos pega primero ante el líder de la 1A.</p>
+      <div class="final-match">
+        <div class="final-team winner"><div class="final-kicker">Gana la ida</div><div class="final-name">Molinos</div><div class="final-score">1 – 0</div></div>
+        <div class="final-vs-col"><div class="final-vs-circle">VS</div><div class="final-vs-mini">1A · Cuartos<br>Partido de ida</div></div>
+        <div class="final-team"><div class="final-kicker">Líder 1A</div><div class="final-name">Everton</div><div class="final-score">0</div></div>
+      </div>
+      <div class="note-box"><div class="lbl">Farmacia La Esperanza</div><div class="val">Rompe con la malaria de los cuartos de final: Molinos derrota 1-0 al líder Everton y toma ventaja en la ida.</div></div>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <div class="eyebrow">Hoy en Tercer Tiempo · 8 de la noche</div><h2 class="slide-title">NOS VEMOS A LAS 8</h2><p class="slide-sub">Resultados, análisis y cotorreo con Don Elmer.</p>
+      <div class="infogrid">
+        <div class="infocard"><div class="lbl">Cuartos 1A + J-6 Especial</div><div class="val">Todos los resultados</div><div class="sub">Los 4 cruces de ida de la 1A y los 9 marcadores de la jornada 6 de la Primera Fuerza Especial</div></div>
+        <div class="infocard"><div class="lbl">Clásico del fútbol mexicano</div><div class="val">El gol que dio la vuelta al mundo</div><div class="sub">La joya del clásico que todos están repitiendo</div></div>
+        <div class="infocard"><div class="lbl">En el estudio</div><div class="val">Cotorreo con Don Elmer</div><div class="sub">Hoy en Tercer Tiempo · 8 de la noche</div></div>
+      </div>
+    </section>
+
+    <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </main>
+  <!-- PENDIENTE programa 64: tabla PFE tras J-6 (falta base: resultados J-4 o tabla tras J-5).
+       Decisión registrada: Molinos 1-1 Sor Juana (detenido) se contará como empate al construir la tabla. -->
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script src="../52/logos.js"></script>
+  <script src="../52/deck.js"></script>
+</body>
+</html>

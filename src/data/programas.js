@@ -222,6 +222,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 64,
+    titulo: 'Programa 64',
+    liga: 'Primera Fuerza Especial J-6 · Primera A cuartos de ida · Everton cae ante Molinos',
+    decks: {
+      horarios: null,
+      resultados: 'programas/64/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
