@@ -232,6 +232,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 67,
+    titulo: 'Programa 67',
+    liga: 'Everton a semifinales · Primera Fuerza Especial J-7 · Primera A vuelta · Segunda Fuerza',
+    decks: {
+      horarios: null,
+      resultados: 'programas/67/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {

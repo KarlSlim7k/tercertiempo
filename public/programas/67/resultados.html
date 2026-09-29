@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Programa 67 de Tercer Tiempo: Everton da golpe de autoridad, vence a Molinos y avanza a semifinales de la Primera A. Llaves de semis, resultados jornada 7 de la Primera Fuerza Especial, triunfos visitantes de Farmacia La Esperanza y Cobras, Dieter Bárcenas y la eliminatoria estatal de voleibol en Perote, playoffs de Grandes Ligas y el cotorreo de Don Elmer. Hoy 8 de la noche.">
+  <title>Programa 67 · Everton a Semifinales · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../52/deck.css">
+  <style>
+    .results.compact td{padding:11px 12px;font-size:18px}.results.compact .score{font-size:25px}
+    .seed{display:inline-block;min-width:30px;text-align:center;font-size:13px;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(230,181,74,.3);border-radius:4px;padding:3px 7px;margin-right:10px;letter-spacing:.1em}
+    .final-match{flex:1;display:grid;grid-template-columns:1fr 130px 1fr;gap:18px;align-items:stretch;min-height:0}
+    .final-team{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22);padding:26px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .final-kicker{font:700 12px/1 "Oswald",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+    .final-name{font:700 34px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-top:14px}
+    .final-score{font:700 44px/1 "Oswald",sans-serif;color:var(--gold);margin-top:10px;letter-spacing:.06em}
+    .final-sub{font-size:14px;color:var(--dim);margin-top:8px}
+    .final-team.winner{border-color:rgba(230,181,74,.55)}
+    .final-team.winner .final-name{color:var(--gold)}
+    .final-vs-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+    .final-vs-circle{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#f0c75a 0%,#a07a1c 100%);display:flex;align-items:center;justify-content:center;font:700 24px/1 "Oswald",sans-serif;color:var(--ink);letter-spacing:.05em;box-shadow:0 8px 30px rgba(230,181,74,.4)}
+    .final-vs-mini{font:600 11px/1.3 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:center}
+    .note-box{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:18px 24px}
+    .note-box .lbl{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .note-box .val{font-size:17px;line-height:1.4;color:var(--dim)}
+    .infogrid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-content:center}
+    .infocard{border:1px solid var(--line);border-radius:13px;padding:20px 22px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22)}
+    .infocard .lbl{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .infocard .val{font:700 22px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-bottom:8px}
+    .infocard .sub{font-size:14px;line-height:1.35;color:var(--dim)}
+    .semis{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:center}
+    .semi-card{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:24px;text-align:center;box-shadow:0 5px 28px rgba(0,0,0,.22)}
+    .semi-card .lbl{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+    .semi-card .match{font:700 30px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-top:12px}
+    .semi-card .match span{color:var(--gold)}
+    .semi-card .sub{font-size:14px;color:var(--dim);margin-top:8px}
+    .global{font:600 12px/1.3 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:right;margin-top:11px}
+    .global b{color:var(--gold)}
+    .tag{display:inline-block;font:700 11px/1 "Oswald",sans-serif;letter-spacing:.12em;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(230,181,74,.35);border-radius:4px;padding:3px 6px;margin-left:8px;vertical-align:middle}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 67</div><div class="title">Everton a Semifinales</div><div class="sub">Primera Fuerza Especial J-7 · Primera A Vuelta · Segunda Fuerza</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 8</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 67</div><h1>EVERTON<br><span>GOLPE DE AUTORIDAD</span></h1></div>
+        <div class="rule"></div><p class="cover-copy">El líder confirma por qué fue líder: vence a Molinos (1A) y obtiene su pase a semifinales. Llaves definidas, jornada 7 de la Primera Fuerza Especial, triunfos visitantes de Farmacia La Esperanza y Cobras, voleibol estatal en Perote, playoffs de Grandes Ligas y Don Elmer. Hoy 8 de la noche.</p>
+        <div class="cover-grid"><div class="cover-item"><b>01</b>Primera Fuerza Especial · Jornada 7</div><div class="cover-item"><b>02</b>Primera A · Vuelta y semifinales</div><div class="cover-item"><b>03</b>Segunda Fuerza · Visitas ganan</div><div class="cover-item"><b>04</b>Everton 3-0 Molinos (1A) · A semis</div><div class="cover-item"><b>05</b>Voleibol estatal en Perote + MLB</div><div class="cover-item"><b>06</b>Don Elmer · Hoy 8 pm</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="1">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 7</div><h2 class="slide-title">RESULTADOS · J-7 · PARTE 1</h2><p class="slide-sub">Cinco marcadores de la séptima jornada.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Halcones</td><td class="score">4 – 1</td><td class="visitor">Pinochos</td></tr>
+        <tr><td class="local">Rangers</td><td class="score">6 – 1</td><td class="visitor">Bad's</td></tr>
+        <tr><td class="local">Sabinal</td><td class="score">0 – 5</td><td class="visitor">Sor Juana</td></tr>
+        <tr><td class="local">Red Bull</td><td class="score">7 – 2</td><td class="visitor">Tiburones</td></tr>
+        <tr><td class="local">Liverpool</td><td class="score">2 – 1</td><td class="visitor">Galaxi</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 7</div><h2 class="slide-title">RESULTADOS · J-7 · PARTE 2</h2><p class="slide-sub">Cuatro marcadores más para cerrar la jornada.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Manchester</td><td class="score">0 – 5</td><td class="visitor">Guerrero</td></tr>
+        <tr><td class="local">Micheleros</td><td class="score">3 – 1</td><td class="visitor">Aferrados</td></tr>
+        <tr><td class="local">Juárez FC</td><td class="score">3 – 1</td><td class="visitor">Molinos<span class="tag">ESP</span></td></tr>
+        <tr><td class="local">Arsenal</td><td class="score">2 – 1</td><td class="visitor">Real Victoria</td></tr>
+      </tbody></table><div class="source-note">Jornada 7 · Primera Fuerza Especial · ESP = Especial</div></div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <div class="eyebrow">Primera A · Cuartos de final · Partido de vuelta</div><h2 class="slide-title">VUELTA · 1A</h2><p class="slide-sub">Everton remonta y PSG, Cuervos y Perris sellan su pase.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Perris F.C.</td><td class="score">2 – 1</td><td class="visitor">Correcaminos</td></tr>
+        <tr><td class="local">Pumas</td><td class="score">1 – 3</td><td class="visitor">Cuervos</td></tr>
+        <tr><td class="local">Everton</td><td class="score">3 – 0</td><td class="visitor">Molinos<span class="tag">1A</span></td></tr>
+        <tr><td class="local">PSG</td><td class="score">3 – 0</td><td class="visitor">Mi Barrio</td></tr>
+      </tbody></table><div class="global">Globales: <b>Perris 3-2</b> · <b>Cuervos 5-2</b> · <b>Everton 3-1</b> · <b>PSG 5-3</b> (ida P64: COR 1-1 PER · CUE 2-1 PUM · MOL 1-0 EVE · MIB 3-2 PSG)</div></div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div class="eyebrow">Primera A · Semifinales definidas</div><h2 class="slide-title">LLAVES · SEMIS 1A</h2><p class="slide-sub">Así se jugarán las semifinales de la Primera A.</p>
+      <div class="semis">
+        <div class="semi-card"><div class="lbl">Semifinal 1</div><div class="match">Everton <span>vs</span> Cuervos</div><div class="sub">El líder remontó 3-1 global a Molinos (1A) · Cuervos goleó 5-2 global a Pumas</div></div>
+        <div class="semi-card"><div class="lbl">Semifinal 2</div><div class="match">Perris F.C. <span>vs</span> PSG</div><div class="sub">Perris 3-2 global a Correcaminos · PSG 5-3 global a Mi Barrio</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <div class="eyebrow">Segunda Fuerza Especial</div><h2 class="slide-title">VISITAS GANAN</h2><p class="slide-sub">Farmacia La Esperanza y Cobras ganan fuera de casa.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Último Suspiro</td><td class="score">1 – 2</td><td class="visitor">Farmacia La Esperanza</td></tr>
+        <tr><td class="local">Chichicuautla</td><td class="score">0 – 1</td><td class="visitor">Cobras</td></tr>
+      </tbody></table><div class="source-note">Segunda Fuerza Especial · Triunfos de visitante</div></div>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <div class="eyebrow">Primera A · Cuartos de final · Vuelta</div><h2 class="slide-title">GOLPE DE AUTORIDAD</h2><p class="slide-sub">Everton confirma por qué fue líder de la competencia.</p>
+      <div class="final-match">
+        <div class="final-team winner"><div class="final-kicker">A semifinales</div><div class="final-name">Everton</div><div class="final-score">3 – 0</div><div class="final-sub">Global 3-1 vs Molinos (1A)</div></div>
+        <div class="final-vs-col"><div class="final-vs-circle">VS</div><div class="final-vs-mini">1A · Cuartos<br>Vuelta</div></div>
+        <div class="final-team"><div class="final-kicker">Cuartos · Vuelta</div><div class="final-name">Molinos<span class="tag">1A</span></div><div class="final-score">0</div><div class="final-sub">Había ganado la ida 1-0</div></div>
+      </div>
+      <div class="note-box"><div class="lbl">Semifinalista</div><div class="val">Everton remonta la serie y se cita con Cuervos en semifinales. La otra llave: Perris F.C. vs PSG.</div></div>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <div class="eyebrow">Hoy en Tercer Tiempo · 8 de la noche</div><h2 class="slide-title">NOS VEMOS A LAS 8</h2><p class="slide-sub">Voleibol estatal, MLB y cotorreo con Don Elmer.</p>
+      <div class="infogrid">
+        <div class="infocard"><div class="lbl">En el estudio</div><div class="val">Dieter Bárcenas</div><div class="sub">Eliminatoria estatal de clubes de voleibol · Perote es sede</div></div>
+        <div class="infocard"><div class="lbl">Grandes Ligas</div><div class="val">Inician los playoffs</div><div class="sub">Tenemos los juegos de comodines de la MLB</div></div>
+        <div class="infocard"><div class="lbl">Cotorreo</div><div class="val">Don Elmer</div><div class="sub">Hoy en Tercer Tiempo · 8 de la noche</div></div>
+      </div>
+    </section>
+
+    <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </main>
+  <!-- Programa 67: globales calculados vs ida P64 (MOL 1-0 EVE, CUE 2-1 PUM, COR 1-1 PER, MIB 3-2 PSG).
+       Convención desde P67: Molinos (ESP) = Primera Fuerza Especial, Molinos (1A) = Primera A. Tags ESP/1A en pantalla. -->
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script src="../52/logos.js"></script>
+  <script src="../52/deck.js"></script>
+</body>
+</html>
