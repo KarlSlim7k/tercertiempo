@@ -242,6 +242,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 69,
+    titulo: 'Programa 69',
+    liga: 'Finalistas Segunda Fuerza · Primera A semifinales · Primera Fuerza Especial pendientes y tabla · Veteranos rol J-1',
+    decks: {
+      horarios: null,
+      resultados: 'programas/69/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {

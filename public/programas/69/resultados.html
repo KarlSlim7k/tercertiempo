@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Programa 69 de Tercer Tiempo: finalistas en la Segunda Fuerza, Farmacia La Esperanza vs Cobras del Frijolito. En la Primera A no se jugó Everton vs Cuervos y Perris derrota de visita al PSG. Pendientes y tabla de la Primera Fuerza Especial, series divisionales de las Grandes Ligas y el cotorreo con Don Elmer. Hoy 8 de la noche.">
+  <title>Programa 69 · Finalistas en Segunda Fuerza · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../52/deck.css">
+  <style>
+    .results.compact td{padding:11px 12px;font-size:18px}.results.compact .score{font-size:25px}
+    .seed{display:inline-block;min-width:30px;text-align:center;font-size:13px;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(230,181,74,.3);border-radius:4px;padding:3px 7px;margin-right:10px;letter-spacing:.1em}
+    .final-match{flex:1;display:grid;grid-template-columns:1fr 130px 1fr;gap:18px;align-items:stretch;min-height:0}
+    .final-team{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22);padding:26px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .final-kicker{font:700 12px/1 "Oswald",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+    .final-name{font:700 34px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-top:14px}
+    .final-score{font:700 44px/1 "Oswald",sans-serif;color:var(--gold);margin-top:10px;letter-spacing:.06em}
+    .final-sub{font-size:14px;color:var(--dim);margin-top:8px}
+    .final-team.winner{border-color:rgba(230,181,74,.55)}
+    .final-team.winner .final-name{color:var(--gold)}
+    .final-vs-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+    .final-vs-circle{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,#f0c75a 0%,#a07a1c 100%);display:flex;align-items:center;justify-content:center;font:700 24px/1 "Oswald",sans-serif;color:var(--ink);letter-spacing:.05em;box-shadow:0 8px 30px rgba(230,181,74,.4)}
+    .final-vs-mini{font:600 11px/1.3 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:center}
+    .note-box{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:18px 24px}
+    .note-box .lbl{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .note-box .val{font-size:17px;line-height:1.4;color:var(--dim)}
+    .infogrid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-content:center}
+    .infocard{border:1px solid var(--line);border-radius:13px;padding:20px 22px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 5px 28px rgba(0,0,0,.22)}
+    .infocard .lbl{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .infocard .val{font:700 22px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-bottom:8px}
+    .infocard .sub{font-size:14px;line-height:1.35;color:var(--dim)}
+    .semis{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:center}
+    .semi-card{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:24px;text-align:center;box-shadow:0 5px 28px rgba(0,0,0,.22)}
+    .semi-card .lbl{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+    .semi-card .match{font:700 30px/1.15 "Oswald",sans-serif;text-transform:uppercase;margin-top:12px}
+    .semi-card .match span{color:var(--gold)}
+    .semi-card .sub{font-size:14px;color:var(--dim);margin-top:8px}
+    .global{font:600 12px/1.3 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:right;margin-top:11px}
+    .global b{color:var(--gold)}
+    .tag{display:inline-block;font:700 11px/1 "Oswald",sans-serif;letter-spacing:.12em;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(230,181,74,.35);border-radius:4px;padding:3px 6px;margin-left:8px;vertical-align:middle}
+    .results tr.pending .score{color:var(--amber);font-size:15px;letter-spacing:.08em}
+    .results tr.pending .local,.results tr.pending .visitor{color:var(--dimmer)}
+    .standings{width:100%;border-collapse:collapse;table-layout:fixed}.standings th{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:9px 10px;border-bottom:2px solid rgba(230,181,74,.48)}.standings td{padding:9px 10px;border-bottom:1px solid var(--line-soft);font:700 17px/1.05 "Oswald",sans-serif;text-transform:uppercase}.standings tr:last-child td{border-bottom:0}.standings .c{text-align:center}.standings .pos{width:8%;text-align:center;color:var(--gold)}.standings .team{width:48%}.standings .num{width:14%;text-align:center}.standings .pts{color:var(--gold);font-size:20px}.standings .missing{color:var(--dimmer)}
+    .schedule.tight td{padding:7px 12px;font-size:19px}.schedule.tight th{padding:8px 12px}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 69</div><div class="title">Finalistas en Segunda Fuerza</div><div class="sub">Segunda Fuerza · Primera A Semis · Primera Fuerza Especial · Veteranos · MLB</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 11</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 69</div><h1>FINALISTAS<br><span>EN SEGUNDA FUERZA</span></h1></div>
+        <div class="rule"></div><p class="cover-copy">Farmacia La Esperanza y Cobras del Frijolito se citan en la gran final. En la Primera A no se jugó Everton vs Cuervos, te contamos por qué, y Perris derrota de visita al PSG. Además, los pendientes de la Primera Fuerza Especial, las series divisionales de las Grandes Ligas, el rol de la Jornada 1 de Veteranos y Don Elmer. Hoy 8 de la noche.</p>
+        <div class="cover-grid"><div class="cover-item"><b>01</b>Segunda Fuerza · Ya hay finalistas</div><div class="cover-item"><b>02</b>Primera A · Semifinales</div><div class="cover-item"><b>03</b>Everton vs Cuervos no se jugó</div><div class="cover-item"><b>04</b>Perris derrota al PSG de visita</div><div class="cover-item"><b>05</b>Primera Fuerza Especial · Pendientes y tabla</div><div class="cover-item"><b>06</b>Veteranos · Rol de la Jornada 1</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="1">
+      <div class="eyebrow">Segunda Fuerza Especial · Semifinales</div><h2 class="slide-title">YA HAY FINALISTAS</h2><p class="slide-sub">Dos equipos pelearán por el campeonato de la Segunda Fuerza.</p>
+      <div class="final-match">
+        <div class="final-team winner"><div class="final-kicker">Finalista</div><div class="final-name">Farmacia La Esperanza</div><div class="final-sub">Avanza a la gran final</div></div>
+        <div class="final-vs-col"><div class="final-vs-circle">VS</div><div class="final-vs-mini">Segunda Fuerza<br>La Gran Final</div></div>
+        <div class="final-team winner"><div class="final-kicker">Finalista</div><div class="final-name">Cobras del Frijolito</div><div class="final-sub">Avanza a la gran final</div></div>
+      </div>
+      <div class="note-box"><div class="lbl">La gran final</div><div class="val">Farmacia La Esperanza vs Cobras del Frijolito, por el título de la Segunda Fuerza.</div></div>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <div class="eyebrow">Primera A · Semifinales</div><h2 class="slide-title">SEMIFINALES · 1A</h2><p class="slide-sub">Everton y Cuervos no jugaron; Perris se lleva el primer golpe.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr class="pending"><td class="local">Everton</td><td class="score">No se jugó</td><td class="visitor">Cuervos</td></tr>
+        <tr><td class="local">PSG</td><td class="score">Perris gana</td><td class="visitor">Perris F.C.</td></tr>
+      </tbody></table><div class="source-note">Primera A · Semifinales · Everton vs Cuervos queda pendiente</div></div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <div class="eyebrow">Primera A · Semifinales</div><h2 class="slide-title">PERRIS GANA EN CASA DEL PSG</h2><p class="slide-sub">Triunfo de visitante en la semifinal.</p>
+      <div class="final-match">
+        <div class="final-team"><div class="final-kicker">Local</div><div class="final-name">PSG</div><div class="final-sub">Cae en casa</div></div>
+        <div class="final-vs-col"><div class="final-vs-circle">VS</div><div class="final-vs-mini">1A · Semifinal<br>PSG vs Perris</div></div>
+        <div class="final-team winner"><div class="final-kicker">Gana de visita</div><div class="final-name">Perris F.C.</div><div class="final-sub">Derrota al PSG a domicilio</div></div>
+      </div>
+      <div class="note-box"><div class="lbl">Semifinal 2</div><div class="val">Perris F.C. toma ventaja al derrotar al PSG como visitante. Everton vs Cuervos, la otra semifinal, no se pudo disputar.</div></div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div class="eyebrow">Primera A · Semifinales</div><h2 class="slide-title">EVERTON VS CUERVOS</h2><p class="slide-sub">El partido no se jugó. Hoy te contamos por qué.</p>
+      <div class="final-match">
+        <div class="final-team"><div class="final-kicker">Líder de la fase regular</div><div class="final-name">Everton</div><div class="final-sub">Su partido no se disputó</div></div>
+        <div class="final-vs-col"><div class="final-vs-circle">VS</div><div class="final-vs-mini">1A · Semifinal<br>No se jugó</div></div>
+        <div class="final-team"><div class="final-kicker">Semifinalista</div><div class="final-name">Cuervos</div><div class="final-sub">Su partido no se disputó</div></div>
+      </div>
+      <div class="note-box"><div class="lbl">El porqué</div><div class="val">Te lo explicamos hoy en Tercer Tiempo, a las 8 de la noche.</div></div>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <div class="eyebrow">Primera Fuerza Especial · Partidos pendientes</div><h2 class="slide-title">RESULTADOS PENDIENTES</h2><p class="slide-sub">Ya hay marcador para dos juegos atrasados.</p>
+      <div class="table-wrap"><table class="results compact"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+        <tr><td class="local">Tiburones</td><td class="score">1 – 2</td><td class="visitor">Galaxy</td></tr>
+        <tr><td class="local">Aferrados</td><td class="score">5 – 0</td><td class="visitor">Manchester</td></tr>
+      </tbody></table><div class="source-note">Primera Fuerza Especial · Resultados de partidos pendientes</div></div>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <div class="eyebrow">Primera Fuerza Especial · Tabla de posiciones</div><h2 class="slide-title">POSICIONES · 1 AL 9</h2><p class="slide-sub">Sor Juana lidera con 18 puntos.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th></tr></thead><tbody>
+        <tr><td class="pos">1</td><td class="team">Sor Juana</td><td class="num">6</td><td class="num pts">18</td></tr>
+        <tr><td class="pos">2</td><td class="team">Red Bull</td><td class="num">6</td><td class="num pts">15</td></tr>
+        <tr><td class="pos">3</td><td class="team">Galaxy</td><td class="num">6</td><td class="num pts">13</td></tr>
+        <tr><td class="pos">4</td><td class="team">Juárez F.C.</td><td class="num">6</td><td class="num pts">13</td></tr>
+        <tr><td class="pos">5</td><td class="team">Dep. Guerrero</td><td class="num">6</td><td class="num pts">12</td></tr>
+        <tr><td class="pos">6</td><td class="team">Arsenal</td><td class="num">6</td><td class="num pts">10</td></tr>
+        <tr><td class="pos">7</td><td class="team">Halcones</td><td class="num">6</td><td class="num pts">10</td></tr>
+        <tr><td class="pos">8</td><td class="team">Real Victoria</td><td class="num">6</td><td class="num pts">9</td></tr>
+        <tr><td class="pos">9</td><td class="team">Liverpool</td><td class="num">6</td><td class="num pts">9</td></tr>
+        </tbody></table><div class="source-note">Datos transcritos del documento recibido (jornada 7)</div></div>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <div class="eyebrow">Primera Fuerza Especial · Tabla de posiciones</div><h2 class="slide-title">POSICIONES · 10 AL 18</h2><p class="slide-sub">Zona baja de la tabla.</p>
+      <div class="table-wrap"><table class="standings"><thead><tr><th class="pos">Pos.</th><th class="team">Equipo</th><th class="num">JJ</th><th class="num">Pts</th></tr></thead><tbody>
+        <tr><td class="pos">10</td><td class="team">Micheleros</td><td class="num">6</td><td class="num pts">8</td></tr>
+        <tr><td class="pos">11</td><td class="team">Rangers</td><td class="num">6</td><td class="num pts">6</td></tr>
+        <tr><td class="pos">12</td><td class="team">Aferrados</td><td class="num">6</td><td class="num pts">6</td></tr>
+        <tr><td class="pos">13</td><td class="team">Sabinal</td><td class="num">6</td><td class="num pts">6</td></tr>
+        <tr><td class="pos">14</td><td class="team">Tiburones</td><td class="num">6</td><td class="num pts">6</td></tr>
+        <tr><td class="pos">15</td><td class="team">Molinos</td><td class="num">6</td><td class="num pts">4</td></tr>
+        <tr><td class="pos">16</td><td class="team">Pinochos</td><td class="num">6</td><td class="num pts">4</td></tr>
+        <tr><td class="pos">17</td><td class="team">Manchester</td><td class="num">6</td><td class="num pts">3</td></tr>
+        <tr><td class="pos">18</td><td class="team">Bad's</td><td class="num">6</td><td class="num pts">3</td></tr>
+        </tbody></table><div class="source-note">Datos transcritos del documento recibido (jornada 7)</div></div>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <div class="eyebrow">Liga Veteranos Perote · Temporada 2026-2027 · Jornada 1</div><h2 class="slide-title">ROL DE JUEGOS · GRUPO I</h2><p class="slide-sub">Arranca la temporada 2026-2027 de Veteranos Perote.</p>
+      <div class="table-wrap"><table class="schedule tight"><thead><tr><th>Local</th><th>Visitante</th><th>Hora</th><th>Campo</th><th>Día</th></tr></thead><tbody>
+        <tr><td>Real Madrid</td><td>Dep. Vigas</td><td class="time">16:30</td><td>Alchichica</td><td class="center">Jue</td></tr>
+        <tr><td>Palmeiras</td><td>Guerrero</td><td class="time">16:30</td><td>La Guerrero</td><td class="center">Jue</td></tr>
+        <tr><td>Brasil</td><td>Real Madero</td><td class="time">16:30</td><td>Sabinal</td><td class="center">Vie</td></tr>
+        <tr><td>Pinochos</td><td>Imperial</td><td class="time">19:30</td><td>Estadio</td><td class="center">Jue</td></tr>
+        <tr><td>Jaguares</td><td>Villa Aldama</td><td class="time">16:30</td><td>Xaltepec</td><td class="center">Jue</td></tr>
+        <tr><td>C. Blanca</td><td>Águilas</td><td class="time">16:30</td><td>C. Blanca</td><td class="center">Vie</td></tr>
+        <tr><td>Real Jarocho</td><td>Unión Victoria</td><td class="time">16:30</td><td>Tenextepec</td><td class="center">Jue</td></tr>
+        <tr><td>Cerro de León</td><td>Molinos</td><td class="time">16:30</td><td>C. de León</td><td class="center">Vie</td></tr>
+        </tbody></table><div class="source-note">Jornada 1 · Del 7 al 9 de octubre de 2026</div></div>
+    </section>
+
+    <section class="slide" data-slide="9">
+      <div class="eyebrow">Liga Veteranos Perote · Temporada 2026-2027 · Jornada 1</div><h2 class="slide-title">ROL DE JUEGOS · GRUPO II</h2><p class="slide-sub">Segundo grupo de la jornada inaugural.</p>
+      <div class="table-wrap"><table class="schedule tight"><thead><tr><th>Local</th><th>Visitante</th><th>Hora</th><th>Campo</th><th>Día</th></tr></thead><tbody>
+        <tr><td>L. Negros</td><td>20 de Noviembre</td><td class="time">16:30</td><td>Totalco</td><td class="center">Mié</td></tr>
+        <tr><td>Real Vigas</td><td>Madero</td><td class="time">16:30</td><td>Las Vigas</td><td class="center">Vie</td></tr>
+        <tr><td>Agresivos</td><td>Alchichica</td><td class="time">16:30</td><td>Ferrocarrilero</td><td class="center">Jue</td></tr>
+        <tr><td>Boca Jr.</td><td>Tenextepec</td><td class="time">16:30</td><td>Tlalconteno</td><td class="center">Jue</td></tr>
+        <tr><td>Halcones</td><td>B. Juárez</td><td class="time">18:00</td><td>Estadio</td><td class="center">Jue</td></tr>
+        <tr><td>A. Nervo</td><td>Magisterio</td><td class="time">21:00</td><td>Estadio</td><td class="center">Jue</td></tr>
+        <tr><td>Vic. Puebla</td><td>Clásicos</td><td class="time">16:30</td><td>Vic. Puebla</td><td class="center">Jue</td></tr>
+        <tr><td>S. de Agua</td><td>Vikingos</td><td class="time">16:30</td><td>S. de Agua</td><td class="center">Vie</td></tr>
+        </tbody></table><div class="source-note">Jornada 1 · Del 7 al 9 de octubre de 2026</div></div>
+    </section>
+
+    <section class="slide" data-slide="10">
+      <div class="eyebrow">Hoy en Tercer Tiempo · 8 de la noche</div><h2 class="slide-title">NOS VEMOS A LAS 8</h2><p class="slide-sub">Primera A, Grandes Ligas y cotorreo con Don Elmer.</p>
+      <div class="infogrid">
+        <div class="infocard"><div class="lbl">Primera A</div><div class="val">¿Por qué no se jugó?</div><div class="sub">Te contamos el motivo por el que Everton vs Cuervos no se disputó, y cómo Perris derrotó al PSG de visita</div></div>
+        <div class="infocard"><div class="lbl">Grandes Ligas</div><div class="val">Series divisionales</div><div class="sub">Repasamos lo que dejaron las series divisionales de la MLB</div></div>
+        <div class="infocard"><div class="lbl">Cotorreo</div><div class="val">Don Elmer</div><div class="sub">Hoy en Tercer Tiempo · 8 de la noche</div></div>
+      </div>
+    </section>
+
+    <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </main>
+  <!-- Programa 69. Sin marcador (no proporcionado): Perris vs PSG (semi 1A) y semifinales de Segunda Fuerza (FLE y Cobras).
+       Supuestos: PSG local en la semi; Everton local vs Cuervos (no se jugó). Motivo del aplazamiento por confirmar.
+       Tabla PFE: transcrita de jornada 7.docx (6 JJ para todos; sin GF/GC/Dif). -->
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script src="../52/logos.js"></script>
+  <script src="../52/deck.js"></script>
+</body>
+</html>
