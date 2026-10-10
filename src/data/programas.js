@@ -252,6 +252,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 71,
+    titulo: 'Programa 71',
+    liga: 'Primera Fuerza Especial J-8 · Primera A semifinales · Segunda Fuerza finales de ida · Zona Norte y Sur vuelta',
+    decks: {
+      horarios: 'programas/71/horarios.html',
+      resultados: null,
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
