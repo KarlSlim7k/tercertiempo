@@ -262,6 +262,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 72,
+    titulo: 'Programa 72',
+    liga: 'Perris, primer finalista de la Primera A · Primera Fuerza Especial J-8 · Cuervos gana al Everton · Final de Segunda Fuerza',
+    decks: {
+      horarios: null,
+      resultados: 'programas/72/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
