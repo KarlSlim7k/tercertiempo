@@ -272,6 +272,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 73,
+    titulo: 'Programa 73',
+    liga: 'Primera Fuerza Especial J-9 · Primera A semifinal de vuelta · Finales Segunda Fuerza · Zonas Norte y Sur · Análisis J-9',
+    decks: {
+      horarios: 'programas/73/horarios.html',
+      resultados: 'programas/73/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
