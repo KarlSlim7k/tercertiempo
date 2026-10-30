@@ -282,6 +282,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 74,
+    titulo: 'Programa 74',
+    liga: 'Primera Fuerza Especial J-10 · Final de ida Primera A Cuervos vs Perris · Finales Segunda Fuerza A · Zona Norte',
+    decks: {
+      horarios: 'programas/74/horarios.html',
+      resultados: null,
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {
