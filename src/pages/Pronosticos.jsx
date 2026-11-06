@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AlertCircle, Check, Loader2, Tv } from 'lucide-react'
+import { AlertCircle, Check, Loader2, Trash2, Tv } from 'lucide-react'
 import { supabase } from '../lib/supabase.js'
 import { PUNTOS, evaluar, tablaDePuntos, tieneResultado } from '../lib/puntos.js'
 import {
@@ -132,7 +132,7 @@ function Estado({ estado, mensaje }) {
 }
 
 // Una fila de captura: escribes los dos marcadores y se guarda solo.
-function FilaCaptura({ indice, partido, guardado, sesion, ahora }) {
+function FilaCaptura({ indice, partido, guardado, sesion, ahora, onCambio }) {
   const cerrado = ahora >= new Date(partido.inicio)
   const [gl, setGl] = useState(guardado ? String(guardado.goles_local) : '')
   const [gv, setGv] = useState(guardado ? String(guardado.goles_visitante) : '')
@@ -154,6 +154,7 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora }) {
     let vigente = true
     setEstado('guardando')
     const t = setTimeout(async () => {
+      if (!sucio.current) return // se borró el pronóstico mientras esperaba
       const { error } = await supabase.rpc('guardar_pronostico', {
         p_jugador: sesion.jugador,
         p_pin: sesion.pin,
@@ -193,6 +194,30 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora }) {
     }
   }
 
+  // Borra el pronóstico de este partido (en la base de datos si ya estaba guardado) y limpia los campos.
+  async function borrar() {
+    sucio.current = false
+    if (guardado) {
+      setEstado('guardando')
+      const { error } = await supabase.rpc('borrar_pronostico', {
+        p_jugador: sesion.jugador,
+        p_pin: sesion.pin,
+        p_partido: partido.id,
+      })
+      if (error) {
+        setEstado('error')
+        setMensaje(error.message)
+        return
+      }
+      await onCambio()
+    }
+    setGl('')
+    setGv('')
+    setEstado('idle')
+    setMensaje('')
+  }
+
+  const hayAlgo = guardado || gl !== '' || gv !== ''
   const alSeleccionar = (e) => e.target.select()
   const claseCaja = 'w-12 rounded-sm py-2 text-center text-xl font-bold disabled:opacity-60'
 
@@ -249,6 +274,20 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora }) {
           <Estado estado={estado} mensaje={mensaje} />
         </span>
       </div>
+      {!cerrado && hayAlgo && (
+        <div className="mt-1.5 flex justify-center">
+          <button
+            type="button"
+            onClick={borrar}
+            disabled={estado === 'guardando'}
+            aria-label={`Borrar pronóstico de ${partido.local} contra ${partido.visitante}`}
+            className="inline-flex items-center gap-1 text-[11px] rounded-sm px-2 py-1 disabled:opacity-50"
+            style={{ color: 'var(--dim)', border: '1px solid var(--line)' }}
+          >
+            <Trash2 size={12} aria-hidden="true" /> Borrar
+          </button>
+        </div>
+      )}
       {estado === 'error' && mensaje && (
         <p role="alert" className="mt-1 text-xs text-center" style={{ color: 'var(--rose)' }}>
           {mensaje}
@@ -258,7 +297,11 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora }) {
   )
 }
 
-function Captura({ partidos, pronosticos, sesion, jugadores, ahora }) {
+function Captura({ partidos, pronosticos, sesion, jugadores, ahora, jornadaId, onCambio }) {
+  const [reinicio, setReinicio] = useState(0)
+  const [confirmando, setConfirmando] = useState(false)
+  const [borrando, setBorrando] = useState(false)
+  const [aviso, setAviso] = useState('')
   const propios = useMemo(
     () => new Map(pronosticos.filter((p) => p.jugador_id === sesion.jugador).map((p) => [p.partido_id, p])),
     [pronosticos, sesion.jugador],
@@ -266,6 +309,26 @@ function Captura({ partidos, pronosticos, sesion, jugadores, ahora }) {
   const abiertos = partidos.filter((p) => ahora < new Date(p.inicio))
   const capturados = abiertos.filter((p) => propios.has(p.id)).length
   const nombre = jugadores.find((j) => j.id === sesion.jugador)?.nombre
+
+  // Borra todos mis pronósticos de partidos que aún no empiezan, con confirmación en dos pasos.
+  async function borrarTodos() {
+    setBorrando(true)
+    setAviso('')
+    const { data, error } = await supabase.rpc('borrar_pronosticos_abiertos', {
+      p_jugador: sesion.jugador,
+      p_pin: sesion.pin,
+      p_jornada: jornadaId,
+    })
+    if (error) {
+      setAviso(error.message)
+    } else {
+      await onCambio()
+      setReinicio((n) => n + 1) // reinicia las filas para limpiar también lo que estaba a medio escribir
+      setAviso(data === 1 ? 'Se borró 1 pronóstico.' : `Se borraron ${data} pronósticos.`)
+    }
+    setConfirmando(false)
+    setBorrando(false)
+  }
 
   return (
     <section aria-label="Mis pronósticos" className="rounded-sm p-4" style={panel}>
@@ -287,15 +350,46 @@ function Captura({ partidos, pronosticos, sesion, jugadores, ahora }) {
       <ul className="mt-2">
         {partidos.map((p, i) => (
           <FilaCaptura
-            key={p.id}
+            key={`${p.id}-${reinicio}`}
             indice={i}
             partido={p}
             guardado={propios.get(p.id)}
             sesion={sesion}
             ahora={ahora}
+            onCambio={onCambio}
           />
         ))}
       </ul>
+
+      <div className="mt-3 pt-3 rule-top flex items-center justify-between gap-3 flex-wrap">
+        <span role="status" className="text-xs" style={{ color: 'var(--dim)' }}>
+          {aviso}
+        </span>
+        {confirmando ? (
+          <span className="flex items-center gap-2 text-xs" style={{ color: 'var(--cream)' }}>
+            ¿Borrar tus {capturados} pronósticos abiertos?
+            <button type="button" className="programa-card-btn" disabled={borrando} onClick={borrarTodos}>
+              {borrando ? 'Borrando…' : 'Sí, borrar'}
+            </button>
+            <button type="button" className="programa-card-btn" disabled={borrando} onClick={() => setConfirmando(false)}>
+              Cancelar
+            </button>
+          </span>
+        ) : (
+          capturados > 0 && (
+            <button
+              type="button"
+              className="programa-card-btn inline-flex items-center gap-2"
+              onClick={() => {
+                setAviso('')
+                setConfirmando(true)
+              }}
+            >
+              <Trash2 size={14} aria-hidden="true" /> Borrar todos mis pronósticos
+            </button>
+          )
+        )}
+      </div>
     </section>
   )
 }
@@ -420,7 +514,7 @@ function PartidoCard({ partido, jugadores, pronosticos, sesion, ahora }) {
 }
 
 export default function Pronosticos() {
-  const { jugadores, jornadas, partidos, pronosticos, estado, envivo } = useDatos()
+  const { jugadores, jornadas, partidos, pronosticos, estado, envivo, recargar } = useDatos()
   const [sesion, setSesion] = useState(leerSesion)
   const [jornadaId, setJornadaId] = useState(null)
   const ahora = useAhora(15000)
@@ -520,6 +614,8 @@ export default function Pronosticos() {
               sesion={sesion}
               jugadores={jugadores}
               ahora={ahora}
+              jornadaId={jornadaActual.id}
+              onCambio={recargar}
             />
           )}
 
