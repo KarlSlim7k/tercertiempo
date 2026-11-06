@@ -6,7 +6,10 @@ import { formatoCorto, useAhora, useDatos } from '../lib/usePronosticos.js'
 
 // Pantalla para el programa en vivo: solo lectura, sin menú, a pantalla completa y en tiempo real.
 // Se abre en /#/pronosticos/envivo (opcional: ?j=<id de jornada>).
-const COLUMNAS = '7.5em minmax(0,1fr) 6em minmax(0,1fr) repeat(3, 8.5em)'
+// Las columnas de equipos tienen un mínimo para que, en pantallas angostas, la tabla se desplace
+// horizontalmente en lugar de aplastar los nombres.
+const COLUMNAS = '7.5em minmax(9em,1fr) 6em minmax(9em,1fr) repeat(3, 8.5em)'
+const ANCHO_MIN = '63em'
 const RECIENTE_MS = 10000
 
 function colorCelda(r) {
@@ -122,15 +125,17 @@ export default function PronosticosEnVivo() {
       {jornada && (
         <section aria-label="Partidos y pronósticos" className="flex-1 min-h-0 flex flex-col gap-[0.7vh] overflow-x-auto">
           <div
-            className="grid items-end gap-[0.6em] text-[0.6em] uppercase tracking-[0.15em] px-[0.6em]"
-            style={{ gridTemplateColumns: COLUMNAS, color: 'var(--dimmer)' }}
+            className="grid items-end gap-[0.6em] uppercase tracking-[0.15em] px-[0.6em]"
+            style={{ gridTemplateColumns: COLUMNAS, minWidth: ANCHO_MIN, color: 'var(--dimmer)' }}
           >
-            <span>Hora</span>
+            {/* El tamaño de letra va en cada span, no en el contenedor: las columnas están en em y
+                deben medir lo mismo que en las filas. */}
+            <span className="text-[0.6em]">Hora</span>
             <span />
             <span />
             <span />
             {jugadores.map((j) => (
-              <span key={j.id} className="text-center font-bold" style={{ color: 'var(--cream)' }}>
+              <span key={j.id} className="text-center font-bold text-[0.6em]" style={{ color: 'var(--cream)' }}>
                 {j.nombre}
               </span>
             ))}
@@ -143,7 +148,7 @@ export default function PronosticosEnVivo() {
               <div
                 key={p.id}
                 className="flex-1 min-h-0 grid items-stretch gap-[0.6em] px-[0.6em] rounded-sm"
-                style={{ gridTemplateColumns: COLUMNAS, background: 'rgba(255,255,255,0.025)', borderBottom: '1px solid var(--line-soft)' }}
+                style={{ gridTemplateColumns: COLUMNAS, minWidth: ANCHO_MIN, background: 'rgba(255,255,255,0.025)', borderBottom: '1px solid var(--line-soft)' }}
               >
                 <div className="flex flex-col justify-center leading-tight">
                   <span className="text-[0.75em] font-bold" style={{ color: 'var(--cream)' }}>{formatoCorto(p.inicio)}</span>
