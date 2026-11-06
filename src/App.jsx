@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx'
 import Ligas from './pages/Ligas.jsx'
 import Resultados from './pages/Resultados.jsx'
 import Presentaciones from './pages/Presentaciones.jsx'
+import Pronosticos from './pages/Pronosticos.jsx'
 import PrimeraFuerzaEspecial from './pages/ligas/PrimeraFuerzaEspecial.jsx'
 import PrimeraA from './pages/ligas/PrimeraA.jsx'
 
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/ligas/primera-fuerza-especial" element={<PrimeraFuerzaEspecial />} />
         <Route path="/ligas/primera-a" element={<PrimeraA />} />
         <Route path="/resultados" element={<Resultados />} />
+        <Route path="/pronosticos" element={<Pronosticos />} />
         <Route path="/presentaciones" element={<Presentaciones />} />
       </Routes>
 

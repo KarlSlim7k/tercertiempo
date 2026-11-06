@@ -3,3 +3,5 @@ dist/
 .commandcode/
 *.log
 .DS_Store
+
+.env.local
