@@ -5,8 +5,8 @@
 //       de la jornada y los guarda. Sin jornada-id usa la jornada cuyo programa_resultados = <programa>.
 //   node scripts/pronosticos-admin.mjs jornada <archivo.json>
 //       Crea o actualiza una jornada y sus partidos (ver scripts/jornada-ejemplo.json).
-//   node scripts/pronosticos-admin.mjs reset-pin <jugador>
-//       Borra el PIN de un jugador para que cree uno nuevo (pedro | doctor | hector).
+//   node scripts/pronosticos-admin.mjs set-pin <jugador> <pin>
+//       Fija o cambia el PIN (4 dígitos) de un jugador (pedro | doctor | hector).
 //
 // Requiere SUPABASE_ADMIN_PIN en .env.local (o en el entorno).
 import { readFileSync, existsSync } from 'node:fs'
@@ -123,20 +123,20 @@ async function comandoJornada(archivo) {
   console.log(`Jornada ${jornada.id} cargada con ${jornada.partidos.length} partidos.`)
 }
 
-async function comandoResetPin(jugador) {
-  if (!jugador) throw new Error('Uso: reset-pin <jugador>')
-  const { error } = await supabase.rpc('admin_reset_pin', { p_admin_pin: adminPin, p_jugador: jugador })
+async function comandoSetPin(jugador, pin) {
+  if (!jugador || !pin) throw new Error('Uso: set-pin <jugador> <pin de 4 dígitos>')
+  const { error } = await supabase.rpc('admin_set_pin', { p_admin_pin: adminPin, p_jugador: jugador, p_pin: pin })
   if (error) throw error
-  console.log(`PIN de ${jugador} borrado. Podrá crear uno nuevo al entrar.`)
+  console.log(`PIN de ${jugador} actualizado.`)
 }
 
 const [, , comando, ...args] = process.argv
 try {
   if (comando === 'resultados') await comandoResultados(args[0], args[1])
   else if (comando === 'jornada') await comandoJornada(args[0])
-  else if (comando === 'reset-pin') await comandoResetPin(args[0])
+  else if (comando === 'set-pin') await comandoSetPin(args[0], args[1])
   else {
-    console.error('Comandos: resultados <programa> [jornada-id] | jornada <archivo.json> | reset-pin <jugador>')
+    console.error('Comandos: resultados <programa> [jornada-id] | jornada <archivo.json> | set-pin <jugador> <pin>')
     process.exitCode = 1
   }
 } catch (e) {
