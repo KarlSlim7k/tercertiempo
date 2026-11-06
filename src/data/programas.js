@@ -292,6 +292,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 75,
+    titulo: 'Programa 75',
+    liga: 'Primera Fuerza Especial J-10 y J-11 · Final vuelta Primera A Perris vs Cuervos · Tercer lugar · Final Zona Norte',
+    decks: {
+      horarios: 'programas/75/horarios.html',
+      resultados: 'programas/75/resultados.html',
+      analisis: null,
+    },
+  },
 ]
 
 export function ultimoPrograma() {

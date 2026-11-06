@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Programa 75 de Tercer Tiempo: rol de juegos del fin de semana. Primera Fuerza Especial Jornada 11, vuelta de la final de la Primera Fuerza A entre Perris F.C. y Cuervos, tercer lugar de la Primera A y final de la Zona Norte.">
+  <title>Programa 75 · Horarios · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../52/deck.css">
+  <style>
+    .grp{font:600 14px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:22px 0 10px}
+    .grp:first-child{margin-top:0}
+    .tag{display:inline-block;margin-left:10px;padding:4px 8px;border-radius:4px;background:var(--gold);color:var(--ink);font:700 11px/1 "Oswald",sans-serif;letter-spacing:.16em;vertical-align:middle}
+
+    /* Animaciones: se disparan cada vez que la diapositiva se activa */
+    @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes glow{from{background:rgba(230,181,74,.04)}to{background:rgba(230,181,74,.2)}}
+    .slide.active .eyebrow,.slide.active .slide-title,.slide.active .slide-sub{animation:rise .5s ease both}
+    .slide.active .slide-sub{animation-delay:.08s}
+    .slide.active tbody tr{animation:rise .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 110ms + 180ms)}
+    .slide.active tbody tr.hot td{animation:rise .5s cubic-bezier(.2,.8,.2,1) both,glow 1.4s ease-in-out 1s infinite alternate;animation-delay:calc(var(--i,0) * 110ms + 180ms),1s}
+    .slide.active .cover-item{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 120ms + 300ms)}
+    .slide.active .cover-kicker,.slide.active .cover h1,.slide.active .cover-copy,.slide.active .rule{animation:rise .6s ease both}
+    .slide.active .cover h1{animation-delay:.15s}
+    .slide.active .cover-copy{animation-delay:.35s}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 75</div><div class="title">Rol de Juegos del Fin de Semana</div><div class="sub">Primera Fuerza Especial J-11 · Final vuelta Primera Fuerza A · Tercer lugar · Zona Norte</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 5</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 75</div><h1>ROL DE JUEGOS<br><span>DEL FIN DE SEMANA</span></h1></div>
+        <div class="rule"></div><p class="cover-copy">Los nueve encuentros de la Jornada 11 de la Primera Fuerza Especial, la vuelta de la final de la Primera Fuerza A entre Perris F.C. y Cuervos, el tercer lugar de la Primera A y la final de la Zona Norte.</p>
+        <div class="cover-grid stagger"><div class="cover-item"><b>01</b>Primera Fuerza Especial · Jornada 11</div><div class="cover-item"><b>02</b>Primera Fuerza A · Final vuelta</div><div class="cover-item"><b>03</b>Primera Fuerza A · Tercer lugar</div><div class="cover-item"><b>04</b>Zona Norte · Final</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="1">
+      <div class="eyebrow">Primera Fuerza Especial · J-11</div><h2 class="slide-title">ROL DE JUEGOS · PARTE 1</h2><p class="slide-sub">Cinco encuentros con horario y sede de la Jornada 11.</p>
+      <div class="table-wrap"><table class="schedule"><thead><tr><th>Local</th><th>Visitante</th><th>Hora</th><th>Campo</th><th>Día</th></tr></thead><tbody>
+        <tr><td>Micheleros</td><td>Galaxi</td><td class="time">12:00</td><td>Bachiller</td><td class="center">Dom</td></tr>
+        <tr><td>Halcones</td><td>Dep. Guerrero</td><td class="time">8:00</td><td>Estadio</td><td class="center">Dom</td></tr>
+        <tr><td>Red Bull's</td><td>Manchester</td><td class="time">8:00</td><td>Sierra de Agua</td><td class="center">Dom</td></tr>
+        <tr><td>Arsenal</td><td>Liverpool</td><td class="time">8:00</td><td>Fco. I Madero</td><td class="center">Dom</td></tr>
+        <tr><td>Sabinal</td><td>Bad's</td><td class="time">10:00</td><td>Sabinal</td><td class="center">Dom</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <div class="eyebrow">Primera Fuerza Especial · J-11</div><h2 class="slide-title">ROL DE JUEGOS · PARTE 2</h2><p class="slide-sub">Cuatro encuentros más cierran la Jornada 11. El líder recibe al Real Victoria el sábado.</p>
+      <div class="table-wrap"><table class="schedule"><thead><tr><th>Local</th><th>Visitante</th><th>Hora</th><th>Campo</th><th>Día</th></tr></thead><tbody>
+        <tr class="hot"><td>Sor Juana</td><td>Real Victoria</td><td class="time">18:30</td><td>Estadio</td><td class="center">Sab</td></tr>
+        <tr><td>Juárez F.C.</td><td>Tiburones</td><td class="time">8:00</td><td>Benito Juárez</td><td class="center">Dom</td></tr>
+        <tr><td>Ranger's</td><td>Pinochos</td><td class="time">8:00</td><td>Libertad</td><td class="center">Dom</td></tr>
+        <tr><td>Molinos</td><td>Aferrados</td><td class="time">12:00</td><td>Estadio</td><td class="center">Dom</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <div class="eyebrow">Primera Fuerza A · Final · Vuelta</div><h2 class="slide-title">FINAL DE VUELTA · PRIMERA A</h2><p class="slide-sub">Perris F.C. recibe a Cuervos en la vuelta de la final de la Primera Fuerza A.</p>
+      <div class="table-wrap">
+        <div class="grp">Final · Primer lugar<span class="tag">VUELTA</span></div>
+        <table class="schedule"><thead><tr><th>Local</th><th>Visitante</th><th>Hora</th><th>Campo</th><th>Día</th></tr></thead><tbody>
+          <tr class="hot"><td>Perris F.C.</td><td>Cuervos</td><td class="time">10:00</td><td>Alchichica</td><td class="center">Dom</td></tr>
+        </tbody></table>
+        <div class="grp">Tercer lugar</div>
+        <table class="schedule"><thead><tr><th>Local</th><th>Visitante</th><th>Hora</th><th>Campo</th><th>Día</th></tr></thead><tbody>
+          <tr><td>Everton</td><td>P.S.G</td><td class="time">8:00</td><td>Alchichica</td><td class="center">Dom</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <div class="eyebrow">Segunda Fuerza · Zona Norte</div><h2 class="slide-title">ZONA NORTE · FINAL</h2><p class="slide-sub">Final por el primer lugar de la Zona Norte.</p>
+      <div class="table-wrap">
+        <div class="grp">Zona Norte · Final primer lugar</div>
+        <table class="schedule"><thead><tr><th>Local</th><th>Visitante</th><th>Hora</th><th>Campo</th><th>Día</th></tr></thead><tbody>
+          <tr class="hot"><td>Titanes S. A</td><td>Tigres</td><td class="time">14:00</td><td>Villa Aldama</td><td class="center">Dom</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </main>
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script>
+    // Índice de entrada para escalonar las animaciones de filas y tarjetas
+    document.querySelectorAll('tbody tr, .stagger > *').forEach((el) => {
+      el.style.setProperty('--i', [...el.parentElement.children].indexOf(el))
+    })
+  </script>
+  <script src="../52/logos.js"></script>
+  <script src="../52/deck.js"></script>
+</body>
+</html>
