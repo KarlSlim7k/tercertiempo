@@ -1,0 +1,19 @@
+{
+  "id": "pfe-j12",
+  "nombre": "Jornada 12",
+  "liga": "Primera Fuerza Especial",
+  "programa_resultados": 77,
+  "partidos": [
+    {
+      "orden": 1,
+      "local": "Equipo A",
+      "visitante": "Equipo B",
+      "pos_local": 1,
+      "pos_visitante": 2,
+      "pts_local": 25,
+      "pts_visitante": 19,
+      "inicio": "2026-11-15T08:00:00-06:00",
+      "campo": "Estadio"
+    }
+  ]
+}

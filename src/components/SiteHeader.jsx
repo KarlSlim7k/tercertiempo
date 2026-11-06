@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { to: '/', label: 'Inicio', end: true },
   { to: '/ligas', label: 'Ligas' },
   { to: '/resultados', label: 'Resultados' },
+  { to: '/pronosticos', label: 'Pronósticos' },
   { to: '/presentaciones', label: 'Presentaciones' },
 ]
 
