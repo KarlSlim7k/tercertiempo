@@ -1,147 +1,68 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { AlertCircle, Check, Loader2, Tv } from 'lucide-react'
 import { supabase } from '../lib/supabase.js'
 import { PUNTOS, evaluar, tablaDePuntos, tieneResultado } from '../lib/puntos.js'
-
-const SESION_KEY = 'tercertiempo-pronosticos-sesion'
-const ZONA = 'America/Mexico_City'
+import {
+  cuentaRegresiva,
+  formatoInicio,
+  guardarSesion,
+  leerSesion,
+  useAhora,
+  useDatos,
+} from '../lib/usePronosticos.js'
 
 const panel = { background: 'var(--panel)', border: '1px solid var(--line)' }
+const campo = { background: 'var(--ink)', border: '1px solid var(--line-2)', color: 'var(--cream)' }
 
-function leerSesion() {
-  try {
-    return JSON.parse(localStorage.getItem(SESION_KEY)) || null
-  } catch {
-    return null
-  }
-}
-
-function guardarSesion(sesion) {
-  try {
-    if (sesion) localStorage.setItem(SESION_KEY, JSON.stringify(sesion))
-    else localStorage.removeItem(SESION_KEY)
-  } catch {
-    /* almacenamiento no disponible: la sesión dura solo esta visita */
-  }
-}
-
-function formatoInicio(iso) {
-  return new Intl.DateTimeFormat('es-MX', {
-    weekday: 'short',
-    day: 'numeric',
-    month: 'short',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-    timeZone: ZONA,
-  }).format(new Date(iso))
-}
-
-function cuentaRegresiva(iso, ahora) {
-  const ms = new Date(iso) - ahora
-  if (ms <= 0) return null
-  const min = Math.floor(ms / 60000)
-  const d = Math.floor(min / 1440)
-  const h = Math.floor((min % 1440) / 60)
-  const m = min % 60
-  if (d > 0) return `${d} d ${h} h`
-  if (h > 0) return `${h} h ${m} min`
-  return `${m} min`
-}
-
-function useDatos() {
-  const [datos, setDatos] = useState({ jugadores: [], jornadas: [], partidos: [], pronosticos: [] })
-  const [estado, setEstado] = useState('cargando') // cargando | listo | error
-  const [envivo, setEnvivo] = useState(false)
-  const temporizador = useRef(null)
-
-  const cargar = useCallback(async () => {
-    const [j, jo, pa, pr] = await Promise.all([
-      supabase.from('jugadores').select('*').order('orden'),
-      supabase.from('jornadas').select('*').order('creada_en', { ascending: false }),
-      supabase.from('partidos').select('*').order('inicio').order('orden'),
-      supabase.from('pronosticos').select('*'),
-    ])
-    const fallo = [j, jo, pa, pr].find((r) => r.error)
-    if (fallo) {
-      setEstado('error')
-      return
-    }
-    setDatos({ jugadores: j.data, jornadas: jo.data, partidos: pa.data, pronosticos: pr.data })
-    setEstado('listo')
-  }, [])
-
-  useEffect(() => {
-    cargar()
-    const refrescar = () => {
-      clearTimeout(temporizador.current)
-      temporizador.current = setTimeout(cargar, 200)
-    }
-    const canal = supabase
-      .channel('pronosticos-en-vivo')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'pronosticos' }, refrescar)
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'partidos' }, refrescar)
-      .subscribe((s) => setEnvivo(s === 'SUBSCRIBED'))
-    return () => {
-      clearTimeout(temporizador.current)
-      supabase.removeChannel(canal)
-    }
-  }, [cargar])
-
-  return { ...datos, estado, envivo, recargar: cargar }
-}
-
+// Un paso: eliges tu nombre, escribes tu PIN de 4 dígitos y entra solo.
 function Acceso({ jugadores, sesion, onSesion }) {
   const [elegido, setElegido] = useState(null)
-  const [tienePin, setTienePin] = useState(null)
   const [pin, setPin] = useState('')
-  const [pin2, setPin2] = useState('')
   const [error, setError] = useState('')
   const [ocupado, setOcupado] = useState(false)
+  const entrada = useRef(null)
 
   const nombreSesion = jugadores.find((j) => j.id === sesion?.jugador)?.nombre
 
-  async function elegir(id) {
+  function elegir(id) {
     setElegido(id)
     setPin('')
-    setPin2('')
     setError('')
-    setTienePin(null)
-    const { data, error: err } = await supabase.rpc('jugador_tiene_pin', { p_jugador: id })
-    if (err) setError('No se pudo consultar. Intenta de nuevo.')
-    else setTienePin(Boolean(data))
+    setTimeout(() => entrada.current?.focus(), 0)
   }
 
-  async function entrar(e) {
-    e.preventDefault()
-    setError('')
+  async function probar(valor) {
     setOcupado(true)
-    try {
-      if (!tienePin) {
-        if (pin !== pin2) throw new Error('Los PIN no coinciden.')
-        const { error: err } = await supabase.rpc('establecer_pin', { p_jugador: elegido, p_pin: pin })
-        if (err) throw new Error(err.message)
-      } else {
-        const { data, error: err } = await supabase.rpc('verificar_pin', { p_jugador: elegido, p_pin: pin })
-        if (err) throw new Error('No se pudo verificar. Intenta de nuevo.')
-        if (!data) throw new Error('PIN incorrecto.')
-      }
-      onSesion({ jugador: elegido, pin })
-      setElegido(null)
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setOcupado(false)
+    setError('')
+    const { data, error: err } = await supabase.rpc('verificar_pin', { p_jugador: elegido, p_pin: valor })
+    setOcupado(false)
+    if (err || !data) {
+      setError(err ? 'No se pudo verificar. Intenta de nuevo.' : 'PIN incorrecto.')
+      setPin('')
+      setTimeout(() => entrada.current?.focus(), 0)
+      return
     }
+    onSesion({ jugador: elegido, pin: valor })
+    setElegido(null)
+    setPin('')
+  }
+
+  function cambiarPin(valor) {
+    if (ocupado) return
+    const limpio = valor.replace(/\D/g, '').slice(0, 4)
+    setPin(limpio)
+    if (limpio.length === 4) probar(limpio)
   }
 
   if (sesion) {
     return (
-      <div className="rounded-sm p-4 flex items-center justify-between gap-3 flex-wrap" style={panel}>
+      <div className="rounded-sm p-3 flex items-center justify-between gap-3 flex-wrap" style={panel}>
         <p className="text-sm" style={{ color: 'var(--cream)' }}>
-          Juegas como <strong style={{ color: 'var(--gold)' }}>{nombreSesion}</strong>. Captura tus marcadores abajo.
+          Juegas como <strong style={{ color: 'var(--gold)' }}>{nombreSesion}</strong>
         </p>
         <button type="button" className="programa-card-btn" onClick={() => onSesion(null)}>
-          Cerrar sesión
+          Cambiar de jugador
         </button>
       </div>
     )
@@ -150,7 +71,7 @@ function Acceso({ jugadores, sesion, onSesion }) {
   return (
     <div className="rounded-sm p-4" style={panel}>
       <p className="text-sm mb-3" style={{ color: 'var(--dim)' }}>
-        Elige quién eres para capturar tus pronósticos. Cualquiera puede ver los marcadores de todos.
+        ¿Quién eres? Elige tu nombre y escribe tu PIN.
       </p>
       <div className="flex flex-wrap gap-2">
         {jugadores.map((j) => (
@@ -167,44 +88,28 @@ function Acceso({ jugadores, sesion, onSesion }) {
         ))}
       </div>
 
-      {elegido && tienePin !== null && (
-        <form onSubmit={entrar} className="mt-4 flex flex-wrap items-end gap-3">
-          <label className="text-xs" style={{ color: 'var(--dim)' }}>
-            {tienePin ? 'Tu PIN' : 'Crea tu PIN (4 a 6 dígitos)'}
+      {elegido && (
+        <div className="mt-4">
+          <label className="text-xs block" style={{ color: 'var(--dim)' }}>
+            PIN de 4 dígitos
             <input
+              ref={entrada}
               type="password"
               inputMode="numeric"
-              autoComplete={tienePin ? 'current-password' : 'new-password'}
-              pattern="[0-9]{4,6}"
-              maxLength={6}
-              required
+              autoComplete="one-time-code"
+              maxLength={4}
               value={pin}
-              onChange={(e) => setPin(e.target.value.replace(/\D/g, ''))}
-              className="block mt-1 w-32 rounded-sm px-3 py-2 text-base"
-              style={{ background: 'var(--ink)', border: '1px solid var(--line-2)', color: 'var(--cream)' }}
+              onChange={(e) => cambiarPin(e.target.value)}
+              className="block mt-1 w-32 rounded-sm px-3 py-2 text-xl text-center tracking-[0.5em]"
+              style={campo}
             />
           </label>
-          {!tienePin && (
-            <label className="text-xs" style={{ color: 'var(--dim)' }}>
-              Repite el PIN
-              <input
-                type="password"
-                inputMode="numeric"
-                autoComplete="new-password"
-                pattern="[0-9]{4,6}"
-                maxLength={6}
-                required
-                value={pin2}
-                onChange={(e) => setPin2(e.target.value.replace(/\D/g, ''))}
-                className="block mt-1 w-32 rounded-sm px-3 py-2 text-base"
-                style={{ background: 'var(--ink)', border: '1px solid var(--line-2)', color: 'var(--cream)' }}
-              />
-            </label>
+          {ocupado && (
+            <p className="mt-2 text-xs" style={{ color: 'var(--dim)' }}>
+              Verificando…
+            </p>
           )}
-          <button type="submit" disabled={ocupado} className="programa-card-btn">
-            {ocupado ? 'Verificando…' : tienePin ? 'Entrar' : 'Crear PIN y entrar'}
-          </button>
-        </form>
+        </div>
       )}
       {error && (
         <p role="alert" className="mt-3 text-sm" style={{ color: 'var(--rose)' }}>
@@ -212,6 +117,186 @@ function Acceso({ jugadores, sesion, onSesion }) {
         </p>
       )}
     </div>
+  )
+}
+
+function Estado({ estado, mensaje }) {
+  if (estado === 'guardando') {
+    return <Loader2 size={18} className="animate-spin" style={{ color: 'var(--dim)' }} aria-label="Guardando" />
+  }
+  if (estado === 'ok') return <Check size={18} style={{ color: 'var(--green)' }} aria-label="Guardado" />
+  if (estado === 'error') {
+    return <AlertCircle size={18} style={{ color: 'var(--rose)' }} aria-label={mensaje || 'Error al guardar'} />
+  }
+  return null
+}
+
+// Una fila de captura: escribes los dos marcadores y se guarda solo.
+function FilaCaptura({ indice, partido, guardado, sesion, ahora }) {
+  const cerrado = ahora >= new Date(partido.inicio)
+  const [gl, setGl] = useState(guardado ? String(guardado.goles_local) : '')
+  const [gv, setGv] = useState(guardado ? String(guardado.goles_visitante) : '')
+  const [estado, setEstado] = useState('idle')
+  const [mensaje, setMensaje] = useState('')
+  const sucio = useRef(false)
+  const refGv = useRef(null)
+
+  // Si el pronóstico cambió desde otro dispositivo, se refleja mientras no estés escribiendo.
+  useEffect(() => {
+    if (sucio.current) return
+    setGl(guardado ? String(guardado.goles_local) : '')
+    setGv(guardado ? String(guardado.goles_visitante) : '')
+  }, [guardado?.goles_local, guardado?.goles_visitante]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Autoguardado: medio segundo después de que ambos marcadores están escritos.
+  useEffect(() => {
+    if (!sucio.current || gl === '' || gv === '' || cerrado) return
+    let vigente = true
+    setEstado('guardando')
+    const t = setTimeout(async () => {
+      const { error } = await supabase.rpc('guardar_pronostico', {
+        p_jugador: sesion.jugador,
+        p_pin: sesion.pin,
+        p_partido: partido.id,
+        p_gl: Number(gl),
+        p_gv: Number(gv),
+      })
+      if (!vigente) return
+      if (error) {
+        setEstado('error')
+        setMensaje(error.message)
+      } else {
+        sucio.current = false
+        setEstado('ok')
+        setMensaje('')
+      }
+    }, 500)
+    return () => {
+      vigente = false
+      clearTimeout(t)
+    }
+  }, [gl, gv]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  function cambiarLocal(valor) {
+    sucio.current = true
+    const d = valor.replace(/\D/g, '').slice(0, 2)
+    setGl(d)
+    if (d !== '') refGv.current?.focus()
+  }
+
+  function cambiarVisitante(valor) {
+    sucio.current = true
+    const d = valor.replace(/\D/g, '').slice(0, 2)
+    setGv(d)
+    if (d !== '') {
+      document.querySelector(`[data-cap="${indice + 1}-gl"]:not(:disabled)`)?.focus()
+    }
+  }
+
+  const alSeleccionar = (e) => e.target.select()
+  const claseCaja = 'w-12 rounded-sm py-2 text-center text-xl font-bold disabled:opacity-60'
+
+  return (
+    <li className="py-3 rule-bottom last:border-b-0">
+      <p className="text-[11px] mb-1.5 flex justify-between gap-2" style={{ color: 'var(--dimmer)' }}>
+        <span>
+          {formatoInicio(partido.inicio)} · {partido.campo}
+        </span>
+        <span style={{ color: cerrado ? 'var(--rose)' : 'var(--gold)' }}>
+          {cerrado ? 'Cerrado' : `Cierra en ${cuentaRegresiva(partido.inicio, ahora)}`}
+        </span>
+      </p>
+      <div className="grid grid-cols-[1fr_auto_1fr_1.5rem] items-center gap-2">
+        <span className="text-right text-sm font-bold leading-tight" style={{ color: 'var(--cream)' }}>
+          {partido.local}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <input
+            data-cap={`${indice}-gl`}
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            maxLength={2}
+            disabled={cerrado}
+            aria-label={`Goles de ${partido.local}`}
+            value={gl}
+            onFocus={alSeleccionar}
+            onChange={(e) => cambiarLocal(e.target.value)}
+            className={claseCaja}
+            style={campo}
+          />
+          <span style={{ color: 'var(--dimmer)' }}>–</span>
+          <input
+            ref={refGv}
+            data-cap={`${indice}-gv`}
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            maxLength={2}
+            disabled={cerrado}
+            aria-label={`Goles de ${partido.visitante}`}
+            value={gv}
+            onFocus={alSeleccionar}
+            onChange={(e) => cambiarVisitante(e.target.value)}
+            className={claseCaja}
+            style={campo}
+          />
+        </span>
+        <span className="text-left text-sm font-bold leading-tight" style={{ color: 'var(--cream)' }}>
+          {partido.visitante}
+        </span>
+        <span role="status" className="flex justify-center">
+          <Estado estado={estado} mensaje={mensaje} />
+        </span>
+      </div>
+      {estado === 'error' && mensaje && (
+        <p role="alert" className="mt-1 text-xs text-center" style={{ color: 'var(--rose)' }}>
+          {mensaje}
+        </p>
+      )}
+    </li>
+  )
+}
+
+function Captura({ partidos, pronosticos, sesion, jugadores, ahora }) {
+  const propios = useMemo(
+    () => new Map(pronosticos.filter((p) => p.jugador_id === sesion.jugador).map((p) => [p.partido_id, p])),
+    [pronosticos, sesion.jugador],
+  )
+  const abiertos = partidos.filter((p) => ahora < new Date(p.inicio))
+  const capturados = abiertos.filter((p) => propios.has(p.id)).length
+  const nombre = jugadores.find((j) => j.id === sesion.jugador)?.nombre
+
+  return (
+    <section aria-label="Mis pronósticos" className="rounded-sm p-4" style={panel}>
+      <div className="flex items-baseline justify-between gap-3 flex-wrap">
+        <h2 className="font-serif text-xl font-bold" style={{ color: 'var(--cream)' }}>
+          Pronósticos de {nombre}
+        </h2>
+        <span className="text-xs" style={{ color: abiertos.length === capturados ? 'var(--green)' : 'var(--dim)' }}>
+          {abiertos.length === 0
+            ? 'Jornada cerrada'
+            : abiertos.length === capturados
+              ? 'Listo: capturaste todos los partidos abiertos'
+              : `Llevas ${capturados} de ${abiertos.length} partidos abiertos`}
+        </span>
+      </div>
+      <p className="mt-1 text-xs" style={{ color: 'var(--dimmer)' }}>
+        Escribe el marcador y se guarda solo. Puedes cambiarlo hasta que empiece el partido.
+      </p>
+      <ul className="mt-2">
+        {partidos.map((p, i) => (
+          <FilaCaptura
+            key={p.id}
+            indice={i}
+            partido={p}
+            guardado={propios.get(p.id)}
+            sesion={sesion}
+            ahora={ahora}
+          />
+        ))}
+      </ul>
+    </section>
   )
 }
 
@@ -255,26 +340,9 @@ function Tabla({ filas, jornadaNombre }) {
   )
 }
 
-function MarcadorInput({ valor, onChange, etiqueta }) {
-  return (
-    <input
-      type="number"
-      inputMode="numeric"
-      min={0}
-      max={99}
-      aria-label={etiqueta}
-      value={valor}
-      onChange={(e) => onChange(e.target.value.slice(0, 2))}
-      className="w-14 rounded-sm px-2 py-1.5 text-center text-base"
-      style={{ background: 'var(--ink)', border: '1px solid var(--line-2)', color: 'var(--cream)' }}
-    />
-  )
-}
-
-function PartidoCard({ partido, jugadores, pronosticos, sesion, drafts, onDraft, errores, ahora }) {
+function PartidoCard({ partido, jugadores, pronosticos, sesion, ahora }) {
   const cerrado = ahora >= new Date(partido.inicio)
   const final = tieneResultado(partido)
-  const restante = cuentaRegresiva(partido.inicio, ahora)
   const porJugador = new Map(pronosticos.filter((p) => p.partido_id === partido.id).map((p) => [p.jugador_id, p]))
 
   return (
@@ -287,7 +355,7 @@ function PartidoCard({ partido, jugadores, pronosticos, sesion, drafts, onDraft,
           className="font-disp uppercase tracking-[0.15em]"
           style={{ color: final ? 'var(--green)' : cerrado ? 'var(--rose)' : 'var(--gold)' }}
         >
-          {final ? 'Final' : cerrado ? 'Cerrado' : `Cierra en ${restante}`}
+          {final ? 'Final' : cerrado ? 'Cerrado' : `Cierra en ${cuentaRegresiva(partido.inicio, ahora)}`}
         </span>
       </div>
 
@@ -315,33 +383,14 @@ function PartidoCard({ partido, jugadores, pronosticos, sesion, drafts, onDraft,
       <ul className="mt-4 rule-top">
         {jugadores.map((j) => {
           const guardado = porJugador.get(j.id)
-          const propio = sesion?.jugador === j.id
-          const editable = propio && !cerrado
-          const draft = drafts[partido.id]
-          const gl = draft ? draft.gl : (guardado?.goles_local ?? '')
-          const gv = draft ? draft.gv : (guardado?.goles_visitante ?? '')
           const r = evaluar(guardado, partido)
           return (
             <li key={j.id} className="flex items-center justify-between gap-3 py-2 rule-bottom last:border-b-0">
-              <span className="text-sm" style={{ color: propio ? 'var(--gold)' : 'var(--cream)' }}>
+              <span className="text-sm" style={{ color: sesion?.jugador === j.id ? 'var(--gold)' : 'var(--cream)' }}>
                 {j.nombre}
               </span>
               <span className="flex items-center gap-3">
-                {editable ? (
-                  <span className="flex items-center gap-1.5">
-                    <MarcadorInput
-                      valor={gl}
-                      etiqueta={`Goles de ${partido.local}`}
-                      onChange={(v) => onDraft(partido.id, { gl: v, gv })}
-                    />
-                    <span style={{ color: 'var(--dimmer)' }}>–</span>
-                    <MarcadorInput
-                      valor={gv}
-                      etiqueta={`Goles de ${partido.visitante}`}
-                      onChange={(v) => onDraft(partido.id, { gl, gv: v })}
-                    />
-                  </span>
-                ) : guardado ? (
+                {guardado ? (
                   <span className="font-bold" style={{ color: 'var(--cream)' }}>
                     {guardado.goles_local} – {guardado.goles_visitante}
                   </span>
@@ -366,29 +415,15 @@ function PartidoCard({ partido, jugadores, pronosticos, sesion, drafts, onDraft,
           )
         })}
       </ul>
-      {errores[partido.id] && (
-        <p role="alert" className="mt-2 text-xs" style={{ color: 'var(--rose)' }}>
-          {errores[partido.id]}
-        </p>
-      )}
     </article>
   )
 }
 
 export default function Pronosticos() {
-  const { jugadores, jornadas, partidos, pronosticos, estado, envivo, recargar } = useDatos()
+  const { jugadores, jornadas, partidos, pronosticos, estado, envivo } = useDatos()
   const [sesion, setSesion] = useState(leerSesion)
   const [jornadaId, setJornadaId] = useState(null)
-  const [drafts, setDrafts] = useState({})
-  const [errores, setErrores] = useState({})
-  const [guardando, setGuardando] = useState(false)
-  const [mensaje, setMensaje] = useState('')
-  const [ahora, setAhora] = useState(() => new Date())
-
-  useEffect(() => {
-    const t = setInterval(() => setAhora(new Date()), 15000)
-    return () => clearInterval(t)
-  }, [])
+  const ahora = useAhora(15000)
 
   // Valida la sesión guardada (por si cambió el PIN) al abrir la página.
   useEffect(() => {
@@ -418,58 +453,9 @@ export default function Pronosticos() {
   function cambiarSesion(nueva) {
     guardarSesion(nueva)
     setSesion(nueva)
-    setDrafts({})
-    setErrores({})
-    setMensaje('')
   }
 
-  function cambiarDraft(partidoId, valor) {
-    setDrafts((d) => ({ ...d, [partidoId]: valor }))
-    setMensaje('')
-  }
-
-  const pendientes = useMemo(() => {
-    if (!sesion) return []
-    return partidosJornada.filter((p) => {
-      const d = drafts[p.id]
-      if (!d || ahora >= new Date(p.inicio)) return false
-      if (d.gl === '' || d.gv === '') return false
-      const g = pronosticos.find((x) => x.partido_id === p.id && x.jugador_id === sesion.jugador)
-      return !g || g.goles_local !== Number(d.gl) || g.goles_visitante !== Number(d.gv)
-    })
-  }, [drafts, partidosJornada, pronosticos, sesion, ahora])
-
-  async function guardarTodo() {
-    setGuardando(true)
-    setMensaje('')
-    const nuevosErrores = {}
-    let guardados = 0
-    for (const p of pendientes) {
-      const d = drafts[p.id]
-      const { error } = await supabase.rpc('guardar_pronostico', {
-        p_jugador: sesion.jugador,
-        p_pin: sesion.pin,
-        p_partido: p.id,
-        p_gl: Number(d.gl),
-        p_gv: Number(d.gv),
-      })
-      if (error) nuevosErrores[p.id] = error.message
-      else guardados += 1
-    }
-    setErrores(nuevosErrores)
-    await recargar()
-    setDrafts((d) => {
-      const resto = { ...d }
-      for (const p of pendientes) if (!nuevosErrores[p.id]) delete resto[p.id]
-      return resto
-    })
-    setMensaje(
-      guardados > 0
-        ? `Guardado${guardados > 1 ? 's' : ''} ${guardados} pronóstico${guardados > 1 ? 's' : ''}.`
-        : 'No se guardó ningún pronóstico.',
-    )
-    setGuardando(false)
-  }
+  const enlaceVivo = jornadaActual ? `/pronosticos/envivo?j=${jornadaActual.id}` : '/pronosticos/envivo'
 
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
@@ -514,7 +500,7 @@ export default function Pronosticos() {
                 value={jornadaActual.id}
                 onChange={(e) => setJornadaId(e.target.value)}
                 className="block mt-1 rounded-sm px-3 py-2 text-base"
-                style={{ background: 'var(--ink)', border: '1px solid var(--line-2)', color: 'var(--cream)' }}
+                style={campo}
               >
                 {jornadas.map((j) => (
                   <option key={j.id} value={j.id}>
@@ -527,29 +513,26 @@ export default function Pronosticos() {
 
           <Acceso jugadores={jugadores} sesion={sesion} onSesion={cambiarSesion} />
 
+          {sesion && (
+            <Captura
+              partidos={partidosJornada}
+              pronosticos={pronosticos}
+              sesion={sesion}
+              jugadores={jugadores}
+              ahora={ahora}
+            />
+          )}
+
           <Tabla filas={filas} jornadaNombre={jornadaActual.nombre} />
 
-          {sesion && (
-            <div
-              className="sticky top-[4.5rem] z-10 rounded-sm p-3 flex items-center justify-between gap-3 flex-wrap"
-              style={{ background: 'var(--ink-2)', border: '1px solid var(--line-2)' }}
-            >
-              <span role="status" className="text-sm" style={{ color: 'var(--dim)' }}>
-                {mensaje ||
-                  (pendientes.length > 0
-                    ? `${pendientes.length} cambio${pendientes.length > 1 ? 's' : ''} sin guardar`
-                    : 'Escribe tus marcadores y guarda.')}
-              </span>
-              <button
-                type="button"
-                className="programa-card-btn"
-                disabled={guardando || pendientes.length === 0}
-                onClick={guardarTodo}
-              >
-                {guardando ? 'Guardando…' : 'Guardar pronósticos'}
-              </button>
-            </div>
-          )}
+          <div className="flex items-center justify-between gap-3 flex-wrap">
+            <h2 className="font-serif text-xl font-bold" style={{ color: 'var(--cream)' }}>
+              Todos los pronósticos
+            </h2>
+            <Link to={enlaceVivo} className="programa-card-btn inline-flex items-center gap-2">
+              <Tv size={16} aria-hidden="true" /> Pantalla para el programa
+            </Link>
+          </div>
 
           <section aria-label="Partidos" className="grid gap-4">
             {partidosJornada.map((p) => (
@@ -559,9 +542,6 @@ export default function Pronosticos() {
                 jugadores={jugadores}
                 pronosticos={pronosticos}
                 sesion={sesion}
-                drafts={drafts}
-                onDraft={cambiarDraft}
-                errores={errores}
                 ahora={ahora}
               />
             ))}
