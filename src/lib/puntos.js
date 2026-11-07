@@ -1,23 +1,42 @@
 // Reglas de puntos del juego de pronósticos.
+// Un pronóstico es un marcador exacto o solo un resultado (L = gana local, E = empate, V = gana visitante).
 // - Acertar el resultado (gana local, empate o gana visitante): 1 punto.
-// - Acertar además el marcador exacto: +2 puntos (3 en total).
+// - Acertar además el marcador exacto: +2 puntos (3 en total). Solo se puede si pronosticaste marcador.
 export const PUNTOS = { resultado: 1, exacto: 2 }
 
-const signo = (a, b) => Math.sign(a - b)
+const letra = (a, b) => (a > b ? 'L' : a < b ? 'V' : 'E')
 
 export function tieneResultado(partido) {
   return partido.goles_local != null && partido.goles_visitante != null
+}
+
+// ¿El pronóstico trae marcador exacto (y no solo el resultado)?
+export function esMarcador(pronostico) {
+  return pronostico.goles_local != null && pronostico.goles_visitante != null
+}
+
+// 'L' | 'E' | 'V' de un pronóstico, venga de un marcador o de un resultado directo.
+export function resultadoDe(pronostico) {
+  return esMarcador(pronostico)
+    ? letra(pronostico.goles_local, pronostico.goles_visitante)
+    : pronostico.resultado
+}
+
+// Texto corto del resultado pronosticado: "Gana Pachuca", "Empate".
+export function textoResultado(letraRes, partido) {
+  if (letraRes === 'L') return `Gana ${partido.local}`
+  if (letraRes === 'V') return `Gana ${partido.visitante}`
+  return 'Empate'
 }
 
 // Devuelve { pts, acierto, exacto } o null si no hay pronóstico o el partido no tiene resultado.
 export function evaluar(pronostico, partido) {
   if (!pronostico || !tieneResultado(partido)) return null
   const exacto =
+    esMarcador(pronostico) &&
     pronostico.goles_local === partido.goles_local &&
     pronostico.goles_visitante === partido.goles_visitante
-  const acierto =
-    signo(pronostico.goles_local, pronostico.goles_visitante) ===
-    signo(partido.goles_local, partido.goles_visitante)
+  const acierto = resultadoDe(pronostico) === letra(partido.goles_local, partido.goles_visitante)
   const pts = (acierto ? PUNTOS.resultado : 0) + (exacto ? PUNTOS.exacto : 0)
   return { pts, acierto, exacto }
 }

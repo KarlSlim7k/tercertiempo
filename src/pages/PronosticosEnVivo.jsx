@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import logoTercerTiempo from '../assets/optimized/logo-tercer-tiempo.png'
-import { PUNTOS, evaluar, tablaDePuntos, tieneResultado } from '../lib/puntos.js'
+import { PUNTOS, esMarcador, evaluar, resultadoDe, tablaDePuntos, tieneResultado } from '../lib/puntos.js'
 import { formatoCorto, useAhora, useDatos } from '../lib/usePronosticos.js'
 
 // Pantalla para el programa en vivo: solo lectura, sin menú, a pantalla completa y en tiempo real.
@@ -19,6 +19,17 @@ function colorCelda(r) {
   return { background: 'rgba(255,118,118,0.10)', color: 'var(--dimmer)' }
 }
 
+// Pronóstico de solo resultado: "Empate" o "Gana" + el equipo.
+function ResultadoSolo({ letra, partido }) {
+  if (letra === 'E') return <span className="font-bold text-[1.1em]">Empate</span>
+  return (
+    <span className="flex flex-col items-center max-w-full px-[0.3em]">
+      <span className="text-[0.55em] uppercase tracking-wider opacity-80">Gana</span>
+      <span className="font-bold text-[1em] truncate max-w-full">{letra === 'L' ? partido.local : partido.visitante}</span>
+    </span>
+  )
+}
+
 function Celda({ pronostico, partido, ahora }) {
   const r = evaluar(pronostico, partido)
   const reciente = pronostico && ahora - new Date(pronostico.actualizado_en) < RECIENTE_MS
@@ -28,9 +39,13 @@ function Celda({ pronostico, partido, ahora }) {
       className={`flex-1 rounded-sm flex flex-col items-center justify-center leading-none ${reciente ? 'pick-flash' : ''}`}
       style={colorCelda(r)}
     >
-      <span className="font-bold text-[1.5em]">
-        {pronostico ? `${pronostico.goles_local} – ${pronostico.goles_visitante}` : '—'}
-      </span>
+      {!pronostico ? (
+        <span className="font-bold text-[1.5em]">—</span>
+      ) : esMarcador(pronostico) ? (
+        <span className="font-bold text-[1.5em]">{`${pronostico.goles_local} – ${pronostico.goles_visitante}`}</span>
+      ) : (
+        <ResultadoSolo letra={resultadoDe(pronostico)} partido={partido} />
+      )}
       {r && <span className="text-[0.6em] mt-[0.25em] opacity-90">+{r.pts}</span>}
     </div>
   )

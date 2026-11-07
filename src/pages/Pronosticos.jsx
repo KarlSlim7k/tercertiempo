@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AlertCircle, Check, Loader2, Trash2, Tv } from 'lucide-react'
 import { supabase } from '../lib/supabase.js'
-import { PUNTOS, evaluar, tablaDePuntos, tieneResultado } from '../lib/puntos.js'
+import { PUNTOS, esMarcador, evaluar, resultadoDe, tablaDePuntos, textoResultado, tieneResultado } from '../lib/puntos.js'
 import {
   cuentaRegresiva,
   formatoInicio,
@@ -134,8 +134,10 @@ function Estado({ estado, mensaje }) {
 // Una fila de captura: escribes los dos marcadores y se guarda solo.
 function FilaCaptura({ indice, partido, guardado, sesion, ahora, onCambio }) {
   const cerrado = ahora >= new Date(partido.inicio)
-  const [gl, setGl] = useState(guardado ? String(guardado.goles_local) : '')
-  const [gv, setGv] = useState(guardado ? String(guardado.goles_visitante) : '')
+  const [gl, setGl] = useState(guardado && esMarcador(guardado) ? String(guardado.goles_local) : '')
+  const [gv, setGv] = useState(guardado && esMarcador(guardado) ? String(guardado.goles_visitante) : '')
+  // Resultado elegido sin marcador: 'L' | 'E' | 'V' | ''.
+  const [res, setRes] = useState(guardado && !esMarcador(guardado) ? guardado.resultado : '')
   const [estado, setEstado] = useState('idle')
   const [mensaje, setMensaje] = useState('')
   const sucio = useRef(false)
@@ -144,9 +146,11 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora, onCambio }) {
   // Si el pronóstico cambió desde otro dispositivo, se refleja mientras no estés escribiendo.
   useEffect(() => {
     if (sucio.current) return
-    setGl(guardado ? String(guardado.goles_local) : '')
-    setGv(guardado ? String(guardado.goles_visitante) : '')
-  }, [guardado?.goles_local, guardado?.goles_visitante]) // eslint-disable-line react-hooks/exhaustive-deps
+    const marcador = guardado && esMarcador(guardado)
+    setGl(marcador ? String(guardado.goles_local) : '')
+    setGv(marcador ? String(guardado.goles_visitante) : '')
+    setRes(guardado && !marcador ? guardado.resultado : '')
+  }, [guardado?.goles_local, guardado?.goles_visitante, guardado?.resultado]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Autoguardado: medio segundo después de que ambos marcadores están escritos.
   useEffect(() => {
@@ -178,8 +182,32 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora, onCambio }) {
     }
   }, [gl, gv]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Guarda solo el resultado (gana local / empate / gana visitante) y limpia el marcador.
+  async function elegirResultado(r) {
+    if (cerrado || (res === r && !sucio.current)) return
+    sucio.current = false // cancela un marcador a medio escribir
+    setGl('')
+    setGv('')
+    setRes(r)
+    setEstado('guardando')
+    const { error } = await supabase.rpc('guardar_pronostico_resultado', {
+      p_jugador: sesion.jugador,
+      p_pin: sesion.pin,
+      p_partido: partido.id,
+      p_resultado: r,
+    })
+    if (error) {
+      setEstado('error')
+      setMensaje(error.message)
+    } else {
+      setEstado('ok')
+      setMensaje('')
+    }
+  }
+
   function cambiarLocal(valor) {
     sucio.current = true
+    setRes('')
     const d = valor.replace(/\D/g, '').slice(0, 2)
     setGl(d)
     if (d !== '') refGv.current?.focus()
@@ -187,6 +215,7 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora, onCambio }) {
 
   function cambiarVisitante(valor) {
     sucio.current = true
+    setRes('')
     const d = valor.replace(/\D/g, '').slice(0, 2)
     setGv(d)
     if (d !== '') {
@@ -213,11 +242,12 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora, onCambio }) {
     }
     setGl('')
     setGv('')
+    setRes('')
     setEstado('idle')
     setMensaje('')
   }
 
-  const hayAlgo = guardado || gl !== '' || gv !== ''
+  const hayAlgo = guardado || gl !== '' || gv !== '' || res !== ''
   const alSeleccionar = (e) => e.target.select()
   const claseCaja = 'w-12 rounded-sm py-2 text-center text-xl font-bold disabled:opacity-60'
 
@@ -273,6 +303,29 @@ function FilaCaptura({ indice, partido, guardado, sesion, ahora, onCambio }) {
         <span role="status" className="flex justify-center">
           <Estado estado={estado} mensaje={mensaje} />
         </span>
+
+        {[
+          ['L', 'Gana', `Gana ${partido.local}`, 'justify-self-end'],
+          ['E', 'Empate', 'Empate', 'justify-self-center'],
+          ['V', 'Gana', `Gana ${partido.visitante}`, 'justify-self-start'],
+        ].map(([clave, etiqueta, completo, clase], i) => (
+          <button
+            key={clave}
+            type="button"
+            disabled={cerrado}
+            aria-pressed={res === clave}
+            aria-label={`${completo} (solo resultado)`}
+            onClick={() => elegirResultado(clave)}
+            className={`${clase} ${i === 2 ? 'col-start-3' : ''} text-[11px] rounded-sm px-3 py-1 disabled:opacity-60`}
+            style={
+              res === clave
+                ? { background: 'var(--gold-soft)', color: 'var(--gold)', border: '1px solid var(--gold)' }
+                : { color: 'var(--dim)', border: '1px solid var(--line)' }
+            }
+          >
+            {etiqueta}
+          </button>
+        ))}
       </div>
       {!cerrado && hayAlgo && (
         <div className="mt-1.5 flex justify-center">
@@ -345,7 +398,7 @@ function Captura({ partidos, pronosticos, sesion, jugadores, ahora, jornadaId, o
         </span>
       </div>
       <p className="mt-1 text-xs" style={{ color: 'var(--dimmer)' }}>
-        Escribe el marcador y se guarda solo. Puedes cambiarlo hasta que empiece el partido.
+        Escribe el marcador exacto o elige solo Gana / Empate / Gana. Se guarda solo y puedes cambiarlo hasta que empiece el partido.
       </p>
       <ul className="mt-2">
         {partidos.map((p, i) => (
@@ -428,7 +481,7 @@ function Tabla({ filas, jornadaNombre }) {
       </div>
       <p className="mt-3 text-xs" style={{ color: 'var(--dimmer)' }}>
         Acertar quién gana o el empate vale {PUNTOS.resultado} pt; clavar el marcador exacto suma {PUNTOS.exacto} más
-        ({PUNTOS.resultado + PUNTOS.exacto} en total).
+        ({PUNTOS.resultado + PUNTOS.exacto} en total, solo si pronosticaste marcador).
       </p>
     </section>
   )
@@ -486,7 +539,9 @@ function PartidoCard({ partido, jugadores, pronosticos, sesion, ahora }) {
               <span className="flex items-center gap-3">
                 {guardado ? (
                   <span className="font-bold" style={{ color: 'var(--cream)' }}>
-                    {guardado.goles_local} – {guardado.goles_visitante}
+                    {esMarcador(guardado)
+                      ? `${guardado.goles_local} – ${guardado.goles_visitante}`
+                      : textoResultado(resultadoDe(guardado), partido)}
                   </span>
                 ) : (
                   <span className="text-sm" style={{ color: 'var(--dimmer)' }}>
