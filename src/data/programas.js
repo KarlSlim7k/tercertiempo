@@ -305,7 +305,7 @@ export const PROGRAMAS = [
   {
     numero: 76,
     titulo: 'Programa 76',
-    liga: 'Perris F.C. campeón Primera Fuerza A · Resultados Primera Especial J-11 · Béisbol y Don Elmer',
+    liga: 'Perris F.C. campeón Primera A · Resultados Primera Especial J-11 · Primera Copa Infantil · Béisbol y Don Elmer',
     decks: {
       horarios: null,
       resultados: 'programas/76/resultados.html',

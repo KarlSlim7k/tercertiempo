@@ -30,6 +30,9 @@
     .down{color:var(--rose)}
     .same{color:var(--dimmer)}
     .tbl-grp{font:600 14px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+    .grp{font:600 14px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:12px 0 8px}
+    .grp:first-child{margin-top:0}
+    .tag{display:inline-block;margin-left:10px;padding:4px 8px;border-radius:4px;background:var(--gold);color:var(--ink);font:700 11px/1 "Oswald",sans-serif;letter-spacing:.16em;vertical-align:middle}
     .note-box{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:18px 24px}
     .note-box .lbl{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
     .note-box .val{font-size:17px;line-height:1.4;color:var(--dim)}
@@ -85,15 +88,15 @@
 <body>
   <main class="stage" id="stage">
     <header class="topbar">
-      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 76</div><div class="title">Resultados de la Jornada 11</div><div class="sub">Perris F.C. campeón Primera A · Primera Especial J-11 · Béisbol y Don Elmer</div></div></div>
-      <div class="top-right"><div class="counter" id="counter">1 / 10</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 76</div><div class="title">Resultados de la Jornada 11</div><div class="sub">Perris F.C. campeón Primera A · Primera Especial J-11 · Copa Infantil · Béisbol</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 11</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
     </header>
 
     <section class="slide active" data-slide="0">
       <div class="cover">
         <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 76</div><h1>RESULTADOS<br><span>JORNADA 11</span></h1></div>
-        <div class="rule"></div><p class="cover-copy">Perris F.C. campeón de la Primera Fuerza A en final vibrante. En la Primera Especial, Sor Juana deja ir ventaja de 3–0 y empata 4–4 ante Real Victoria. Todos los marcadores y la tabla de la Jornada 11.</p>
-        <div class="cover-grid stagger"><div class="cover-item"><b>01</b>Perris F.C. Campeón Primera A</div><div class="cover-item"><b>02</b>Resultados de la Jornada 11</div><div class="cover-item"><b>03</b>Tabla tras la Jornada 11</div><div class="cover-item"><b>04</b>Movimientos y análisis J-11</div></div>
+        <div class="rule"></div><p class="cover-copy">Perris F.C. campeón de la Primera Fuerza A en final vibrante. En la Primera Especial, Sor Juana deja ir ventaja de 3–0 y empata 4–4 ante Real Victoria. Todos los marcadores, la tabla de la Jornada 11 y la Primera Copa Infantil.</p>
+        <div class="cover-grid stagger"><div class="cover-item"><b>01</b>Perris F.C. Campeón Primera A</div><div class="cover-item"><b>02</b>Resultados Primera Especial J-11</div><div class="cover-item"><b>03</b>Tabla y movimientos J-11</div><div class="cover-item"><b>04</b>Primera Copa Infantil · Campeón</div></div>
       </div>
     </section>
 
@@ -266,6 +269,42 @@
         <div class="bar-row"><span>Bad's</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">0<small>derrota</small></span></div>
       </div>
       <div class="source-note">Total de la jornada: 25 puntos repartidos en nueve partidos</div>
+    </section>
+
+    <section class="slide" data-slide="copa-infantil">
+      <div class="eyebrow">Fútbol Infantil · Copa Relámpago</div><h2 class="slide-title">PRIMERA COPA INFANTIL</h2><p class="slide-sub">El camino de Valle de Perote: fase de grupos, semifinal y campeonato en la gran final.</p>
+      <div class="two">
+        <div class="table-wrap">
+          <div class="grp">Fase de Grupos<span class="tag">JORNADA RELÁMPAGO</span></div>
+          <table class="results"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+            <tr><td class="local">Valle de Perote</td><td class="score">14 – 2</td><td class="visitor">Murciélagos</td></tr>
+            <tr class="draw"><td class="local">Valle de Perote</td><td class="score">3 – 3</td><td class="visitor">Yakis Coatepec</td></tr>
+            <tr><td class="local">Valle de Perote</td><td class="score">4 – 1</td><td class="visitor">Ceforttez Teziutlán</td></tr>
+          </tbody></table>
+          <div class="note-box" style="margin-top:14px;padding:12px 18px">
+            <div class="lbl">Fase clasificatoria</div>
+            <div class="val" style="font-size:15px">7 puntos conseguidos, 21 goles anotados y liderato invicto del grupo.</div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <div class="grp">Semifinal<span class="tag">PASE A LA FINAL</span></div>
+          <table class="results"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+            <tr><td class="local">Valle de Perote</td><td class="score">4 – 1</td><td class="visitor">Toros de Chinautla</td></tr>
+          </tbody></table>
+          <div class="grp" style="margin-top:14px">Gran Final<span class="tag">CAMPEONATO</span></div>
+          <table class="results"><thead><tr><th>Local</th><th>Marcador</th><th>Visitante</th></tr></thead><tbody>
+            <tr style="background:rgba(230,181,74,.08)"><td class="local" style="color:var(--gold)">Valle de Perote</td><td class="score" style="font-size:32px;color:var(--gold)">7 – 4</td><td class="visitor" style="color:var(--cream)">Leones Xalmex</td></tr>
+          </tbody></table>
+          <div class="champ-banner" style="margin-top:14px;padding:16px 20px;border-radius:12px">
+            <div class="champ-kicker" style="font-size:11px;margin-bottom:6px">Campeón Invicto</div>
+            <div class="champ-title" style="font-size:30px">VALLE DE PEROTE</div>
+            <div class="champ-sub" style="font-size:14px;margin-top:6px">Monarcas de la Primera Copa Infantil</div>
+            <p class="champ-desc" style="font-size:13px;margin-top:6px;line-height:1.35">
+              Con paso demoledor y un impresionante saldo de 32 goles anotados en 5 partidos, Valle de Perote se proclama campeón absoluto.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
