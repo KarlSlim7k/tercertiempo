@@ -312,6 +312,16 @@ export const PROGRAMAS = [
       analisis: null,
     },
   },
+  {
+    numero: 77,
+    titulo: 'Programa 77',
+    liga: 'Primera Fuerza Especial J-12 · Galaxi vs Sor Juana · Real Victoria vs Juárez F.C. · Cuartos de final vuelta · Quiniela ronda 2',
+    decks: {
+      horarios: 'programas/77/horarios.html',
+      resultados: null,
+      analisis: 'programas/77/analisis.html',
+    },
+  },
 ]
 
 export function ultimoPrograma() {

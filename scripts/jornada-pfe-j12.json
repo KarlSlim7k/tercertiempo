@@ -1,0 +1,16 @@
+{
+  "id": "pfe-j12",
+  "nombre": "Jornada 12",
+  "liga": "Primera Fuerza Especial",
+  "programa_resultados": 78,
+  "partidos": [
+    { "orden": 1, "local": "Dep. Guerrero", "visitante": "Micheleros", "pos_local": 7, "pos_visitante": 11, "pts_local": 17, "pts_visitante": 14, "inicio": "2026-11-15T08:00:00-06:00", "campo": "Vicente Gro." },
+    { "orden": 2, "local": "Manchester", "visitante": "Halcones", "pos_local": 17, "pos_visitante": 8, "pts_local": 6, "pts_visitante": 17, "inicio": "2026-11-15T12:00:00-06:00", "campo": "Fco. I Madero" },
+    { "orden": 3, "local": "Liverpool", "visitante": "Red Bull's", "pos_local": 10, "pos_visitante": 3, "pts_local": 15, "pts_visitante": 20, "inicio": "2026-11-15T09:00:00-06:00", "campo": "La Gloria" },
+    { "orden": 4, "local": "Bad's", "visitante": "Arsenal", "pos_local": 18, "pos_visitante": 6, "pts_local": 3, "pts_visitante": 19, "inicio": "2026-11-15T10:00:00-06:00", "campo": "Estadio" },
+    { "orden": 5, "local": "Galaxi", "visitante": "Sor Juana", "pos_local": 4, "pos_visitante": 1, "pts_local": 20, "pts_visitante": 26, "inicio": "2026-11-15T11:00:00-06:00", "campo": "La Gloria" },
+    { "orden": 6, "local": "Real Victoria", "visitante": "Juárez F.C.", "pos_local": 5, "pos_visitante": 2, "pts_local": 19, "pts_visitante": 22, "inicio": "2026-11-15T08:00:00-06:00", "campo": "Gpe. Victoria" },
+    { "orden": 7, "local": "Pinochos", "visitante": "Molinos", "pos_local": 16, "pos_visitante": 9, "pts_local": 7, "pts_visitante": 16, "inicio": "2026-11-14T20:30:00-06:00", "campo": "Estadio" },
+    { "orden": 8, "local": "Aferrados", "visitante": "Sabinal", "pos_local": 14, "pos_visitante": 12, "pts_local": 7, "pts_visitante": 12, "inicio": "2026-11-15T08:00:00-06:00", "campo": "Benito Juárez" }
+  ]
+}

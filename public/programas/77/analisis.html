@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Programa 77 de Tercer Tiempo: análisis de la Jornada 12 de la Primera Fuerza Especial con estadísticas de Galaxi, Sor Juana, Real Victoria y Juárez F.C., y la segunda ronda de la quiniela.">
+  <title>Programa 77 · Análisis Jornada 12 · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../52/deck.css">
+  <style>
+    :root{--sky:#7cc4ff}
+    .slide{padding:16px 44px 54px}
+    .eyebrow{font-size:16px;margin-bottom:6px}
+    .slide-title{font-size:46px;margin-bottom:4px}
+    .slide-sub{font-size:20px;line-height:1.25;margin-bottom:10px}
+    .grp{font:600 19px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:16px 0 8px}
+    .grp:first-child{margin-top:0}
+    .tag{display:inline-block;margin-left:12px;padding:5px 10px;border-radius:4px;background:var(--gold);color:var(--ink);font:700 14px/1 "Oswald",sans-serif;letter-spacing:.16em;vertical-align:middle}
+    .tag.hotag{background:var(--rose);color:#220808}
+
+    /* Horarios: letra grande */
+    .schedule th{font-size:15px;padding:10px 12px}
+    .schedule td{font-size:27px;padding:15px 12px}
+    .schedule .status{font-size:22px}
+    .schedule .center{font-size:23px}
+    .schedule .pending{color:var(--amber)}
+    .schedule.tight td{padding:11px 12px}
+    .vs-sep{color:var(--dimmer);font-size:18px;padding:0 8px}
+
+    /* KPIs */
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr) 1.8fr;gap:12px;margin-bottom:10px}
+    .kpi{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:7px 16px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 5px 24px rgba(0,0,0,.22)}
+    .k-l{font:600 15px/1 "Oswald",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+    .k-v{font:700 40px/1.05 "Oswald",sans-serif;color:var(--cream);margin-top:3px}
+    .k-v small{font-size:22px;color:var(--dim);letter-spacing:.06em;margin-left:4px}
+    .kpi.gold .k-v{color:var(--gold)}
+    .wdl{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:6px 0 6px;background:var(--panel-2)}
+    .wdl i{display:block;height:100%;width:var(--w)}
+    .gc{background:var(--green)}.ec{background:var(--amber)}.pc{background:var(--rose)}
+    .rec-n{display:flex;gap:18px;font:700 25px/1 "Oswald",sans-serif;text-transform:uppercase}
+    .rec-n span em{font-style:normal;font-size:15px;letter-spacing:.14em;margin-left:5px;color:var(--dim)}
+    .rec-n .a{color:var(--green)}.rec-n .b{color:var(--amber)}.rec-n .c{color:var(--rose)}
+
+    /* Tarjeta de equipo */
+    .team-grid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.18fr;gap:14px;align-content:start}
+    .card{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:10px 20px;box-shadow:0 5px 28px rgba(0,0,0,.22)}
+    .card h3{font:600 17px/1 "Oswald",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .stat{width:100%;border-collapse:collapse;table-layout:fixed}
+    .stat th{font:600 15px/1 "Oswald",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:6px 6px;border-bottom:2px solid rgba(230,181,74,.48);text-align:center}
+    .stat th:first-child{text-align:left;width:40%}
+    .stat td{padding:5px 6px;border-bottom:1px solid var(--line-soft);font:700 26px/1 "Oswald",sans-serif;text-align:center}
+    .stat td:first-child{text-align:left;font:600 20px/1 "Inter",sans-serif;color:var(--dim)}
+    .stat td.tot{color:var(--gold);font-size:28px;background:var(--gold-soft)}
+    .stat tr:last-child td{border-bottom:0}
+
+    .res-sec{margin-top:6px}
+    .res-sec h4{font:600 17px/1 "Oswald",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:8px 0 7px;display:flex;justify-content:space-between}
+    .res-sec h4 span{color:var(--gold)}
+    .chips2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .chip2{display:flex;align-items:center;gap:9px;padding:7px 11px;border-radius:9px;border:1px solid;font:600 20px/1.1 "Oswald",sans-serif;text-transform:uppercase;white-space:nowrap}
+    .chip2 .r{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:15px;color:#0b1220;flex:none}
+    .chip2 b{margin-left:auto;font-size:23px;letter-spacing:.04em}
+    .chip2.g{border-color:rgba(95,210,139,.45);background:rgba(95,210,139,.1)}.chip2.g .r{background:var(--green)}.chip2.g b{color:var(--green)}
+    .chip2.e{border-color:rgba(233,196,106,.45);background:rgba(233,196,106,.1)}.chip2.e .r{background:var(--amber)}.chip2.e b{color:var(--amber)}
+    .chip2.p{border-color:rgba(255,133,133,.45);background:rgba(255,133,133,.1)}.chip2.p .r{background:var(--rose)}.chip2.p b{color:var(--rose)}
+    .foot{font:600 14px/1.2 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer);text-align:right;margin-top:8px}
+
+    /* Duelo */
+    .vs-head{display:grid;grid-template-columns:1fr 90px 1fr;align-items:center;margin-bottom:10px}
+    .vs-team{display:flex;flex-direction:column;gap:2px;padding:7px 20px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel))}
+    .vs-team.l{border-left:6px solid var(--gold);text-align:left}
+    .vs-team.r{border-right:6px solid var(--sky);text-align:right}
+    .vs-team .role{font:700 15px/1 "Oswald",sans-serif;letter-spacing:.3em;text-transform:uppercase}
+    .vs-team.l .role{color:var(--gold)}.vs-team.r .role{color:var(--sky)}
+    .vs-team .nm{font:700 36px/1.05 "Oswald",sans-serif;text-transform:uppercase}
+    .vs-team .meta{font:600 20px/1 "Oswald",sans-serif;letter-spacing:.08em;color:var(--dim);text-transform:uppercase}
+    .vs-mid{text-align:center;font:700 38px/1 "Oswald",sans-serif;color:var(--gold);letter-spacing:.08em}
+    .vs-grid{flex:1;min-height:0;display:grid;grid-template-columns:1.32fr 1fr;gap:14px;align-content:start}
+    .vs-row{display:grid;grid-template-columns:62px 1fr 170px 1fr 62px;align-items:center;gap:8px;padding:3px 0;border-bottom:1px solid var(--line-soft)}
+    .vs-row:last-child{border-bottom:0}
+    .vs-lbl{font:600 16px/1.1 "Oswald",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:center}
+    .vs-val{font:700 26px/1 "Oswald",sans-serif;color:var(--dim)}
+    .vs-val.l{text-align:right}.vs-val.r{text-align:left}
+    .vs-val.win{color:var(--cream)}
+    .vs-track{height:20px;border-radius:5px;background:rgba(255,255,255,.06);display:flex}
+    .vs-track.l{justify-content:flex-end}
+    .vs-track i{display:block;height:100%;border-radius:5px;width:var(--w)}
+    .vs-track.l i{background:linear-gradient(270deg,#f0c75a,#b8862a)}
+    .vs-track.r i{background:linear-gradient(90deg,#9fd6ff,#4a8fd0)}
+    .vs-track i.lose{opacity:.42}
+    .vs-sub{font:600 16px/1 "Oswald",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--dimmer);display:flex;justify-content:space-between;margin-bottom:4px}
+    .vs-sub b{font-weight:600}.vs-sub .a{color:var(--gold)}.vs-sub .b{color:var(--sky)}
+    .com{width:100%;border-collapse:collapse;table-layout:fixed}
+    .com th{font:600 15px/1 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:8px 4px;border-bottom:2px solid rgba(230,181,74,.48);text-align:center}
+    .com th:first-child{text-align:left;width:34%;color:var(--gold)}
+    .com th.a{color:var(--gold)}.com th.b{color:var(--sky)}
+    .com td{padding:9px 4px;border-bottom:1px solid var(--line-soft);font:700 24px/1 "Oswald",sans-serif;text-align:center}
+    .com td:first-child{text-align:left;font:600 20px/1.05 "Oswald",sans-serif;text-transform:uppercase;color:var(--cream)}
+    .com tr:last-child td{border-bottom:0}
+    .com td small{display:block;font:600 12px/1 "Oswald",sans-serif;letter-spacing:.14em;color:var(--dimmer);margin-top:3px}
+    .com .g{color:var(--green)}.com .e{color:var(--amber)}.com .p{color:var(--rose)}
+
+    /* Quiniela */
+    .qn{width:100%;border-collapse:collapse;table-layout:fixed}
+    .qn th{font:600 15px/1 "Oswald",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:8px 4px;border-bottom:2px solid rgba(230,181,74,.48);text-align:center}
+    .qn td{padding:6px 4px;border-bottom:1px solid var(--line-soft);font:700 24px/1 "Oswald",sans-serif;text-transform:uppercase;text-align:center;letter-spacing:.02em}
+    .qn tr:last-child td{border-bottom:0}
+    .qn .ps{color:var(--dimmer);font-size:19px}
+    .qn .loc{text-align:right}.qn .vis{text-align:left}
+    .qn .pt{color:var(--gold);font-size:21px}
+    .qn .vsx{color:var(--dimmer);font-size:16px}
+    .qn .when{font-size:19px;color:var(--dim);letter-spacing:.04em}
+    .qn .box{display:block;height:30px;margin:0 auto;width:92px;border:2px dashed rgba(230,181,74,.45);border-radius:8px;background:rgba(255,255,255,.03)}
+    .qn tr.hot td{background:rgba(230,181,74,.1)}
+    .qn tr.hot td:first-child{box-shadow:inset 5px 0 0 var(--rose)}
+    .star{color:var(--rose);font-size:18px;margin-left:6px}
+    .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+    .rule-c{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:10px 20px;text-align:center}
+    .rule-c .big{font:700 48px/1 "Oswald",sans-serif;color:var(--gold)}
+    .rule-c .lbl{font:600 18px/1.2 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);margin-top:6px}
+    .rule-c p{font-size:17px;line-height:1.3;color:var(--dim);margin-top:4px}
+    .podium{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end;flex:1;min-height:0}
+    .pod{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:14px 20px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:var(--mh)}
+    .pod.first{border-color:var(--gold);box-shadow:0 8px 36px rgba(230,181,74,.22)}
+    .pod .rk{font:700 18px/1 "Oswald",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+    .pod .pn{font:700 38px/1.1 "Oswald",sans-serif;text-transform:uppercase;margin:6px 0}
+    .pod .pp{font:700 78px/1 "Oswald",sans-serif;color:var(--gold)}
+    .pod .pp small{font-size:26px;color:var(--dim);margin-left:6px;letter-spacing:.1em}
+    .pod .pd{font:600 19px/1.3 "Oswald",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:8px}
+    .pod .bar{height:var(--h);margin-top:14px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,#f0c75a,#8a6218)}
+    .pod.second .bar{background:linear-gradient(180deg,#d9d4c6,#7d796c)}.pod.third .bar{background:linear-gradient(180deg,#d08a52,#7a4a24)}
+
+    /* Animaciones */
+    @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes grow{from{width:0}to{width:var(--w)}}
+    @keyframes growY{from{height:0}to{height:var(--h)}}
+    @keyframes glow{from{background:rgba(230,181,74,.04)}to{background:rgba(230,181,74,.2)}}
+    @keyframes pop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
+    .slide.active .eyebrow,.slide.active .slide-title,.slide.active .slide-sub{animation:rise .5s ease both}
+    .slide.active .slide-sub{animation-delay:.08s}
+    .slide.active tbody tr{animation:rise .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 90ms + 180ms)}
+    .slide.active tbody tr.hot td{animation:glow 1.4s ease-in-out 1s infinite alternate}
+    .slide.active .stagger > *{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 100ms + 200ms)}
+    .slide.active .chips2 > *{animation:pop .45s ease both;animation-delay:calc(var(--i,0) * 60ms + 450ms)}
+    .slide.active .wdl i{animation:grow .9s cubic-bezier(.2,.8,.2,1) .5s both}
+    .slide.active .vs-row{animation:rise .45s ease both;animation-delay:calc(var(--i,0) * 80ms + 200ms)}
+    .slide.active .vs-track i{animation:grow .9s cubic-bezier(.2,.8,.2,1) .45s both}
+    .slide.active .pod .bar{animation:growY 1s cubic-bezier(.2,.8,.2,1) .5s both}
+    .slide.active .pod{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 130ms + 200ms)}
+    .slide.active .rule-c{animation:pop .5s ease both;animation-delay:calc(var(--i,0) * 120ms + 200ms)}
+    .slide.active .cover-kicker,.slide.active .cover h1,.slide.active .cover-copy,.slide.active .rule{animation:rise .6s ease both}
+    .slide.active .cover h1{animation-delay:.15s}
+    .slide.active .cover-copy{animation-delay:.35s}
+    .slide.active .cover-item{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 120ms + 300ms)}
+    .cover h1{font-size:76px}
+    .cover-copy{font-size:24px}
+    .cover-item{font-size:21px}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 77</div><div class="title">Análisis de la Jornada 12</div><div class="sub">Galaxi · Sor Juana · Real Victoria · Juárez F.C. · Quiniela</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 9</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 77</div><h1>ANÁLISIS<br><span>JORNADA 12</span></h1></div>
+        <div class="rule"></div><p class="cover-copy">Radiografía de los cuatro protagonistas de los choques de titanes de la Primera Fuerza Especial: cómo han ganado, con quién han empatado y a quién han perdido. Termina con la segunda ronda de la quiniela.</p>
+        <div class="cover-grid stagger"><div class="cover-item"><b>01</b>Galaxi vs Sor Juana</div><div class="cover-item"><b>02</b>Real Victoria vs Juárez F.C.</div><div class="cover-item"><b>03</b>Radiografía por equipo</div><div class="cover-item"><b>04</b>Quiniela · Segunda ronda</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="galaxi">
+      <div class="eyebrow">Choque de titanes · Análisis J-12</div><h2 class="slide-title">Galaxi</h2><p class="slide-sub">Recibe a Sor Juana · Dom 11:00 · La Gloria · 4 triunfos de 6 como visitante</p>
+      <div class="kpis stagger">
+        <div class="kpi gold"><span class="k-l">Posición</span><span class="k-v">4.º</span></div>
+        <div class="kpi gold"><span class="k-l">Puntos</span><span class="k-v">20<small>pts</small></span></div>
+        <div class="kpi"><span class="k-l">Jugados</span><span class="k-v">10</span></div>
+        <div class="kpi"><span class="k-l">Dif. de goles</span><span class="k-v">+12</span></div>
+        <div class="kpi"><span class="k-l">Récord</span>
+          <div class="wdl"><i class="gc" style="--w:60.00%"></i><i class="ec" style="--w:20.00%"></i><i class="pc" style="--w:20.00%"></i></div>
+          <div class="rec-n"><span class="a">6<em>Gan</em></span><span class="b">2<em>Emp</em></span><span class="c">2<em>Per</em></span></div>
+        </div>
+      </div>
+      <div class="team-grid">
+        <div class="card"><h3>Rendimiento estadístico</h3>
+          <table class="stat"><thead><tr><th>Indicador</th><th>Local</th><th>Visita</th><th>Total</th></tr></thead><tbody>
+            <tr><td>Partidos jugados</td><td>4</td><td>6</td><td class="tot">10</td></tr>
+            <tr><td>Ganados</td><td>2</td><td>4</td><td class="tot">6</td></tr>
+            <tr><td>Empatados</td><td>1</td><td>1</td><td class="tot">2</td></tr>
+            <tr><td>Perdidos</td><td>1</td><td>1</td><td class="tot">2</td></tr>
+            <tr><td>Goles anotados</td><td>8</td><td>14</td><td class="tot">22</td></tr>
+            <tr><td>Goles recibidos</td><td>3</td><td>7</td><td class="tot">10</td></tr>
+            <tr><td>Diferencia de goles</td><td>+5</td><td>+7</td><td class="tot">+12</td></tr>
+          </tbody></table>
+        </div>
+        <div class="card"><h3>Con quién ha ganado, empatado y perdido</h3>
+          <div class="res-sec"><h4>Como local<span>4 partidos</span></h4><div class="chips2"><div class="chip2 g"><span class="r">G</span>Pinochos<b>4–0</b></div><div class="chip2 g"><span class="r">G</span>Arsenal<b>3–0</b></div><div class="chip2 e"><span class="r">E</span>Manchester<b>1–1</b></div><div class="chip2 p"><span class="r">P</span>Halcones<b>0–2</b></div></div></div>
+          <div class="res-sec"><h4>Como visitante<span>6 partidos</span></h4><div class="chips2"><div class="chip2 g"><span class="r">G</span>Real Victoria<b>5–3</b></div><div class="chip2 g"><span class="r">G</span>Dep. Guerrero<b>2–0</b></div><div class="chip2 g"><span class="r">G</span>Tiburones<b>2–1</b></div><div class="chip2 g"><span class="r">G</span>Micheleros<b>3–0</b></div><div class="chip2 e"><span class="r">E</span>Red Bull's<b>1–1</b></div><div class="chip2 p"><span class="r">P</span>Liverpool<b>1–2</b></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="sorjuana">
+      <div class="eyebrow">Choque de titanes · Análisis J-12</div><h2 class="slide-title">Sor Juana<span class="tag" style="font-size:16px">INVICTO</span></h2><p class="slide-sub">Visita a Galaxi · Dom 11:00 · La Gloria · el líder sigue sin perder en el torneo</p>
+      <div class="kpis stagger">
+        <div class="kpi gold"><span class="k-l">Posición</span><span class="k-v">1.º</span></div>
+        <div class="kpi gold"><span class="k-l">Puntos</span><span class="k-v">26<small>pts</small></span></div>
+        <div class="kpi"><span class="k-l">Jugados</span><span class="k-v">10</span></div>
+        <div class="kpi"><span class="k-l">Dif. de goles</span><span class="k-v">+23</span></div>
+        <div class="kpi"><span class="k-l">Récord</span>
+          <div class="wdl"><i class="gc" style="--w:80.00%"></i><i class="ec" style="--w:20.00%"></i><i class="pc" style="--w:0.00%"></i></div>
+          <div class="rec-n"><span class="a">8<em>Gan</em></span><span class="b">2<em>Emp</em></span><span class="c">0<em>Per</em></span></div>
+        </div>
+      </div>
+      <div class="team-grid">
+        <div class="card"><h3>Rendimiento estadístico</h3>
+          <table class="stat"><thead><tr><th>Indicador</th><th>Local</th><th>Visita</th><th>Total</th></tr></thead><tbody>
+            <tr><td>Partidos jugados</td><td>6</td><td>4</td><td class="tot">10</td></tr>
+            <tr><td>Ganados</td><td>5</td><td>3</td><td class="tot">8</td></tr>
+            <tr><td>Empatados</td><td>1</td><td>1</td><td class="tot">2</td></tr>
+            <tr><td>Perdidos</td><td>0</td><td>0</td><td class="tot">0</td></tr>
+            <tr><td>Goles anotados</td><td>27</td><td>8</td><td class="tot">35</td></tr>
+            <tr><td>Goles recibidos</td><td>11</td><td>1</td><td class="tot">12</td></tr>
+            <tr><td>Diferencia de goles</td><td>+16</td><td>+7</td><td class="tot">+23</td></tr>
+          </tbody></table>
+        </div>
+        <div class="card"><h3>Con quién ha ganado, empatado y perdido</h3>
+          <div class="res-sec"><h4>Como local<span>6 partidos</span></h4><div class="chips2"><div class="chip2 g"><span class="r">G</span>Micheleros<b>8–2</b></div><div class="chip2 g"><span class="r">G</span>Bad's<b>2–0</b></div><div class="chip2 g"><span class="r">G</span>Ranger's<b>4–2</b></div><div class="chip2 g"><span class="r">G</span>Sabinal<b>5–0</b></div><div class="chip2 g"><span class="r">G</span>Pinochos<b>4–3</b></div><div class="chip2 e"><span class="r">E</span>Real Victoria<b>4–4</b></div></div></div>
+          <div class="res-sec"><h4>Como visitante<span>4 partidos</span></h4><div class="chips2"><div class="chip2 g"><span class="r">G</span>Halcones<b>3–0</b></div><div class="chip2 g"><span class="r">G</span>Molinos<b>1–0</b></div><div class="chip2 g"><span class="r">G</span>Aferrados<b>3–0</b></div><div class="chip2 e"><span class="r">E</span>Tiburones<b>1–1</b></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="duelo-galaxi_sorjuana">
+      <div class="eyebrow">Choque de titanes · Dom 11:00 · La Gloria</div><h2 class="slide-title">GALAXI VS SOR JUANA</h2>
+      <div class="vs-head stagger">
+        <div class="vs-team l"><span class="role">Local</span><span class="nm">Galaxi</span><span class="meta">4.º lugar · 20 pts</span></div>
+        <div class="vs-mid">VS</div>
+        <div class="vs-team r"><span class="role">Visitante</span><span class="nm">Sor Juana</span><span class="meta">1.º lugar · 26 pts</span></div>
+      </div>
+      <div class="vs-grid">
+        <div class="card"><h3>Galaxi de local vs Sor Juana de visita</h3>
+          <div class="vs-sub"><span class="a">4 partidos en casa</span><span class="b">4 partidos de visita</span></div>
+          <div class="vs-row"><span class="vs-val l ">2</span><div class="vs-track l"><i class="lose" style="--w:66.7%"></i></div><span class="vs-lbl">Ganados</span><div class="vs-track r"><i class="" style="--w:100.0%"></i></div><span class="vs-val r win">3</span></div>
+          <div class="vs-row"><span class="vs-val l ">1</span><div class="vs-track l"><i class="" style="--w:100.0%"></i></div><span class="vs-lbl">Empatados</span><div class="vs-track r"><i class="" style="--w:100.0%"></i></div><span class="vs-val r ">1</span></div>
+          <div class="vs-row"><span class="vs-val l ">1</span><div class="vs-track l"><i class="lose" style="--w:100.0%"></i></div><span class="vs-lbl">Perdidos</span><div class="vs-track r"><i class="" style="--w:0.0%"></i></div><span class="vs-val r win">0</span></div>
+          <div class="vs-row"><span class="vs-val l ">8</span><div class="vs-track l"><i class="" style="--w:100.0%"></i></div><span class="vs-lbl">Goles a favor</span><div class="vs-track r"><i class="" style="--w:100.0%"></i></div><span class="vs-val r ">8</span></div>
+          <div class="vs-row"><span class="vs-val l ">3</span><div class="vs-track l"><i class="lose" style="--w:100.0%"></i></div><span class="vs-lbl">Goles en contra</span><div class="vs-track r"><i class="" style="--w:33.3%"></i></div><span class="vs-val r win">1</span></div>
+          <div class="vs-row"><span class="vs-val l ">+5</span><div class="vs-track l"><i class="lose" style="--w:71.4%"></i></div><span class="vs-lbl">Dif. de goles</span><div class="vs-track r"><i class="" style="--w:100.0%"></i></div><span class="vs-val r win">+7</span></div>
+          <div class="vs-row"><span class="vs-val l ">2.00</span><div class="vs-track l"><i class="" style="--w:100.0%"></i></div><span class="vs-lbl">Goles / partido</span><div class="vs-track r"><i class="" style="--w:100.0%"></i></div><span class="vs-val r ">2.00</span></div>
+          <div class="vs-row"><span class="vs-val l ">0.75</span><div class="vs-track l"><i class="lose" style="--w:100.0%"></i></div><span class="vs-lbl">Recibidos / partido</span><div class="vs-track r"><i class="" style="--w:33.3%"></i></div><span class="vs-val r win">0.25</span></div>
+        </div>
+        <div class="card"><h3>Rivales en común</h3>
+          <table class="com"><thead><tr><th>Rival</th><th class="a">Galaxi</th><th class="b">Sor Juana</th></tr></thead><tbody>
+            <tr><td>Micheleros</td><td class="g">3–0<small>VISITA</small></td><td class="g">8–2<small>LOCAL</small></td></tr>
+            <tr><td>Real Victoria</td><td class="g">5–3<small>VISITA</small></td><td class="e">4–4<small>LOCAL</small></td></tr>
+            <tr><td>Tiburones</td><td class="g">2–1<small>VISITA</small></td><td class="e">1–1<small>VISITA</small></td></tr>
+            <tr><td>Pinochos</td><td class="g">4–0<small>LOCAL</small></td><td class="g">4–3<small>LOCAL</small></td></tr>
+            <tr><td>Halcones</td><td class="p">0–2<small>LOCAL</small></td><td class="g">3–0<small>VISITA</small></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="realvictoria">
+      <div class="eyebrow">Análisis J-12 · Dom 8:00</div><h2 class="slide-title">Real Victoria</h2><p class="slide-sub">Recibe a Juárez F.C. · Dom 8:00 · Gpe. Victoria · 4 triunfos en 6 como local</p>
+      <div class="kpis stagger">
+        <div class="kpi gold"><span class="k-l">Posición</span><span class="k-v">5.º</span></div>
+        <div class="kpi gold"><span class="k-l">Puntos</span><span class="k-v">19<small>pts</small></span></div>
+        <div class="kpi"><span class="k-l">Jugados</span><span class="k-v">10</span></div>
+        <div class="kpi"><span class="k-l">Dif. de goles</span><span class="k-v">+9</span></div>
+        <div class="kpi"><span class="k-l">Récord</span>
+          <div class="wdl"><i class="gc" style="--w:60.00%"></i><i class="ec" style="--w:10.00%"></i><i class="pc" style="--w:30.00%"></i></div>
+          <div class="rec-n"><span class="a">6<em>Gan</em></span><span class="b">1<em>Emp</em></span><span class="c">3<em>Per</em></span></div>
+        </div>
+      </div>
+      <div class="team-grid">
+        <div class="card"><h3>Rendimiento estadístico</h3>
+          <table class="stat"><thead><tr><th>Indicador</th><th>Local</th><th>Visita</th><th>Total</th></tr></thead><tbody>
+            <tr><td>Partidos jugados</td><td>6</td><td>4</td><td class="tot">10</td></tr>
+            <tr><td>Ganados</td><td>4</td><td>2</td><td class="tot">6</td></tr>
+            <tr><td>Empatados</td><td>0</td><td>1</td><td class="tot">1</td></tr>
+            <tr><td>Perdidos</td><td>2</td><td>1</td><td class="tot">3</td></tr>
+            <tr><td>Goles anotados</td><td>13</td><td>11</td><td class="tot">24</td></tr>
+            <tr><td>Goles recibidos</td><td>7</td><td>8</td><td class="tot">15</td></tr>
+            <tr><td>Diferencia de goles</td><td>+6</td><td>+3</td><td class="tot">+9</td></tr>
+          </tbody></table>
+        </div>
+        <div class="card"><h3>Con quién ha ganado, empatado y perdido</h3>
+          <div class="res-sec"><h4>Como local<span>6 partidos</span></h4><div class="chips2"><div class="chip2 g"><span class="r">G</span>Manchester<b>2–0</b></div><div class="chip2 g"><span class="r">G</span>Liverpool<b>1–0*</b></div><div class="chip2 g"><span class="r">G</span>Red Bull's<b>5–0</b></div><div class="chip2 g"><span class="r">G</span>Micheleros<b>2–1</b></div><div class="chip2 p"><span class="r">P</span>Tiburones<b>0–1</b></div><div class="chip2 p"><span class="r">P</span>Galaxi<b>3–5</b></div></div></div>
+          <div class="res-sec"><h4>Como visitante<span>4 partidos</span></h4><div class="chips2"><div class="chip2 g"><span class="r">G</span>Bad's<b>4–1</b></div><div class="chip2 g"><span class="r">G</span>Halcones<b>2–1</b></div><div class="chip2 e"><span class="r">E</span>Sor Juana<b>4–4</b></div><div class="chip2 p"><span class="r">P</span>Arsenal<b>1–2</b></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="juarez">
+      <div class="eyebrow">Análisis J-12 · Dom 8:00</div><h2 class="slide-title">Juárez F.C.</h2><p class="slide-sub">Visita a Real Victoria · Dom 8:00 · Gpe. Victoria · 4 de 5 como visitante</p>
+      <div class="kpis stagger">
+        <div class="kpi gold"><span class="k-l">Posición</span><span class="k-v">2.º</span></div>
+        <div class="kpi gold"><span class="k-l">Puntos</span><span class="k-v">22<small>pts</small></span></div>
+        <div class="kpi"><span class="k-l">Jugados</span><span class="k-v">9</span></div>
+        <div class="kpi"><span class="k-l">Dif. de goles</span><span class="k-v">+9</span></div>
+        <div class="kpi"><span class="k-l">Récord</span>
+          <div class="wdl"><i class="gc" style="--w:77.78%"></i><i class="ec" style="--w:11.11%"></i><i class="pc" style="--w:11.11%"></i></div>
+          <div class="rec-n"><span class="a">7<em>Gan</em></span><span class="b">1<em>Emp</em></span><span class="c">1<em>Per</em></span></div>
+        </div>
+      </div>
+      <div class="team-grid">
+        <div class="card"><h3>Rendimiento estadístico</h3>
+          <table class="stat"><thead><tr><th>Indicador</th><th>Local</th><th>Visita</th><th>Total</th></tr></thead><tbody>
+            <tr><td>Partidos jugados</td><td>4</td><td>5</td><td class="tot">9</td></tr>
+            <tr><td>Ganados</td><td>3</td><td>4</td><td class="tot">7</td></tr>
+            <tr><td>Empatados</td><td>1</td><td>0</td><td class="tot">1</td></tr>
+            <tr><td>Perdidos</td><td>0</td><td>1</td><td class="tot">1</td></tr>
+            <tr><td>Goles anotados</td><td>8</td><td>12</td><td class="tot">20</td></tr>
+            <tr><td>Goles recibidos</td><td>3</td><td>8</td><td class="tot">11</td></tr>
+            <tr><td>Diferencia de goles</td><td>+5</td><td>+4</td><td class="tot">+9</td></tr>
+          </tbody></table>
+        </div>
+        <div class="card"><h3>Con quién ha ganado, empatado y perdido</h3>
+          <div class="res-sec"><h4>Como local<span>4 partidos</span></h4><div class="chips2"><div class="chip2 g"><span class="r">G</span>Molinos<b>3–1</b></div><div class="chip2 g"><span class="r">G</span>Aferrados<b>2–0</b></div><div class="chip2 g"><span class="r">G</span>Tiburones<b>2–1</b></div><div class="chip2 e"><span class="r">E</span>Halcones<b>1–1</b></div></div></div>
+          <div class="res-sec"><h4>Como visitante<span>5 partidos</span></h4><div class="chips2"><div class="chip2 g"><span class="r">G</span>Red Bull's<b>1–0</b></div><div class="chip2 g"><span class="r">G</span>Micheleros<b>3–2</b></div><div class="chip2 g"><span class="r">G</span>Ranger's<b>2–0</b></div><div class="chip2 g"><span class="r">G</span>Sabinal<b>2–1</b></div><div class="chip2 p"><span class="r">P</span>Bad's<b>4–5</b></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="duelo-rv_juarez">
+      <div class="eyebrow">Choque de titanes · Dom 8:00 · Gpe. Victoria</div><h2 class="slide-title">REAL VICTORIA VS JUÁREZ F.C.</h2>
+      <div class="vs-head stagger">
+        <div class="vs-team l"><span class="role">Local</span><span class="nm">Real Victoria</span><span class="meta">5.º lugar · 19 pts</span></div>
+        <div class="vs-mid">VS</div>
+        <div class="vs-team r"><span class="role">Visitante</span><span class="nm">Juárez F.C.</span><span class="meta">2.º lugar · 22 pts</span></div>
+      </div>
+      <div class="vs-grid">
+        <div class="card"><h3>Real Victoria de local vs Juárez F.C. de visita</h3>
+          <div class="vs-sub"><span class="a">6 partidos en casa</span><span class="b">5 partidos de visita</span></div>
+          <div class="vs-row"><span class="vs-val l ">4</span><div class="vs-track l"><i class="" style="--w:100.0%"></i></div><span class="vs-lbl">Ganados</span><div class="vs-track r"><i class="" style="--w:100.0%"></i></div><span class="vs-val r ">4</span></div>
+          <div class="vs-row"><span class="vs-val l ">0</span><div class="vs-track l"><i class="" style="--w:0.0%"></i></div><span class="vs-lbl">Empatados</span><div class="vs-track r"><i class="" style="--w:0.0%"></i></div><span class="vs-val r ">0</span></div>
+          <div class="vs-row"><span class="vs-val l ">2</span><div class="vs-track l"><i class="lose" style="--w:100.0%"></i></div><span class="vs-lbl">Perdidos</span><div class="vs-track r"><i class="" style="--w:50.0%"></i></div><span class="vs-val r win">1</span></div>
+          <div class="vs-row"><span class="vs-val l win">13</span><div class="vs-track l"><i class="" style="--w:100.0%"></i></div><span class="vs-lbl">Goles a favor</span><div class="vs-track r"><i class="lose" style="--w:92.3%"></i></div><span class="vs-val r ">12</span></div>
+          <div class="vs-row"><span class="vs-val l win">7</span><div class="vs-track l"><i class="" style="--w:87.5%"></i></div><span class="vs-lbl">Goles en contra</span><div class="vs-track r"><i class="lose" style="--w:100.0%"></i></div><span class="vs-val r ">8</span></div>
+          <div class="vs-row"><span class="vs-val l win">+6</span><div class="vs-track l"><i class="" style="--w:100.0%"></i></div><span class="vs-lbl">Dif. de goles</span><div class="vs-track r"><i class="lose" style="--w:66.7%"></i></div><span class="vs-val r ">+4</span></div>
+          <div class="vs-row"><span class="vs-val l ">2.17</span><div class="vs-track l"><i class="lose" style="--w:90.4%"></i></div><span class="vs-lbl">Goles / partido</span><div class="vs-track r"><i class="" style="--w:100.0%"></i></div><span class="vs-val r win">2.40</span></div>
+          <div class="vs-row"><span class="vs-val l win">1.17</span><div class="vs-track l"><i class="" style="--w:73.1%"></i></div><span class="vs-lbl">Recibidos / partido</span><div class="vs-track r"><i class="lose" style="--w:100.0%"></i></div><span class="vs-val r ">1.60</span></div>
+        </div>
+        <div class="card"><h3>Rivales en común</h3>
+          <table class="com"><thead><tr><th>Rival</th><th class="a">Real Victoria</th><th class="b">Juárez F.C.</th></tr></thead><tbody>
+            <tr><td>Red Bull's</td><td class="g">5–0<small>LOCAL</small></td><td class="g">1–0<small>VISITA</small></td></tr>
+            <tr><td>Micheleros</td><td class="g">2–1<small>LOCAL</small></td><td class="g">3–2<small>VISITA</small></td></tr>
+            <tr><td>Tiburones</td><td class="p">0–1<small>LOCAL</small></td><td class="g">2–1<small>LOCAL</small></td></tr>
+            <tr><td>Halcones</td><td class="g">2–1<small>VISITA</small></td><td class="e">1–1<small>LOCAL</small></td></tr>
+            <tr><td>Bad's</td><td class="g">4–1<small>VISITA</small></td><td class="p">4–5<small>VISITA</small></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="quiniela">
+      <div class="eyebrow">Quiniela · Segunda ronda · Primera Fuerza Especial</div><h2 class="slide-title">QUINIELA · JORNADA 12</h2><p class="slide-sub">Pronostica los ocho partidos. Posición y puntos de cada equipo antes de la jornada.</p>
+      <div class="table-wrap" style="padding:6px 18px">
+        <table class="qn"><thead><tr><th style="width:5%">Pos</th><th style="width:17%;text-align:right">Local</th><th style="width:5%">Pts</th><th style="width:4%"></th><th style="width:5%">Pts</th><th style="width:17%;text-align:left">Visitante</th><th style="width:5%">Pos</th><th style="width:11%">Cuándo</th><th style="width:10%">Pedro</th><th style="width:10%">Doctor</th><th style="width:10%">Héctor</th></tr></thead><tbody>
+          <tr><td class="ps">7</td><td class="loc">Dep. Guerrero</td><td class="pt">17</td><td class="vsx">vs</td><td class="pt">14</td><td class="vis">Micheleros</td><td class="ps">11</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">17</td><td class="loc">Manchester</td><td class="pt">6</td><td class="vsx">vs</td><td class="pt">17</td><td class="vis">Halcones</td><td class="ps">8</td><td class="when">Dom 12:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">10</td><td class="loc">Liverpool</td><td class="pt">15</td><td class="vsx">vs</td><td class="pt">20</td><td class="vis">Red Bull's</td><td class="ps">3</td><td class="when">Dom 9:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">18</td><td class="loc">Bad's</td><td class="pt">3</td><td class="vsx">vs</td><td class="pt">19</td><td class="vis">Arsenal</td><td class="ps">6</td><td class="when">Dom 10:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr class="hot"><td class="ps">4</td><td class="loc">Galaxi</td><td class="pt">20</td><td class="vsx">vs</td><td class="pt">26</td><td class="vis">Sor Juana<span class="star">★</span></td><td class="ps">1</td><td class="when">Dom 11:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr class="hot"><td class="ps">5</td><td class="loc">Real Victoria</td><td class="pt">19</td><td class="vsx">vs</td><td class="pt">22</td><td class="vis">Juárez F.C.<span class="star">★</span></td><td class="ps">2</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">16</td><td class="loc">Pinochos</td><td class="pt">7</td><td class="vsx">vs</td><td class="pt">16</td><td class="vis">Molinos</td><td class="ps">9</td><td class="when">Sáb 20:30</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">14</td><td class="loc">Aferrados</td><td class="pt">7</td><td class="vsx">vs</td><td class="pt">12</td><td class="vis">Sabinal</td><td class="ps">12</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="source-note" style="font-size:14px">★ Partidos del momento · Tiburones vs Ranger's está pendiente y se suma al tener fecha</div>
+    </section>
+
+    <section class="slide" data-slide="reglas">
+      <div class="eyebrow">Quiniela · Segunda ronda</div><h2 class="slide-title">¿CÓMO VAMOS?</h2><p class="slide-sub">Así quedó la primera ronda (Jornada 11, nueve partidos) y las reglas para la segunda.</p>
+      <div class="podium stagger">
+        <div class="pod second" style="--mh:226px"><div class="rk">2.º lugar</div><div class="pn">Pedro</div><div class="pp">6<small>pts</small></div><div class="pd">6 aciertos · 0 exactos</div></div>
+        <div class="pod first" style="--mh:270px"><div class="rk">1.er lugar</div><div class="pn">Doctor</div><div class="pp">10<small>pts</small></div><div class="pd">6 aciertos · 2 exactos</div></div>
+        <div class="pod third" style="--mh:200px"><div class="rk">3.er lugar</div><div class="pn">Héctor</div><div class="pp">5<small>pts</small></div><div class="pd">5 aciertos · 0 exactos</div></div>
+      </div>
+      <div class="rules stagger" style="margin:14px 0 0">
+        <div class="rule-c"><div class="big">1</div><div class="lbl">Punto por acertar el resultado</div><p>Gana local, empate o gana visitante.</p></div>
+        <div class="rule-c"><div class="big">+2</div><div class="lbl">Por marcador exacto</div><p>Hasta 3 puntos por partido si clavas el marcador.</p></div>
+        <div class="rule-c"><div class="big">24</div><div class="lbl">Puntos posibles en la ronda</div><p>Ocho partidos, máximo 3 puntos cada uno.</p></div>
+      </div>
+    </section>
+
+    <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </main>
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script>
+    // Índice de entrada para escalonar las animaciones de filas, tarjetas y barras
+    document.querySelectorAll('tbody tr, .stagger > *, .chips2 > *, .vs-grid .vs-row').forEach((el) => {
+      el.style.setProperty('--i', [...el.parentElement.children].indexOf(el))
+    })
+  </script>
+  <script src="../52/logos.js"></script>
+  <script src="../52/deck.js"></script>
+</body>
+</html>
