@@ -106,7 +106,10 @@
     /* Quiniela */
     .qn{width:100%;border-collapse:collapse;table-layout:fixed}
     .qn th{font:600 15px/1 "Oswald",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:8px 4px;border-bottom:2px solid rgba(230,181,74,.48);text-align:center}
-    .qn td{padding:6px 4px;border-bottom:1px solid var(--line-soft);font:700 24px/1 "Oswald",sans-serif;text-transform:uppercase;text-align:center;letter-spacing:.02em}
+    .qn th.pl{line-height:1.1}
+    .qn th.pl small{display:block;font:700 19px/1 "Oswald",sans-serif;letter-spacing:.06em;color:var(--cream);margin-top:4px}
+    .qn th.pl.first small{color:var(--gold)}
+    .qn td{padding:5px 4px;border-bottom:1px solid var(--line-soft);font:700 24px/1 "Oswald",sans-serif;text-transform:uppercase;text-align:center;letter-spacing:.02em}
     .qn tr:last-child td{border-bottom:0}
     .qn .ps{color:var(--dimmer);font-size:19px}
     .qn .loc{text-align:right}.qn .vis{text-align:left}
@@ -361,23 +364,6 @@
       </div>
     </section>
 
-    <section class="slide" data-slide="quiniela">
-      <div class="eyebrow">Quiniela · Segunda ronda · Primera Fuerza Especial</div><h2 class="slide-title">QUINIELA · JORNADA 12</h2><p class="slide-sub">Pronostica los ocho partidos. Posición y puntos de cada equipo antes de la jornada.</p>
-      <div class="table-wrap" style="padding:6px 18px">
-        <table class="qn"><thead><tr><th style="width:5%">Pos</th><th style="width:17%;text-align:right">Local</th><th style="width:5%">Pts</th><th style="width:4%"></th><th style="width:5%">Pts</th><th style="width:17%;text-align:left">Visitante</th><th style="width:5%">Pos</th><th style="width:11%">Cuándo</th><th style="width:10%">Pedro</th><th style="width:10%">Doctor</th><th style="width:10%">Héctor</th></tr></thead><tbody>
-          <tr><td class="ps">7</td><td class="loc">Dep. Guerrero</td><td class="pt">17</td><td class="vsx">vs</td><td class="pt">14</td><td class="vis">Micheleros</td><td class="ps">11</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
-          <tr><td class="ps">17</td><td class="loc">Manchester</td><td class="pt">6</td><td class="vsx">vs</td><td class="pt">17</td><td class="vis">Halcones</td><td class="ps">8</td><td class="when">Dom 12:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
-          <tr><td class="ps">10</td><td class="loc">Liverpool</td><td class="pt">15</td><td class="vsx">vs</td><td class="pt">20</td><td class="vis">Red Bull's</td><td class="ps">3</td><td class="when">Dom 9:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
-          <tr><td class="ps">18</td><td class="loc">Bad's</td><td class="pt">3</td><td class="vsx">vs</td><td class="pt">19</td><td class="vis">Arsenal</td><td class="ps">6</td><td class="when">Dom 10:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
-          <tr class="hot"><td class="ps">4</td><td class="loc">Galaxi</td><td class="pt">20</td><td class="vsx">vs</td><td class="pt">26</td><td class="vis">Sor Juana<span class="star">★</span></td><td class="ps">1</td><td class="when">Dom 11:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
-          <tr class="hot"><td class="ps">5</td><td class="loc">Real Victoria</td><td class="pt">19</td><td class="vsx">vs</td><td class="pt">22</td><td class="vis">Juárez F.C.<span class="star">★</span></td><td class="ps">2</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
-          <tr><td class="ps">16</td><td class="loc">Pinochos</td><td class="pt">7</td><td class="vsx">vs</td><td class="pt">16</td><td class="vis">Molinos</td><td class="ps">9</td><td class="when">Sáb 20:30</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
-          <tr><td class="ps">14</td><td class="loc">Aferrados</td><td class="pt">7</td><td class="vsx">vs</td><td class="pt">12</td><td class="vis">Sabinal</td><td class="ps">12</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
-        </tbody></table>
-      </div>
-      <div class="source-note" style="font-size:14px">★ Partidos del momento · Tiburones vs Ranger's está pendiente y se suma al tener fecha</div>
-    </section>
-
     <section class="slide" data-slide="reglas">
       <div class="eyebrow">Quiniela · Segunda ronda</div><h2 class="slide-title">¿CÓMO VAMOS?</h2><p class="slide-sub">Así quedó la primera ronda (Jornada 11, nueve partidos) y las reglas para la segunda.</p>
       <div class="podium stagger">
@@ -390,6 +376,23 @@
         <div class="rule-c"><div class="big">+2</div><div class="lbl">Por marcador exacto</div><p>Hasta 3 puntos por partido si clavas el marcador.</p></div>
         <div class="rule-c"><div class="big">24</div><div class="lbl">Puntos posibles en la ronda</div><p>Ocho partidos, máximo 3 puntos cada uno.</p></div>
       </div>
+    </section>
+
+    <section class="slide" data-slide="quiniela">
+      <div class="eyebrow">Quiniela · Segunda ronda · Primera Fuerza Especial</div><h2 class="slide-title">QUINIELA · JORNADA 12</h2><p class="slide-sub">Pronostica los ocho partidos. Bajo cada nombre, los puntos que lleva tras la primera ronda.</p>
+      <div class="table-wrap" style="padding:6px 18px">
+        <table class="qn"><thead><tr><th style="width:5%">Pos</th><th style="width:17%;text-align:right">Local</th><th style="width:5%">Pts</th><th style="width:4%"></th><th style="width:5%">Pts</th><th style="width:17%;text-align:left">Visitante</th><th style="width:5%">Pos</th><th style="width:11%">Cuándo</th><th class="pl" style="width:10%">Pedro<small>6 pts</small></th><th class="pl first" style="width:10%">Doctor<small>10 pts</small></th><th class="pl" style="width:10%">Héctor<small>5 pts</small></th></tr></thead><tbody>
+          <tr><td class="ps">7</td><td class="loc">Dep. Guerrero</td><td class="pt">17</td><td class="vsx">vs</td><td class="pt">14</td><td class="vis">Micheleros</td><td class="ps">11</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">17</td><td class="loc">Manchester</td><td class="pt">6</td><td class="vsx">vs</td><td class="pt">17</td><td class="vis">Halcones</td><td class="ps">8</td><td class="when">Dom 12:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">10</td><td class="loc">Liverpool</td><td class="pt">15</td><td class="vsx">vs</td><td class="pt">20</td><td class="vis">Red Bull's</td><td class="ps">3</td><td class="when">Dom 9:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">18</td><td class="loc">Bad's</td><td class="pt">3</td><td class="vsx">vs</td><td class="pt">19</td><td class="vis">Arsenal</td><td class="ps">6</td><td class="when">Dom 10:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr class="hot"><td class="ps">4</td><td class="loc">Galaxi</td><td class="pt">20</td><td class="vsx">vs</td><td class="pt">26</td><td class="vis">Sor Juana<span class="star">★</span></td><td class="ps">1</td><td class="when">Dom 11:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr class="hot"><td class="ps">5</td><td class="loc">Real Victoria</td><td class="pt">19</td><td class="vsx">vs</td><td class="pt">22</td><td class="vis">Juárez F.C.<span class="star">★</span></td><td class="ps">2</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">16</td><td class="loc">Pinochos</td><td class="pt">7</td><td class="vsx">vs</td><td class="pt">16</td><td class="vis">Molinos</td><td class="ps">9</td><td class="when">Sáb 20:30</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+          <tr><td class="ps">14</td><td class="loc">Aferrados</td><td class="pt">7</td><td class="vsx">vs</td><td class="pt">12</td><td class="vis">Sabinal</td><td class="ps">12</td><td class="when">Dom 8:00</td><td><span class="box"></span></td><td><span class="box"></span></td><td><span class="box"></span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="source-note" style="font-size:14px">★ Partidos del momento · Tiburones vs Ranger's está pendiente y se suma al tener fecha</div>
     </section>
 
     <nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
