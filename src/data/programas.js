@@ -322,6 +322,16 @@ export const PROGRAMAS = [
       analisis: 'programas/77/analisis.html',
     },
   },
+  {
+    numero: 78,
+    titulo: 'Programa 78',
+    liga: 'Primera Fuerza Especial J-12 · Galaxi 3–0 Sor Juana · Real Victoria 3–0 Juárez F.C. · Tabla del descenso · Goleo · Campeonas femenil · Quiniela ronda 2',
+    decks: {
+      horarios: null,
+      resultados: 'programas/78/resultados.html',
+      analisis: 'programas/78/analisis.html',
+    },
+  },
 ]
 
 export function ultimoPrograma() {

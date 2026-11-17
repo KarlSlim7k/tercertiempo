@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Programa 78 de Tercer Tiempo: análisis de la Jornada 12 de la Primera Fuerza Especial con la tabla comparativa contra la Jornada 11, los movimientos de posición, los puntos sumados y los resultados de la segunda ronda de la quiniela.">
+  <title>Programa 78 · Análisis Jornada 12 · Tercer Tiempo</title>
+  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../52/deck.css">
+  <style>
+
+    .two{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:start}
+    .standings{width:100%;border-collapse:collapse;table-layout:fixed}
+    .standings th{font:600 12px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:9px 10px;border-bottom:2px solid rgba(230,181,74,.48)}
+    .standings td{padding:9px 10px;border-bottom:1px solid var(--line-soft);font:700 17px/1.05 "Oswald",sans-serif;text-transform:uppercase}
+    .standings tr:last-child td{border-bottom:0}
+    .standings .c{text-align:center}
+    .standings .pos{width:12%;text-align:center;color:var(--gold)}
+    .standings .team{width:44%}
+    .standings .num{width:14%;text-align:center}
+    .standings .pts{color:var(--gold);font-size:20px}
+    .standings .lead td{color:var(--gold)}
+    .cmp th,.cmp td{text-align:center;padding:7px 6px;font-size:16px}
+    .cmp td.team{text-align:left;width:auto}
+    .cmp th.team{text-align:left}
+    .cmp .pos{width:auto}
+    .up{color:var(--green)}
+    .down{color:var(--rose)}
+    .same{color:var(--dimmer)}
+    .tbl-grp{font:600 14px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+    .grp{font:600 14px/1 "Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:12px 0 8px}
+    .grp:first-child{margin-top:0}
+    .tag{display:inline-block;margin-left:10px;padding:4px 8px;border-radius:4px;background:var(--gold);color:var(--ink);font:700 11px/1 "Oswald",sans-serif;letter-spacing:.16em;vertical-align:middle}
+    .note-box{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:18px 24px}
+    .note-box .lbl{font:600 11px/1 "Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .note-box .val{font-size:17px;line-height:1.4;color:var(--dim)}
+    .source-note{font:600 12px/1.3 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:right;margin-top:11px}
+
+    /* Tarjetas de movimientos y altas/bajas */
+    .cards{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-content:start}
+    .card{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:18px 20px;box-shadow:0 5px 28px rgba(0,0,0,.22)}
+    .card h3{font:600 13px/1 "Oswald",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .mv-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line-soft);font:700 18px/1.1 "Oswald",sans-serif;text-transform:uppercase}
+    .mv-row:last-child{border-bottom:0}
+    .mv-row .delta{font-size:16px;white-space:nowrap}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:7px 10px;border-radius:6px;border:1px solid var(--line);background:rgba(255,255,255,.04);font:600 14px/1 "Oswald",sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--dim)}
+    .big{font:700 46px/1 "Oswald",sans-serif;color:var(--gold);letter-spacing:.03em}
+    .big-name{font:700 26px/1.1 "Oswald",sans-serif;text-transform:uppercase;margin-top:8px}
+    .card p{font-size:15px;line-height:1.4;color:var(--dim);margin-top:8px}
+
+    /* Barras de puntos ganados en J11 */
+    .bars{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:9px 36px;align-content:start}
+    .bar-row{display:grid;grid-template-columns:160px 1fr 58px;align-items:center;gap:10px;font:700 16px/1 "Oswald",sans-serif;text-transform:uppercase}
+    .bar-row .val{text-align:right;color:var(--gold)}
+    .bar-row .val small{display:block;font-size:11px;color:var(--dimmer);letter-spacing:.08em;font-weight:600}
+    .track{height:20px;border-radius:4px;background:var(--panel-2);overflow:hidden}
+    .fill{height:100%;width:var(--w);border-radius:4px;background:linear-gradient(90deg,#b8862a,#f0c75a)}
+    .fill.zero{background:var(--panel-2)}
+
+    /* Bloque campeón */
+    .champ-banner{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;border:2px solid var(--gold);border-radius:16px;background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 8px 36px rgba(230,181,74,.2)}
+    .champ-kicker{font:700 14px/1 "Oswald",sans-serif;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .champ-title{font:800 52px/1.05 "Oswald",sans-serif;text-transform:uppercase;color:var(--cream);letter-spacing:.04em}
+    .champ-sub{font:600 20px/1.3 "Inter",sans-serif;color:var(--gold);margin-top:14px;max-width:700px}
+    .champ-desc{font-size:16px;line-height:1.5;color:var(--dim);margin-top:16px;max-width:680px}
+
+    /* Animaciones */
+    @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes grow{from{width:0}to{width:var(--w)}}
+    @keyframes pop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
+    .slide.active .eyebrow,.slide.active .slide-title,.slide.active .slide-sub{animation:rise .5s ease both}
+    .slide.active .slide-sub{animation-delay:.08s}
+    .slide.active tbody tr{animation:rise .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 110ms + 180ms)}
+    .slide.active .stagger > *{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 110ms + 220ms)}
+    .slide.active .bar-row{animation:rise .45s ease both;animation-delay:calc(var(--i,0) * 70ms + 200ms)}
+    .slide.active .fill{animation:grow 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 70ms + 400ms)}
+    .slide.active .big{animation:pop .6s ease .3s both}
+    .slide.active .champ-banner{animation:rise .6s cubic-bezier(.2,.8,.2,1) both}
+    .slide.active .cover-kicker,.slide.active .cover h1,.slide.active .cover-copy,.slide.active .rule{animation:rise .6s ease both}
+    .slide.active .cover h1{animation-delay:.15s}
+    .slide.active .cover-copy{animation-delay:.35s}
+    .slide.active .cover-item{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 120ms + 300ms)}
+  
+    .results tr.hot td{background:rgba(230,181,74,.1)}
+    .results tr.hot td:first-child{box-shadow:inset 5px 0 0 var(--rose)}
+    .results tr.hot .local{color:var(--cream)}
+    .results tr.pend .local,.results tr.pend .visitor{color:var(--dimmer)}
+    .results tr.pend .score{color:var(--amber);font-size:19px;letter-spacing:.14em}
+    .cover h1{font-size:72px}
+    .slide{padding:16px 44px 54px}
+    .slide-title{font-size:44px}
+    .cmp th{white-space:nowrap;letter-spacing:.08em;padding:9px 4px}
+    .cmp td{font-size:17px;padding:8px 6px}
+    .cmp td.pts{font-size:20px}
+
+    /* Quiniela: resultados de la ronda */
+    .qm{width:100%;border-collapse:collapse;table-layout:fixed}
+    .qm th{font:600 15px/1.1 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:6px 4px;border-bottom:2px solid rgba(230,181,74,.48);text-align:center}
+    .qm th small{display:block;font:700 18px/1 "Oswald",sans-serif;letter-spacing:.06em;color:var(--cream);margin-top:4px}
+    .qm td{padding:3px 4px;border-bottom:1px solid var(--line-soft);font:700 21px/1 "Oswald",sans-serif;text-transform:uppercase;text-align:center}
+    .qm td.loc{text-align:right;padding-right:10px}.qm td.vis{text-align:left;padding-left:10px;color:var(--dim)}
+    .qm td.mc{color:var(--gold);font-size:25px;letter-spacing:.06em}
+    .qm tr:last-child td{border-bottom:0}
+    .qm tr.hot td.loc,.qm tr.hot td.vis,.qm tr.hot td.mc{background:rgba(230,181,74,.1)}
+    .qm td.pk b{display:block;font-size:19px;letter-spacing:.04em}
+    .qm td.pk i{display:block;font:600 12px/1 "Oswald",sans-serif;font-style:normal;letter-spacing:.12em;margin-top:2px}
+    .qm td.pk.ok{background:rgba(95,210,139,.1)}.qm td.pk.ok b,.qm td.pk.ok i{color:var(--green)}
+    .qm td.pk.no{background:rgba(255,133,133,.07)}.qm td.pk.no b{color:var(--dimmer)}.qm td.pk.no i{color:var(--rose)}
+    .qm tfoot td{border-top:2px solid rgba(230,181,74,.48);border-bottom:0;padding:6px 4px;font-size:28px;color:var(--gold);background:var(--gold-soft)}
+    .qm tfoot td.lbl{text-align:right;font-size:17px;letter-spacing:.16em;color:var(--dim)}
+    .qm tfoot td small{font-size:15px;color:var(--dim);letter-spacing:.1em;margin-left:4px}
+
+    .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+    .rule-c{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:10px 20px;text-align:center}
+    .rule-c .big{font:700 48px/1 "Oswald",sans-serif;color:var(--gold)}
+    .rule-c .lbl{font:600 18px/1.2 "Oswald",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);margin-top:6px}
+    .rule-c p{font-size:17px;line-height:1.3;color:var(--dim);margin-top:4px}
+    .podium{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end;flex:1;min-height:0}
+    .pod{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:14px 20px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:var(--mh)}
+    .pod.first{border-color:var(--gold);box-shadow:0 8px 36px rgba(230,181,74,.22)}
+    .pod .rk{font:700 18px/1 "Oswald",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+    .pod .pn{font:700 38px/1.1 "Oswald",sans-serif;text-transform:uppercase;margin:6px 0}
+    .pod .pp{font:700 78px/1 "Oswald",sans-serif;color:var(--gold)}
+    .pod .pp small{font-size:26px;color:var(--dim);margin-left:6px;letter-spacing:.1em}
+    .pod .pd{font:600 19px/1.3 "Oswald",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:8px}
+    
+    .pod .bar{height:var(--h);margin-top:14px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,#f0c75a,#8a6218)}
+    .pod.second .bar{background:linear-gradient(180deg,#d9d4c6,#7d796c)}.pod.third .bar{background:linear-gradient(180deg,#d08a52,#7a4a24)}
+    @keyframes growY{from{height:0}to{height:var(--h)}}
+    .slide.active .pod .bar{animation:growY 1s cubic-bezier(.2,.8,.2,1) .5s both}
+    .slide.active .pod{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 130ms + 200ms)}
+    .slide.active .rule-c{animation:pop .5s ease both;animation-delay:calc(var(--i,0) * 120ms + 200ms)}
+    .cards.tight .mv-row{padding:6px 0;font-size:17px}
+    .cards.tight .card{padding:14px 18px}
+    .tag-s{display:inline-block;margin-left:8px;padding:3px 7px;border-radius:4px;background:var(--gold);color:var(--ink);font:700 11px/1 "Oswald",sans-serif;letter-spacing:.14em;vertical-align:middle}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <div class="brand"><div class="logo-box crea-logo"><img data-logo="crea" alt="CREA Contenidos"></div><div><div class="kicker">Programa 78</div><div class="title">Análisis de la Jornada 12</div><div class="sub">Comparativa J-11 vs J-12 · Movimientos · Quiniela ronda 2</div></div></div>
+      <div class="top-right"><div class="counter" id="counter">1 / 7</div><div class="logo-box tt-logo"><img data-logo="tercer" alt="Tercer Tiempo"></div></div>
+    </header>
+
+    <section class="slide active" data-slide="0">
+      <div class="cover">
+        <div class="cover-inner"><div class="cover-kicker">Tercer Tiempo · Programa 78</div><h1>ANÁLISIS<br><span>JORNADA 12</span></h1></div>
+        <div class="rule"></div><p class="cover-copy">Qué cambió en la tabla de la Primera Fuerza Especial entre la Jornada 11 y la Jornada 12: quién subió, quién bajó y cuántos puntos sumó cada equipo. Cerramos con los resultados de la segunda ronda de la quiniela.</p>
+        <div class="cover-grid stagger"><div class="cover-item"><b>01</b>Comparativa J-11 vs J-12</div><div class="cover-item"><b>02</b>¿Quién subió y quién bajó?</div><div class="cover-item"><b>03</b>Puntos sumados en la J-12</div><div class="cover-item"><b>04</b>Quiniela · Resultados ronda 2</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="comparativa-1">
+      <div class="eyebrow">Primera Fuerza Especial · Comparativa</div><h2 class="slide-title">TABLA COMPARATIVA · J-11 VS J-12 (1–9)</h2><p class="slide-sub">Posición, puntos y diferencia de cada equipo del 1.º al 9.º de la J-12.</p>
+      <div class="table-wrap"><table class="standings cmp"><thead><tr><th class="team">Equipo</th><th>Pos. J-11</th><th>Pos. J-12</th><th>Pts J-11</th><th>Pts J-12</th><th>Dif. J-11</th><th>Dif. J-12</th><th>Mov.</th></tr></thead><tbody>
+        <tr><td class="team">Sor Juana</td><td>1</td><td>1</td><td>26</td><td class="pts">26</td><td>+23</td><td>+20</td><td class="same">=</td></tr>
+        <tr><td class="team">Galaxi</td><td>4</td><td>2</td><td>20</td><td class="pts">23</td><td>+12</td><td>+15</td><td class="up">▲ 2</td></tr>
+        <tr><td class="team">Real Victoria</td><td>5</td><td>3</td><td>19</td><td class="pts">22</td><td>+9</td><td>+12</td><td class="up">▲ 2</td></tr>
+        <tr><td class="team">Juárez F.C.</td><td>2</td><td>4</td><td>22</td><td class="pts">22</td><td>+9</td><td>+6</td><td class="down">▼ 2</td></tr>
+        <tr><td class="team">Arsenal</td><td>6</td><td>5</td><td>19</td><td class="pts">22</td><td>+5</td><td>+6</td><td class="up">▲ 1</td></tr>
+        <tr><td class="team">Dep. Guerrero</td><td>7</td><td>6</td><td>17</td><td class="pts">20</td><td>+11</td><td>+14</td><td class="up">▲ 1</td></tr>
+        <tr><td class="team">Red Bull&#39;s</td><td>3</td><td>7</td><td>20</td><td class="pts">20</td><td>+13</td><td>+12</td><td class="down">▼ 4</td></tr>
+        <tr><td class="team">Halcones</td><td>8</td><td>8</td><td>17</td><td class="pts">20</td><td>0</td><td>+5</td><td class="same">=</td></tr>
+        <tr><td class="team">Liverpool</td><td>10</td><td>9</td><td>15</td><td class="pts">18</td><td>+1</td><td>+2</td><td class="up">▲ 1</td></tr>
+      </tbody></table></div>
+      <div class="source-note">Mov. = cambio de posición de la J-11 a la J-12 · Juárez F.C. tiene 10 partidos; los demás, 11</div>
+    </section>
+
+    <section class="slide" data-slide="comparativa-2">
+      <div class="eyebrow">Primera Fuerza Especial · Comparativa</div><h2 class="slide-title">TABLA COMPARATIVA · J-11 VS J-12 (10–18)</h2><p class="slide-sub">Posición, puntos y diferencia de cada equipo del 10.º al 18.º de la J-12.</p>
+      <div class="table-wrap"><table class="standings cmp"><thead><tr><th class="team">Equipo</th><th>Pos. J-11</th><th>Pos. J-12</th><th>Pts J-11</th><th>Pts J-12</th><th>Dif. J-11</th><th>Dif. J-12</th><th>Mov.</th></tr></thead><tbody>
+        <tr><td class="team">Molinos</td><td>9</td><td>10</td><td>16</td><td class="pts">17</td><td>−4</td><td>−4</td><td class="down">▼ 1</td></tr>
+        <tr><td class="team">Sabinal</td><td>12</td><td>11</td><td>12</td><td class="pts">15</td><td>−2</td><td>−1</td><td class="up">▲ 1</td></tr>
+        <tr><td class="team">Micheleros</td><td>11</td><td>12</td><td>14</td><td class="pts">14</td><td>−2</td><td>−5</td><td class="down">▼ 1</td></tr>
+        <tr><td class="team">Pinochos</td><td>16</td><td>13</td><td>7</td><td class="pts">8</td><td>−17</td><td>−17</td><td class="up">▲ 3</td></tr>
+        <tr><td class="team">Ranger&#39;s</td><td>13</td><td>14</td><td>7</td><td class="pts">7</td><td>−3</td><td>−3</td><td class="down">▼ 1</td></tr>
+        <tr><td class="team">Aferrados</td><td>14</td><td>15</td><td>7</td><td class="pts">7</td><td>−5</td><td>−6</td><td class="down">▼ 1</td></tr>
+        <tr><td class="team">Tiburones</td><td>15</td><td>16</td><td>7</td><td class="pts">7</td><td>−10</td><td>−10</td><td class="down">▼ 1</td></tr>
+        <tr><td class="team">Manchester</td><td>17</td><td>17</td><td>6</td><td class="pts">6</td><td>−17</td><td>−22</td><td class="same">=</td></tr>
+        <tr><td class="team">Bad&#39;s</td><td>18</td><td>18</td><td>3</td><td class="pts">3</td><td>−28</td><td>−29</td><td class="same">=</td></tr>
+      </tbody></table></div>
+      <div class="source-note">Mov. = cambio de posición de la J-11 a la J-12 · Pinochos, Ranger’s y Tiburones tienen 10 partidos; los demás, 11</div>
+    </section>
+
+    <section class="slide" data-slide="movimientos">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 12</div><h2 class="slide-title">¿QUIÉN SUBIÓ Y QUIÉN BAJÓ?</h2><p class="slide-sub">Cambios de posición respecto a la Jornada 11.</p>
+      <div class="cards tight stagger">
+        <div class="card"><h3>Suben</h3>
+          <div class="mv-row"><span>Pinochos</span><span class="delta up">▲ 3 · 16.º → 13.º</span></div>
+          <div class="mv-row"><span>Galaxi</span><span class="delta up">▲ 2 · 4.º → 2.º</span></div>
+          <div class="mv-row"><span>Real Victoria</span><span class="delta up">▲ 2 · 5.º → 3.º</span></div>
+          <div class="mv-row"><span>Arsenal</span><span class="delta up">▲ 1 · 6.º → 5.º</span></div>
+          <div class="mv-row"><span>Dep. Guerrero</span><span class="delta up">▲ 1 · 7.º → 6.º</span></div>
+          <div class="mv-row"><span>Liverpool</span><span class="delta up">▲ 1 · 10.º → 9.º</span></div>
+          <div class="mv-row"><span>Sabinal</span><span class="delta up">▲ 1 · 12.º → 11.º</span></div>
+        </div>
+        <div class="card"><h3>Bajan</h3>
+          <div class="mv-row"><span>Red Bull&#39;s</span><span class="delta down">▼ 4 · 3.º → 7.º</span></div>
+          <div class="mv-row"><span>Juárez F.C.</span><span class="delta down">▼ 2 · 2.º → 4.º</span></div>
+          <div class="mv-row"><span>Molinos</span><span class="delta down">▼ 1 · 9.º → 10.º</span></div>
+          <div class="mv-row"><span>Micheleros</span><span class="delta down">▼ 1 · 11.º → 12.º</span></div>
+          <div class="mv-row"><span>Ranger&#39;s</span><span class="delta down">▼ 1 · 13.º → 14.º</span></div>
+          <div class="mv-row"><span>Aferrados</span><span class="delta down">▼ 1 · 14.º → 15.º</span></div>
+          <div class="mv-row"><span>Tiburones</span><span class="delta down">▼ 1 · 15.º → 16.º</span></div>
+        </div>
+        <div class="card"><h3>Sin cambio de lugar</h3>
+          <div class="chips"><span class="chip">Sor Juana (1.º)</span><span class="chip">Halcones (8.º)</span><span class="chip">Manchester (17.º)</span><span class="chip">Bad&#39;s (18.º)</span></div>
+          <p>Cuatro equipos conservan su posición. Sor Juana sigue 1.º pese a la derrota; Galaxi se coloca a 3 puntos.</p>
+          <p style="margin-top:14px"><b style="color:var(--gold)">Mayor subida:</b> Pinochos ▲ 3 (16.º → 13.º). <b style="color:var(--gold)">Mayor caída:</b> Red Bull's ▼ 4 (3.º → 7.º).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="puntos-j12">
+      <div class="eyebrow">Primera Fuerza Especial · Jornada 12</div><h2 class="slide-title">PUNTOS SUMADOS EN LA J-12</h2><p class="slide-sub">Cosecha de unidades de los 16 equipos que jugaron.</p>
+      <div class="bars stagger">
+        <div class="bar-row"><span>Galaxi</span><div class="track"><div class="fill" style="--w:100%"></div></div><span class="val">3<small>victoria</small></span></div>
+        <div class="bar-row"><span>Real Victoria</span><div class="track"><div class="fill" style="--w:100%"></div></div><span class="val">3<small>victoria</small></span></div>
+        <div class="bar-row"><span>Arsenal</span><div class="track"><div class="fill" style="--w:100%"></div></div><span class="val">3<small>victoria</small></span></div>
+        <div class="bar-row"><span>Dep. Guerrero</span><div class="track"><div class="fill" style="--w:100%"></div></div><span class="val">3<small>victoria</small></span></div>
+        <div class="bar-row"><span>Halcones</span><div class="track"><div class="fill" style="--w:100%"></div></div><span class="val">3<small>victoria</small></span></div>
+        <div class="bar-row"><span>Liverpool</span><div class="track"><div class="fill" style="--w:100%"></div></div><span class="val">3<small>victoria</small></span></div>
+        <div class="bar-row"><span>Sabinal</span><div class="track"><div class="fill" style="--w:100%"></div></div><span class="val">3<small>victoria</small></span></div>
+        <div class="bar-row"><span>Molinos</span><div class="track"><div class="fill" style="--w:33.33%"></div></div><span class="val">1<small>empate</small></span></div>
+        <div class="bar-row"><span>Pinochos</span><div class="track"><div class="fill" style="--w:33.33%"></div></div><span class="val">1<small>empate</small></span></div>
+        <div class="bar-row"><span>Sor Juana</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">0<small>derrota</small></span></div>
+        <div class="bar-row"><span>Juárez F.C.</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">0<small>derrota</small></span></div>
+        <div class="bar-row"><span>Red Bull&#39;s</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">0<small>derrota</small></span></div>
+        <div class="bar-row"><span>Micheleros</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">0<small>derrota</small></span></div>
+        <div class="bar-row"><span>Aferrados</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">0<small>derrota</small></span></div>
+        <div class="bar-row"><span>Manchester</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">0<small>derrota</small></span></div>
+        <div class="bar-row"><span>Bad&#39;s</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">0<small>derrota</small></span></div>
+        <div class="bar-row"><span>Ranger&#39;s</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">—<small>no jugó</small></span></div>
+        <div class="bar-row"><span>Tiburones</span><div class="track"><div class="fill zero" style="--w:0%"></div></div><span class="val">—<small>no jugó</small></span></div>
+      </div>
+      <div class="source-note">Total de la jornada: 23 puntos repartidos en ocho partidos · Tiburones y Ranger’s no jugaron</div>
+    </section>
+
+    <section class="slide" data-slide="quiniela-j12">
+      <div class="eyebrow">Quiniela · Segunda ronda · Primera Fuerza Especial</div><h2 class="slide-title">QUINIELA · RESULTADOS J-12</h2><p class="slide-sub">Ocho partidos de la segunda ronda · 1 punto por acertar el resultado, +2 por marcador exacto.</p>
+      <div class="table-wrap" style="padding:6px 18px">
+        <table class="qm"><thead><tr><th style="width:17%;text-align:right">Local</th><th style="width:10%">Marcador</th><th style="width:17%;text-align:left">Visitante</th><th style="width:18.67%">Pedro</th><th style="width:18.67%">Doctor</th><th style="width:18.67%">Héctor</th></tr></thead><tbody>
+          <tr><td class="loc">Dep. Guerrero</td><td class="mc">6 – 3</td><td class="vis">Micheleros</td><td class="pk ok"><b>LOCAL</b><i>✓ +1</i></td><td class="pk ok"><b>2–1</b><i>✓ +1</i></td><td class="pk ok"><b>LOCAL</b><i>✓ +1</i></td></tr>
+          <tr><td class="loc">Manchester</td><td class="mc">0 – 5</td><td class="vis">Halcones</td><td class="pk ok"><b>VISITA</b><i>✓ +1</i></td><td class="pk ok"><b>1–3</b><i>✓ +1</i></td><td class="pk ok"><b>VISITA</b><i>✓ +1</i></td></tr>
+          <tr><td class="loc">Liverpool</td><td class="mc">3 – 2</td><td class="vis">Red Bull&#39;s</td><td class="pk no"><b>VISITA</b><i>✗ 0</i></td><td class="pk no"><b>2–2</b><i>✗ 0</i></td><td class="pk ok"><b>LOCAL</b><i>✓ +1</i></td></tr>
+          <tr><td class="loc">Bad&#39;s</td><td class="mc">4 – 5</td><td class="vis">Arsenal</td><td class="pk ok"><b>VISITA</b><i>✓ +1</i></td><td class="pk ok"><b>0–2</b><i>✓ +1</i></td><td class="pk ok"><b>VISITA</b><i>✓ +1</i></td></tr>
+          <tr class="hot"><td class="loc">Galaxi</td><td class="mc">3 – 0</td><td class="vis">Sor Juana</td><td class="pk no"><b>EMPATE</b><i>✗ 0</i></td><td class="pk ok"><b>2–1</b><i>✓ +1</i></td><td class="pk no"><b>EMPATE</b><i>✗ 0</i></td></tr>
+          <tr class="hot"><td class="loc">Real Victoria</td><td class="mc">3 – 0</td><td class="vis">Juárez F.C.</td><td class="pk no"><b>EMPATE</b><i>✗ 0</i></td><td class="pk no"><b>1–2</b><i>✗ 0</i></td><td class="pk ok"><b>LOCAL</b><i>✓ +1</i></td></tr>
+          <tr><td class="loc">Pinochos</td><td class="mc">1 – 1</td><td class="vis">Molinos</td><td class="pk no"><b>LOCAL</b><i>✗ 0</i></td><td class="pk ok"><b>2–2</b><i>✓ +1</i></td><td class="pk no"><b>LOCAL</b><i>✗ 0</i></td></tr>
+          <tr><td class="loc">Aferrados</td><td class="mc">0 – 1</td><td class="vis">Sabinal</td><td class="pk no"><b>LOCAL</b><i>✗ 0</i></td><td class="pk no"><b>1–0</b><i>✗ 0</i></td><td class="pk no"><b>EMPATE</b><i>✗ 0</i></td></tr>
+        </tbody><tfoot><tr><td class="lbl" colspan="3">Puntos de la ronda</td><td>3<small>pts</small></td><td>5<small>pts</small></td><td>5<small>pts</small></td></tr></tfoot></table>
+      </div>
+      
+    </section>
+
+    <section class="slide" data-slide="quiniela-podio">
+      <div class="eyebrow">Quiniela · Acumulado tras la segunda ronda</div><h2 class="slide-title">¿CÓMO VAMOS?</h2><p class="slide-sub">Doctor mantiene el liderato; Héctor supera a Pedro y sube al 2.º lugar.</p>
+      <div class="podium stagger">
+        <div class="pod second" style="--mh:226px;--h:70px"><div class="rk">2.º lugar</div><div class="pn">Héctor</div><div class="pp">10<small>pts</small></div><div class="pd">+5 en la ronda<br>5 aciertos · 0 exactos</div></div>
+        <div class="pod first" style="--mh:270px;--h:110px"><div class="rk">1.er lugar</div><div class="pn">Doctor</div><div class="pp">15<small>pts</small></div><div class="pd">+5 en la ronda<br>5 aciertos · 0 exactos</div></div>
+        <div class="pod third" style="--mh:200px;--h:40px"><div class="rk">3.er lugar</div><div class="pn">Pedro</div><div class="pp">9<small>pts</small></div><div class="pd">+3 en la ronda<br>3 aciertos · 0 exactos</div></div>
+      </div>
+      <div class="rules stagger" style="margin:14px 0 0">
+        <div class="rule-c"><div class="big">5 – 5</div><div class="lbl">Doctor y Héctor empatan la ronda</div><p>Ambos suman 5 puntos; Pedro se queda con 3.</p></div>
+        <div class="rule-c"><div class="big">3</div><div class="lbl">Partidos que acertaron los tres</div><p>Dep. Guerrero, Halcones y Arsenal fueron los partidos sin fallo.</p></div>
+        <div class="rule-c"><div class="big">0</div><div class="lbl">Aciertos en Aferrados vs Sabinal</div><p>Nadie vio la victoria visitante de Sabinal por 0–1.</p></div>
+      </div>
+    </section>
+<nav class="nav"><div class="keys">Navegación: <b>←</b> <b>→</b> · <b>Espacio</b> · <b>F</b> pantalla completa</div><div class="dots" id="dots"></div></nav>
+  </main>
+  <div class="mobile-nav"><button id="prevBtn" type="button">‹ Anterior</button><button id="nextBtn" type="button">Siguiente ›</button></div>
+  <script>
+    // Índice de entrada para escalonar las animaciones de filas, tarjetas y barras
+    document.querySelectorAll('tbody tr, .stagger > *, .sc-list > *').forEach((el) => {
+      el.style.setProperty('--i', [...el.parentElement.children].indexOf(el))
+    })
+  </script>
+  <script src="../52/logos.js"></script>
+  <script src="../52/deck.js"></script>
+</body>
+</html>
