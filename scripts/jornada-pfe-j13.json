@@ -1,0 +1,17 @@
+{
+  "id": "pfe-j13",
+  "nombre": "Jornada 13",
+  "liga": "Primera Fuerza Especial",
+  "programa_resultados": 80,
+  "partidos": [
+    { "orden": 1, "local": "Micheleros", "visitante": "Manchester", "pos_local": 12, "pos_visitante": 17, "pts_local": 14, "pts_visitante": 6, "inicio": "2026-11-22T12:00:00-06:00", "campo": "Bachiller" },
+    { "orden": 2, "local": "Halcones", "visitante": "Liverpool", "pos_local": 8, "pos_visitante": 9, "pts_local": 20, "pts_visitante": 18, "inicio": "2026-11-22T08:00:00-06:00", "campo": "Estadio" },
+    { "orden": 3, "local": "Red Bull's", "visitante": "Arsenal", "pos_local": 7, "pos_visitante": 5, "pts_local": 20, "pts_visitante": 22, "inicio": "2026-11-22T08:00:00-06:00", "campo": "Sierra de Agua" },
+    { "orden": 4, "local": "Aferrados", "visitante": "Bad's", "pos_local": 15, "pos_visitante": 18, "pts_local": 7, "pts_visitante": 3, "inicio": "2026-11-22T08:00:00-06:00", "campo": "Benito Juárez" },
+    { "orden": 5, "local": "Sor Juana", "visitante": "Dep. Guerrero", "pos_local": 1, "pos_visitante": 6, "pts_local": 26, "pts_visitante": 20, "inicio": "2026-11-21T18:30:00-06:00", "campo": "Estadio" },
+    { "orden": 6, "local": "Juárez F.C.", "visitante": "Galaxi", "pos_local": 4, "pos_visitante": 2, "pts_local": 22, "pts_visitante": 23, "inicio": "2026-11-22T16:00:00-06:00", "campo": "Benito Juárez" },
+    { "orden": 7, "local": "Ranger's", "visitante": "Real Victoria", "pos_local": 14, "pos_visitante": 3, "pts_local": 7, "pts_visitante": 22, "inicio": "2026-11-22T08:00:00-06:00", "campo": "Libertad" },
+    { "orden": 8, "local": "Molinos", "visitante": "Tiburones", "pos_local": 10, "pos_visitante": 16, "pts_local": 17, "pts_visitante": 7, "inicio": "2026-11-22T16:00:00-06:00", "campo": "Molinos" },
+    { "orden": 9, "local": "Sabinal", "visitante": "Pinochos", "pos_local": 11, "pos_visitante": 13, "pts_local": 15, "pts_visitante": 8, "inicio": "2026-11-22T10:00:00-06:00", "campo": "Sabinal" }
+  ]
+}

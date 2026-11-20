@@ -332,6 +332,16 @@ export const PROGRAMAS = [
       analisis: 'programas/78/analisis.html',
     },
   },
+  {
+    numero: 79,
+    titulo: 'Programa 79',
+    liga: 'Primera Fuerza Especial J-13 · Visita de Don José Luis, delegado de Galaxi · Halcones vs Liverpool · Red Bull\'s vs Arsenal · Juárez F.C. vs Galaxi · Quiniela ronda 3',
+    decks: {
+      horarios: 'programas/79/horarios.html',
+      resultados: null,
+      analisis: 'programas/79/analisis.html',
+    },
+  },
 ]
 
 export function ultimoPrograma() {
